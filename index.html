@@ -1,54 +1,204 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>オプション戦略一覧 & クイズ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>資産運用の裏メニュー & オプション戦略クイズ</title>
+
   <style>
-    body { font-family: sans-serif; background: #f9f9f9; margin: 0; padding: 1em; color: #2c3e50; }
-    h1, h2 { margin-left: 0.5em; }
-    h1 { font-size: 2em; margin-bottom: 0.5em; color: #2c3e50; }
-    h2 { font-size: 1.5em; margin-top: 1.5em; margin-bottom: 0.5em; color: #34495e; }
-    .card-container { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1.5em; padding: 0 0.5em; }
-    .card { background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.2em; width: calc(33% - 1em); box-shadow: 0 4px 8px rgba(0,0,0,0.05); box-sizing: border-box; transition: transform .2s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-    .card strong.title { display: block; font-size: 1.2em; color: #2c3e50; margin-bottom: .5em; }
-    .card-content p { margin: .6em 0; line-height: 1.4; }
-    .card-content ul { margin: .6em 1em; padding-left:1em; list-style-type: disc; }
-    .chatgpt-hint { margin-top:.8em; font-size:.9em; background:#eef6ff; padding:.6em; border-left:4px solid #2980b9; }
-    .chatgpt-hint a { color:#2980b9; text-decoration:none; }
-    @media (max-width:900px){ .card{ width:calc(50% - 1em);} }
-    @media (max-width:600px){ .card{ width:100%; } }
-    /* クイズ用スタイル */
-    #quiz-section { background:#fff; border:1px solid #ccc; border-radius:8px; padding:1em; margin-bottom:1.5em; }
-    #quiz-container { max-width:600px; margin:0 auto; }
-    .quiz-question { font-size:1.1em; margin-bottom:1em; }
-    .quiz-options button { display:block; width:100%; margin:0.5em 0; padding:0.8em; border:none; border-radius:6px; background:#2980b9; color:#fff; cursor:pointer; }
-    .quiz-options button:hover { background:#1c567b; }
-    .quiz-feedback { margin-top:1em; font-size:1em; }
-    #next-btn, #restart-btn { margin-top:1em; padding:0.6em 1em; border:none; border-radius:6px; background:#27ae60; color:#fff; cursor:pointer; }
-    #next-btn:hover, #restart-btn:hover { background:#1e8449; }
-    #quiz-score { margin-top:1em; font-weight:bold; }
+    /* ------ 全体共通 ------ */
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 1em;
+      color: #2c3e50;
+    }
+    h1,
+    h2 {
+      margin-left: 0.5em;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      color: #34495e;
+    }
+
+    /* ------ ──[NEW] 裏メニュー（テクニック一覧） ------ */
+    #secret-menu {
+      margin-bottom: 2em;
+      padding: 0 0.5em;
+    }
+    .tech-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-top: 0.8em;
+    }
+    .tech-link {
+      display: inline-block;
+      background: #2980b9;
+      color: #fff;
+      padding: 1em 1.5em;
+      border-radius: 10px;
+      font-size: 1.1em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .tech-link:hover {
+      background: #1c567b;
+      transform: translateY(-2px);
+    }
+
+    /* ------ カード ------ */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1.5em;
+      padding: 0 0.5em;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.2em;
+      width: calc(33% - 1em);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      box-sizing: border-box;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    .card strong.title {
+      display: block;
+      font-size: 1.2em;
+      color: #2c3e50;
+      margin-bottom: 0.5em;
+    }
+    .card-content p {
+      margin: 0.6em 0;
+      line-height: 1.4;
+    }
+    .card-content ul {
+      margin: 0.6em 1em;
+      padding-left: 1em;
+      list-style-type: disc;
+    }
+
+    /* ------ メディアクエリでカード幅調整 ------ */
+    @media (max-width: 900px) {
+      .card {
+        width: calc(50% - 1em);
+      }
+    }
+    @media (max-width: 600px) {
+      .card {
+        width: 100%;
+      }
+    }
+
+    /* ------ クイズ ------ */
+    #quiz-section {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1em;
+      margin-bottom: 1.5em;
+    }
+    #quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ▶▶ start ボタンを大きく（ご要望） ◀◀ */
+    #start-btn {
+      display: inline-block;
+      background: #e67e22;
+      color: #fff;
+      font-size: 1.2em;          /* ← 文字サイズ up */
+      padding: 1em 2em;          /* ← 高さ・幅 up   */
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    #start-btn:hover {
+      background: #c56a1e;
+      transform: translateY(-2px);
+    }
+
+    /* クイズ中の選択肢 */
+    .quiz-question {
+      font-size: 1.1em;
+      margin-bottom: 1em;
+    }
+    .quiz-options button {
+      display: block;
+      width: 100%;
+      margin: 0.5em 0;
+      padding: 0.8em;
+      border: none;
+      border-radius: 6px;
+      background: #2980b9;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .quiz-options button:hover {
+      background: #1c567b;
+    }
+    .quiz-feedback {
+      margin-top: 1em;
+      font-size: 1em;
+    }
+    #next-btn,
+    #restart-btn {
+      margin-top: 1em;
+      padding: 0.6em 1.2em;
+      border: none;
+      border-radius: 8px;
+      background: #27ae60;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #next-btn:hover,
+    #restart-btn:hover {
+      background: #1e8449;
+    }
+    #quiz-score {
+      margin-top: 1em;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <!-- スワップアービトラージ解説 -->
-  <section id="swap-arbitrage" class="chatgpt-hint">
-    <h2>スワップアービトラージ</h2>
-    <p>トルコリラ/円のスワップポイント差を利用して利益を得る方法：</p>
-    <ul>
-      <li><strong>手順：</strong>GMOクリック FX NEOでトルコリラ/円を買い、同数量をGMOクリック 365 FXで売りポジションとして同時に建てます。</li>
-      <li><strong>スワップ受取：</strong>FX NEOの買いポジションで1日あたり約<em>+○○円</em>（例：1万通貨あたり）を受け取り。</li>
-      <li><strong>スワップ支払：</strong>365 FXの売りポジションで1日あたり約<em>-△△円</em>（例：1万通貨あたり）を支払います。</li>
-      <li><strong>差額益：</strong>受取りスワップ − 支払いスワップ = 日々の差額（例：○○−△△=約□□円）が利益となります。</li>
-      <li><strong>注意点：</strong>両ポジションの証拠金維持、為替変動リスク、スワップポイントの変動に注意が必要です。</li>
-    </ul>
+
+  <!-- ─────────────────── 資産運用の裏メニュー ─────────────────── -->
+  <section id="secret-menu">
+    <h1>資産運用の裏メニュー</h1>
+    <div class="tech-menu">
+      <!-- 1列にいくつでも追加できます。リンク先はそれぞれ独立ページ -->
+      <a href="swap-arbitrage.html" class="tech-link">スワップアービトラージ</a>
+      <a href="yutai-cross.html"    class="tech-link">株主優待クロス取引</a>
+      <!-- 追加したいテクニックがあれば <a> を増やすだけでOK -->
+    </div>
   </section>
 
-  <!-- クイズセクション -->
+  <!-- ─────────────────── クイズ ─────────────────── -->
   <section id="quiz-section">
     <div id="quiz-container">
-      <h1>オプション戦略クイズ</h1>
+      <h2>オプション戦略クイズ</h2>
       <div id="quiz-content">
         <button id="start-btn">クイズを始める</button>
       </div>
@@ -56,10 +206,10 @@
     </div>
   </section>
 
-  <!-- 戦略一覧 -->
+  <!-- ─────────────────── オプション戦略一覧 ─────────────────── -->
   <h1>📘 オプション戦略一覧（カテゴリ別）</h1>
 
-  <!-- 単純な戦略 -->
+  <!-- ------- 単純な戦略 ------- -->
   <h2>🔹 単純な戦略</h2>
   <div class="card-container">
     <!-- Covered Call -->
@@ -69,12 +219,13 @@
         <p>株式保有＋コール売却でプレミアム収益を狙う。</p>
         <ul>
           <li><strong>仕組み：</strong>手持ちの株100株に対し、行使価格Xのコールを売却。</li>
-          <li><strong>利益：</strong>株価≤Xならプレミアム全額、>XならストライクXで株売却＋プレミアム。</li>
+          <li><strong>利益：</strong>株価≤Xならプレミアム全額、&gt;XならストライクXで株売却＋プレミアム。</li>
           <li><strong>例：</strong>株価95、行使100、プレミアム2ドル → 保有中に200ドル収入。</li>
         </ul>
         <p><strong>活用場面：</strong>配当株との組合せ、下落リスクをある程度許容しつつ定期収益化。</p>
       </div>
     </div>
+
     <!-- Put Sell -->
     <div class="card">
       <strong class="title">Put Sell（プット・セル）</strong>
@@ -82,12 +233,13 @@
         <p>希望買付価格で株を取得しつつプレミアムを得る戦略。</p>
         <ul>
           <li><strong>仕組み：</strong>行使価格Yのプットを売却。</li>
-          <li><strong>利益：</strong>株価>Yならプレミアム全額、≤YならYで株取得＋プレミアム。</li>
+          <li><strong>利益：</strong>株価&gt;Yならプレミアム全額、≤YならYで株取得＋プレミアム。</li>
           <li><strong>例：</strong>行使90、プレミアム1.5ドル → 実質取得コスト88.5ドル。</li>
         </ul>
         <p><strong>活用場面：</strong>長期投資銘柄の安値拾い、キャッシュセキュアードプット。</p>
       </div>
     </div>
+
     <!-- Protective Put -->
     <div class="card">
       <strong class="title">Protective Put（プロテクティブ・プット）</strong>
@@ -95,7 +247,7 @@
         <p>保有株の下落リスクを限定するヘッジ。</p>
         <ul>
           <li><strong>仕組み：</strong>既保有の株100株に対し、行使価格Zのプットを購入。</li>
-          <li><strong>利益：</strong>株価>Zならプットは放棄、≤ZならZで売却し損失限定。</li>
+          <li><strong>利益：</strong>株価&gt;Zならプットは放棄、≤ZならZで売却し損失限定。</li>
           <li><strong>例：</strong>株価100、行使95、プレミアム3ドル → 最大損失=(100-95)+3=8ドル。</li>
         </ul>
         <p><strong>活用場面：</strong>決算前や重要イベント前の防御策。</p>
@@ -103,7 +255,7 @@
     </div>
   </div>
 
-  <!-- スプレッド戦略 -->
+  <!-- ------- スプレッド戦略 ------- -->
   <h2>🔹 スプレッド戦略</h2>
   <div class="card-container">
     <!-- Call Spread -->
@@ -112,26 +264,28 @@
       <div class="card-content">
         <p>強気だがコストとリスクを抑える。</p>
         <ul>
-          <li><strong>仕組み：</strong>行使価格Aのコール買い＋行使B（>A）のコール売り。</li>
-          <li><strong>利益：</strong>株価≥Bで(B−A)−コスト、株価<Aは−コストのみ。</li>
+          <li><strong>仕組み：</strong>行使価格Aのコール買い＋行使B（&gt;A）のコール売り。</li>
+          <li><strong>利益：</strong>株価≥Bで(B−A)−コスト、株価&lt;Aは−コストのみ。</li>
           <li><strong>例：</strong>A=100買い、B=110売り。最大利益=10−コスト。</li>
         </ul>
         <p><strong>活用場面：</strong>緩やかな上昇予想、資金効率重視。</p>
       </div>
     </div>
+
     <!-- Put Spread -->
     <div class="card">
       <strong class="title">Put Spread（プット・スプレッド）</strong>
       <div class="card-content">
         <p>弱気だが損失限定。</p>
         <ul>
-          <li><strong>仕組み：</strong>行使価格Cのプット買い＋行使D（<C）のプット売り。</li>
-          <li><strong>利益：</strong>株価≤Dで(C−D)−コスト、株価>Dは−コスト。</li>
+          <li><strong>仕組み：</strong>行使価格Cのプット買い＋行使D（&lt;C）のプット売り。</li>
+          <li><strong>利益：</strong>株価≤Dで(C−D)−コスト、株価&gt;Dは−コスト。</li>
           <li><strong>例：</strong>C=100買い、D=90売り。最大利益=10−コスト。</li>
         </ul>
         <p><strong>活用場面：</strong>緩やかな下落予想、ボラ抑制。</p>
       </div>
     </div>
+
     <!-- Iron Condor -->
     <div class="card">
       <strong class="title">Iron Condor（アイアン・コンドル）</strong>
@@ -147,7 +301,7 @@
     </div>
   </div>
 
-  <!-- ボラティリティ戦略 -->
+  <!-- ------- ボラティリティ戦略 ------- -->
   <h2>🔹 ボラティリティを活かす戦略</h2>
   <div class="card-container">
     <!-- Long Straddle -->
@@ -163,6 +317,7 @@
         <p><strong>活用場面：</strong>決算・イベント前の大きな値動き期待。</p>
       </div>
     </div>
+
     <!-- Long Strangle -->
     <div class="card">
       <strong class="title">Long Strangle（ロング・ストラングル）</strong>
@@ -176,6 +331,7 @@
         <p><strong>活用場面：</strong>コスト重視の高ボラ局面。</p>
       </div>
     </div>
+
     <!-- Calendar Spread -->
     <div class="card">
       <strong class="title">Calendar Spread（カレンダー・スプレッド）</strong>
@@ -191,7 +347,7 @@
     </div>
   </div>
 
-  <!-- 上昇/下落戦略 -->
+  <!-- ------- 上昇/下落戦略 ------- -->
   <h2>🔹 上昇/下落を狙う戦略</h2>
   <div class="card-container">
     <!-- Bull Call Spread -->
@@ -201,12 +357,13 @@
         <p>緩やかな上昇を狙いリスク管理。</p>
         <ul>
           <li><strong>仕組み：</strong>低行使Iのコール買い＋高行使Jのコール売り。</li>
-          <li><strong>利益：</strong>株価≥Jで(J−I)−コスト、株価<Iで−コスト。</li>
+          <li><strong>利益：</strong>株価≥Jで(J−I)−コスト、株価&lt;Iで−コスト。</li>
           <li><strong>例：</strong>I=95買い、J=105売り。最大利益=10−コスト。</li>
         </ul>
         <p><strong>活用場面：</strong>範囲内強気予想、資金効率。</p>
       </div>
     </div>
+
     <!-- Bear Put Spread -->
     <div class="card">
       <strong class="title">Bear Put Spread（ベア・プット・スプレッド）</strong>
@@ -214,12 +371,13 @@
         <p>緩やかな下落を狙い損失限定。</p>
         <ul>
           <li><strong>仕組み：</strong>高行使Kのプット買い＋低行使Lのプット売り。</li>
-          <li><strong>利益：</strong>株価≤Lで(K−L)−コスト、株価>Lで−コスト。</li>
+          <li><strong>利益：</strong>株価≤Lで(K−L)−コスト、株価&gt;Lで−コスト。</li>
           <li><strong>例：</strong>K=110買い、L=100売り。最大利益=10−コスト。</li>
         </ul>
         <p><strong>活用場面：</strong>緩やかな下落予想時。</p>
       </div>
     </div>
+
     <!-- Synthetic Long -->
     <div class="card">
       <strong class="title">Synthetic Long（シンセティック・ロング）</strong>
@@ -227,14 +385,14 @@
         <p>株式と同様の値動きを模倣。</p>
         <ul>
           <li><strong>仕組み：</strong>同一行使のコール買い＋プット売り。</li>
-          <li><strong>利益：</strong>株と同等の上昇益、プットプレミアム受取。
+          <li><strong>利益：</strong>株と同等の上昇益、プットプレミアム受取。</li>
         </ul>
         <p><strong>活用場面：</strong>レバレッジ強化の中長期強気。</p>
       </div>
     </div>
   </div>
 
-  <!-- アービトラージ戦略 -->
+  <!-- ------- アービトラージ戦略 ------- -->
   <h2>🔹 アービトラージ戦略</h2>
   <div class="card-container">
     <!-- Box Spread -->
@@ -244,12 +402,13 @@
         <p>金利差を裁定する複合スプレッド。</p>
         <ul>
           <li><strong>仕組み：</strong>Bull Call Spread + Bear Put Spreadの組合せ。</li>
-          <li><strong>利益：</strong>理論価格とプレミアム差の裁定益。
+          <li><strong>利益：</strong>理論価格とプレミアム差の裁定益。</li>
         </ul>
         <p><strong>活用場面：</strong>機関投資家による短期金利裁定。</p>
       </div>
     </div>
-    <!-- Conversion/Reversal -->
+
+    <!-- Conversion / Reversal -->
     <div class="card">
       <strong class="title">Conversion / Reversal（コンバージョン／リバーサル）</strong>
       <div class="card-content">
@@ -262,6 +421,7 @@
         <p><strong>活用場面：</strong>価格差発生時の高頻度裁定。</p>
       </div>
     </div>
+
     <!-- Dividend Arbitrage -->
     <div class="card">
       <strong class="title">Dividend Arbitrage（配当裁定）</strong>
@@ -276,54 +436,67 @@
     </div>
   </div>
 
-  <!-- クイズ用スクリプト -->
+  <!-- ─────────────────── クイズ用 JS ─────────────────── -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const startBtn = document.getElementById('start-btn');
-      const container = document.getElementById('quiz-content');
-      const scoreEl = document.getElementById('quiz-score');
+    document.addEventListener("DOMContentLoaded", () => {
+      const startBtn = document.getElementById("start-btn");
+      const container = document.getElementById("quiz-content");
+      const scoreEl = document.getElementById("quiz-score");
       let questions = [];
       let current = 0;
       let score = 0;
 
-      startBtn.addEventListener('click', startQuiz);
+      startBtn.addEventListener("click", startQuiz);
 
       function startQuiz() {
-        fetch('./questions.json')
-          .then(res => res.json())
-          .then(data => {
+        fetch("./questions.json")
+          .then((res) => res.json())
+          .then((data) => {
             questions = data.sort(() => Math.random() - 0.5);
-            current = 0; score = 0; scoreEl.textContent = '';
+            current = 0;
+            score = 0;
+            scoreEl.textContent = "";
             showQuestion();
           })
-          .catch(err => container.innerHTML = '<p>クイズ読み込み失敗</p>');
+          .catch((err) => (container.innerHTML = "<p>クイズ読み込み失敗</p>"));
       }
 
       function showQuestion() {
         const q = questions[current];
         container.innerHTML = `
-          <div class="quiz-question">Q${current+1}: ${q.question}</div>
+          <div class="quiz-question">Q${current + 1}: ${q.question}</div>
           <div class="quiz-options">
-            ${q.options.map((opt,i) => `<button data-index=\"${i}\">${opt}</button>`).join('')}
+            ${q.options
+              .map((opt, i) => `<button data-index="${i}">${opt}</button>`)
+              .join("")}
           </div>
           <div class="quiz-feedback"></div>
-          <button id=\"next-btn\" disabled>次の問題へ</button>
+          <button id="next-btn" disabled>次の問題へ</button>
         `;
-        container.querySelectorAll('.quiz-options button').forEach(btn => btn.addEventListener('click', () => selectAnswer(btn)));
+        container
+          .querySelectorAll(".quiz-options button")
+          .forEach((btn) => btn.addEventListener("click", () => selectAnswer(btn)));
       }
 
       function selectAnswer(btn) {
-        const idx = +btn.getAttribute('data-index');
+        const idx = +btn.getAttribute("data-index");
         const q = questions[current];
-        const feedback = container.querySelector('.quiz-feedback');
-        const nextBtn = container.querySelector('#next-btn');
-        if (idx === q.answer) { score++; feedback.textContent = '正解！ ' + q.explanation; }
-        else { feedback.textContent = '不正解。 ' + q.explanation; }
-        container.querySelectorAll('.quiz-options button').forEach(b => b.disabled = true);
+        const feedback = container.querySelector(".quiz-feedback");
+        const nextBtn = container.querySelector("#next-btn");
+        if (idx === q.answer) {
+          score++;
+          feedback.textContent = "正解！ " + q.explanation;
+        } else {
+          feedback.textContent = "不正解。 " + q.explanation;
+        }
+        container
+          .querySelectorAll(".quiz-options button")
+          .forEach((b) => (b.disabled = true));
         nextBtn.disabled = false;
-        nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener("click", () => {
           current++;
-          if (current < questions.length) showQuestion(); else showResult();
+          if (current < questions.length) showQuestion();
+          else showResult();
         });
       }
 
@@ -332,7 +505,7 @@
           <div class="quiz-question">クイズ終了！あなたのスコアは ${score}/${questions.length} です。</div>
           <button id="restart-btn">もう一度クイズを行う</button>
         `;
-        document.getElementById('restart-btn').addEventListener('click', startQuiz);
+        document.getElementById("restart-btn").addEventListener("click", startQuiz);
       }
     });
   </script>
