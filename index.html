@@ -53,6 +53,15 @@
         align-items: center;
       }
       .card {
+        width: 90% !important;
+        flex: unset !important;
+      }
+    }
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
         width: 90%;
       }
     }
@@ -60,7 +69,42 @@
 </head>
 <body>
   <h1>📘 よく使うオプション戦略</h1>
-  <div class="card-container" id="cardContainer">
+  $1
+  <div class="card" style="flex: 0 0 calc(33% - 1em); box-sizing: border-box;">
+    <strong>Covered Put（カバード・プット）</strong>
+    <p>Covered Put は、保有株ではなく空売りポジションに対してプットオプションを売る戦略で、株価が下がらない限り利益を狙うことができます。この戦略は相場の下落を見込むが、一定の価格以下にはならないと予想する場合に有効です。</p>
+    <div class="chatgpt-hint">
+      💡 <a href="https://chat.openai.com/?q=Covered Putとは？リスクや利益も教えて" target="_blank">ChatGPTに「Covered Putとは？リスクや利益も教えて」と聞いてみよう。</a>
+    </div>
+  </div>
+  <div class="card">
+    <strong>Cash Secured Put（キャッシュ・セキュアド・プット）</strong>
+    <p>Cash Secured Put は、十分な現金を確保した状態でプットオプションを売る戦略です。投資家がその株を特定の価格で買っても良いと思うとき、現金を用意してプット売りを行うことでプレミアム収入を得つつ、希望価格での取得も狙えます。</p>
+    <div class="chatgpt-hint">
+      💡 <a href="https://chat.openai.com/?q=Cash Secured Putとは？リスクや利益も教えて" target="_blank">ChatGPTに「Cash Secured Putとは？リスクや利益も教えて」と聞いてみよう。</a>
+    </div>
+  </div>
+  <div class="card">
+    <strong>Calendar Spread（カレンダー・スプレッド）</strong>
+    <p>Calendar Spread は、同じ権利行使価格で異なる満期のオプションを同時に取引する戦略です。時間的価値の違いを利用して収益を狙い、短期オプションを売ってプレミアムを得ながら、長期オプションを保有します。</p>
+    <div class="chatgpt-hint">
+      💡 <a href="https://chat.openai.com/?q=Calendar Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTに「Calendar Spreadとは？リスクや利益も教えて」と聞いてみよう。</a>
+    </div>
+  </div>
+  <div class="card">
+    <strong>Diagonal Spread（ダイアゴナル・スプレッド）</strong>
+    <p>Diagonal Spread は、異なる満期かつ異なる権利行使価格のオプションを同時に組み合わせる戦略です。Calendar Spread と Vertical Spread の要素を持ち、相場の時間経過と価格変動の両方を活かして収益を狙います。</p>
+    <div class="chatgpt-hint">
+      💡 <a href="https://chat.openai.com/?q=Diagonal Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTに「Diagonal Spreadとは？リスクや利益も教えて」と聞いてみよう。</a>
+    </div>
+  </div>
+  <div class="card">
+    <strong>Ratio Spread（レシオ・スプレッド）</strong>
+    <p>Ratio Spread は、オプションの買いと売りを異なる数量で構成する戦略です。たとえば、1枚買って2枚売るなど、非対称な構成にすることで、一定の範囲では利益が最大化されますが、相場が大きく動いた場合は損失が広がるリスクもあります。</p>
+    <div class="chatgpt-hint">
+      💡 <a href="https://chat.openai.com/?q=Ratio Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTに「Ratio Spreadとは？リスクや利益も教えて」と聞いてみよう。</a>
+    </div>
+  </div>
   <div class="card">
     <strong>Covered Call（カバード・コール）</strong>
     <p>Covered Call（カバード・コール）は、投資家がすでに保有している株式に対して同数のコールオプションを売却（書く）する戦略です。この戦略の主な目的は、株価が大きく変動しないと見込まれる時期にプレミアム（オプションの売却益）を得ることです。
@@ -178,43 +222,17 @@
       💡 <a href="https://chat.openai.com/?q=Butterfly Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTに「Butterfly Spreadとは？リスクや利益も教えて」と聞いてみよう。</a>
     </div>
   </div>
-</div>
-    <div class=\"card\">
-      <strong>Put Sell（プット・セル）</strong>
-      <p>株を安く買いたい時にプットを売る戦略。割安株の取得とプレミアム収入を同時に狙う。</p>
-    </div>
-    <div class=\"card\">
-      <strong>Long Straddle（ロング・ストラドル）</strong>
-      <p>コールとプットを同時に買う戦略。価格が大きく動くイベント前に有効。</p>
-    </div>
-    <div class=\"card\">
-      <strong>Iron Condor（アイアン・コンドル）</strong>
-      <p>値動きが限定的と予想される相場で、コールとプットのスプレッドを同時に構成する戦略。</p>
-    </div>
-    <div class=\"card\">
-      <strong>Protective Put（プロテクティブ・プット）</strong>
-      <p>株を保有しながら、下落に備えてプットを買う戦略。いわば「保険付き保有」。</p>
-    </div>
-    <div class=\"card\">
-      <strong>Call Spread（コール・スプレッド）</strong>
-      <p>価格上昇を狙いつつリスクも限定する戦略。買いコール＋売りコールで構成。</p>
-    </div>
-    <div class=\"card\">
-      <strong>Put Spread（プット・スプレッド）</strong>
-      <p>下落時の利益を限定的に得る。買いプット＋売りプットで構成される。</p>
-    </div>
-    <div class=\"card\">
-      <strong>Box Spread（ボックス・スプレッド）</strong>
-      <p>同時にコールとプットのスプレッドを組み、理論上リスクゼロの裁定利益を得る戦略。</p>
-    </div>
-    <div class=\"card\">
-      <strong>Butterfly Spread（バタフライ・スプレッド）</strong>
-      <p>価格変動が限定的な場面で利益を狙う戦略。3種類の価格帯でコールやプットを組み合わせる。</p>
-    </div>
+
   </div>
-  <div class="card-container">
-    <div class="card">
-      <strong>クイズに挑戦！</strong><br>
+
+</div>
+<div class="card-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5em;">
+  <div class="card">
+    <strong>クイズに挑戦！</strong><br>
+    オプション戦略の理解度をチェックしましょう。
+    <a href="quiz.html" target="_blank">📘 クイズを開く</a>
+  </div>
+</div><br>
       オプション戦略の理解度をチェックしましょう。
       <a href="quiz.html" target="_blank">📘 クイズを開く</a>
     </div>
@@ -233,5 +251,31 @@
       }
     });
   </script>
+<h2 style="text-align:center; margin-top:3em; color:#2c3e50;">📊 アービトラージ戦略まとめ</h2>
+  <div class="card-container">
+    <div class="card">
+      <strong>Box Spread（ボックス・スプレッド）</strong>
+      <p>Box Spread は、ブル・スプレッド（コール買い＋売り）とベア・スプレッド（プット売り＋買い）を同時に組み合わせた理論的にはリスクゼロのアービトラージ戦略です。満期時には確定的な価格差が生まれるように構成され、理論上は一定の利ざやが得られます。ただし、実際の市場では手数料やスプレッドによってその利益が打ち消されることも多いため、機関投資家や高頻度取引（HFT）による利用が中心です。</p>
+      <div class="chatgpt-hint">
+        💡 <a href="https://chat.openai.com/?q=Box Spreadとは？裁定取引とは何かも教えて" target="_blank">ChatGPTに「Box Spreadとは？裁定取引とは何かも教えて」と聞いてみよう。</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <strong>Conversion & Reversal（コンバージョン & リバーサル）</strong>
+      <p>Conversionは、株式を保有したうえでコール売り・プット買いを組み合わせることで、価格差によって無リスク利益を得る戦略です。一方、Reversalは株を空売りし、コール買い・プット売りを同時に行って、反対の裁定ポジションを構築します。どちらも理論価格と実際の市場価格の乖離を利用する高度な戦略です。</p>
+      <div class="chatgpt-hint">
+        💡 <a href="https://chat.openai.com/?q=ConversionとReversalとは？違いも教えて" target="_blank">ChatGPTに「ConversionとReversalとは？違いも教えて」と聞いてみよう。</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <strong>Dividend Arbitrage（配当アービトラージ）</strong>
+      <p>配当アービトラージは、権利付き最終日にコールオプションの行使や株取得を通じて、配当金とオプション価格の差を活用する戦略です。機関投資家が大量に保有・売買できる環境で有効に機能し、個人投資家には応用が難しいものの、配当とオプション価格の関係を理解する教材として非常に有効です。</p>
+      <div class="chatgpt-hint">
+        💡 <a href="https://chat.openai.com/?q=Dividend Arbitrageとは？配当とオプションの関係も教えて" target="_blank">ChatGPTに「Dividend Arbitrageとは？配当とオプションの関係も教えて」と聞いてみよう。</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
