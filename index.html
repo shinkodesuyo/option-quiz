@@ -40,7 +40,11 @@
       padding: 0.5em;
       border-left: 4px solid #2980b9;
     }
-      @media (max-width: 600px) {
+    .chatgpt-hint a {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
       body {
         padding: 1em;
       }
@@ -56,259 +60,42 @@
 </head>
 <body>
   <h1>📘 よく使うオプション戦略</h1>
-  <div class="card-container">
-
-    <div class="card">
-      <strong>Put Sell</strong><br>
-      Put Sellは、特定の株を一定価格で将来購入する義務を負う代わりにプレミアムを受け取る戦略です。株価が目標価格まで下がれば、安く株を取得でき、下がらなければプレミアムのみが利益になります。
-      <br><br>
-      【メリット】株を安く買いたい投資家にとって理想的なエントリー戦略であり、プレミアム収入が得られる。
-      <br>
-      【デメリット】株価が大きく下落した場合、プレミアム以上の損失が発生する。
-      <br>
-      【適した相場】株価が横ばいまたは緩やかな上昇を予想しているとき。
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Put Sellとは？リスクや利益も教えて" target="_blank" style="color: #2980b9; text-decoration: underline;">ChatGPTに「Put Sellとは？リスクや利益も教えて」と聞いてみよう。</a></div>
+  <div class=\"card-container\" id=\"cardContainer\">
+    <div class=\"card\">
+      <strong>Covered Call（カバード・コール）</strong>
+      <p>保有株に対してコールオプションを売る戦略。プレミアム収入を得ながら株価上昇益も一部確保できる。</p>
     </div>
-
-    <div class="card">
-      <strong>Long Straddle</strong><br>
-      Long Straddleは、同一の権利行使価格・限月でコールとプットを同時に購入する戦略です。株価がどちらか一方向に大きく動くと利益が出ます。
-      <br><br>
-      【メリット】上下いずれかの大きな変動があれば利益となり、イベント相場などに有効。
-      <br>
-      【デメリット】株価がほとんど動かないと両プレミアム分損失となる。
-      <br>
-      【適した相場】決算発表や経済イベント前など、大きなボラティリティが見込まれるとき。
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Long Straddleとは？リスクや利益も教えて" target="_blank" style="color: #2980b9; text-decoration: underline;">ChatGPTに「Long Straddleとは？リスクや利益も教えて」と聞いてみよう。</a></div>
+    <div class=\"card\">
+      <strong>Put Sell（プット・セル）</strong>
+      <p>株を安く買いたい時にプットを売る戦略。割安株の取得とプレミアム収入を同時に狙う。</p>
     </div>
-
-    <div class="card">
-      <strong>Iron Condor</strong><br>
-      Iron Condorは、価格が一定範囲に収まると利益が出る戦略で、2つのスプレッド（Put SpreadとCall Spread）を組み合わせて構成されます。
-      <br><br>
-      【メリット】ボラティリティが低い相場で有利であり、リスク・リターンが限定されている。
-      <br>
-      【デメリット】株価が想定レンジを外れると損失が出る。収益はプレミアムに限定されている。
-      <br>
-      【適した相場】価格が狭い範囲で推移すると予想されるとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Iron Condorとは？リスクや利益も教えて」と聞いてみよう。</div>
+    <div class=\"card\">
+      <strong>Long Straddle（ロング・ストラドル）</strong>
+      <p>コールとプットを同時に買う戦略。価格が大きく動くイベント前に有効。</p>
     </div>
-
-    <div class="card">
-      <strong>Protective Put</strong><br>
-      Protective Putは、株式を保有しながら同時にプットオプションを購入することで、下落リスクからポジションを守る戦略です。
-      <br><br>
-      【メリット】損失を最小限に抑える保険のような役割を持ち、暴落対策に有効。
-      <br>
-      【デメリット】プット購入に費用がかかるため、株価が下がらなければ利益を圧迫する。
-      <br>
-      【適した相場】相場下落のリスクを懸念しながら株を保持したいとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Protective Putとは？リスクや利益も教えて」と聞いてみよう。</div>
+    <div class=\"card\">
+      <strong>Iron Condor（アイアン・コンドル）</strong>
+      <p>値動きが限定的と予想される相場で、コールとプットのスプレッドを同時に構成する戦略。</p>
     </div>
-
-    <div class="card">
-      <strong>Calendar Spread</strong><br>
-      Calendar Spreadは、同一の権利行使価格で異なる限月のオプションを売買する戦略です。時間的価値の減少を利用します。
-      <br><br>
-      【メリット】IV（インプライド・ボラティリティ）の変動や時間経過により利益が狙える。
-      <br>
-      【デメリット】限月間の価格変動やボラティリティの急変で損失になる可能性あり。
-      <br>
-      【適した相場】短期は安定し、中長期は変動が見込まれる相場。
-      <div class="chatgpt-hint">💡 ChatGPTに「Calendar Spreadとは？リスクや利益も教えて」と聞いてみよう。</div>
+    <div class=\"card\">
+      <strong>Protective Put（プロテクティブ・プット）</strong>
+      <p>株を保有しながら、下落に備えてプットを買う戦略。いわば「保険付き保有」。</p>
     </div>
-
-    <div class="card">
-      <strong>Butterfly Spread</strong><br>
-      Butterfly Spreadは、3つの異なる権利行使価格を持つオプションを組み合わせたスプレッド戦略です。狭い価格帯に収まると最大利益が得られます。
-      <br><br>
-      【メリット】価格が特定の水準に収束することで最大利益を得られ、リスクも限定的。
-      <br>
-      【デメリット】その水準に届かなければ利益が出ないため、レンジ予測が難しいと厳しい。
-      <br>
-      【適した相場】株価がほぼ横ばいか収束を見込むとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Butterfly Spreadとは？リスクや利益も教えて」と聞いてみよう。</div>
+    <div class=\"card\">
+      <strong>Call Spread（コール・スプレッド）</strong>
+      <p>価格上昇を狙いつつリスクも限定する戦略。買いコール＋売りコールで構成。</p>
     </div>
-
-    <div class="card">
-      <strong>Covered Call</strong><br>
-      Covered Callは、株を保有しながら同時にコールオプションを売ることで、プレミアムを得る戦略です。保有株が大きく動かないと見込まれるときに有効で、インカム戦略として使われます。
-      <br><br>
-      【メリット】株価が横ばいでもプレミアムで利益を得られる。株式配当と併用も可能。
-      <br>
-      【デメリット】株価が大きく上昇してもコールの権利行使により上値は限定される。株価下落の損失はカバーされない。
-      <br>
-      【適した相場】株価が安定していて、大きな上昇は見込めない相場。
-      <div class="chatgpt-hint">💡 ChatGPTに「Covered Callとは？リスクや利益も教えて」と聞いてみよう。</div>
+    <div class=\"card\">
+      <strong>Put Spread（プット・スプレッド）</strong>
+      <p>下落時の利益を限定的に得る。買いプット＋売りプットで構成される。</p>
     </div>
-
-    <div class="card">
-      <strong>Iron Butterfly</strong><br>
-      Iron Butterflyは、ショートストラドルとロングウィングのスプレッドを組み合わせた戦略で、株価が特定の価格で落ち着くことを前提とした収益戦略です。
-      <br><br>
-      【メリット】想定中心価格に収束すれば最大利益が得られる。リスクも限定されている。
-      <br>
-      【デメリット】株価が予測中心価格から外れると急速に損失に転じる可能性がある。
-      <br>
-      【適した相場】ボラティリティが低下し、中心価格に滞在すると予想される相場。
-      <div class="chatgpt-hint">💡 ChatGPTに「Iron Butterflyとは？リスクや利益も教えて」と聞いてみよう。</div>
+    <div class=\"card\">
+      <strong>Box Spread（ボックス・スプレッド）</strong>
+      <p>同時にコールとプットのスプレッドを組み、理論上リスクゼロの裁定利益を得る戦略。</p>
     </div>
-
-    <div class="card">
-      <strong>Synthetic Long Stock</strong><br>
-      Synthetic Longは、株式を保有せずに、ロングコール＋ショートプットの組み合わせにより株保有と同様の損益構造を作る戦略です。
-      <br><br>
-      【メリット】株を購入せずに株価上昇の利益を得られる。資金効率が良い。
-      <br>
-      【デメリット】株価が下落した場合、株式保有と同様に損失が出る。
-      <br>
-      【適した相場】株価上昇を予想していて、現物を保有せずに取引したいとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Synthetic Long Stockとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Diagonal Spread</strong><br>
-      Diagonal Spreadは、限月も行使価格も異なる2つのオプションを使う高度なスプレッド戦略です。時間価値と価格変動の両方を利用します。
-      <br><br>
-      【メリット】時間的価値の低下やボラティリティの変化を利用して利益が狙える。
-      <br>
-      【デメリット】ポジション管理が複雑で、価格変動によっては損失が出る。
-      <br>
-      【適した相場】緩やかな価格推移と時間の経過を狙いたいとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Diagonal Spreadとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-    
-
-  <div class="card">
-      <strong>Strangle</strong><br>
-      Strangleは、異なる権利行使価格で同じ満期のコールとプットを購入する戦略です。価格がどちらか一方向に大きく動くことを期待します。
-      <br><br>
-      【メリット】Straddleよりコストが低く、より大きな値動きに対応できる。
-      <br>
-      【デメリット】損益分岐点が広く、利益が出にくい場合がある。
-      <br>
-      【適した相場】ボラティリティの急増が予想される局面。
-      <div class="chatgpt-hint">💡 ChatGPTに「Strangleとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Backspread</strong><br>
-      Backspreadは、買いの枚数を売りより多くするスプレッド戦略です。予測方向に大きく動けば損益は無限に広がります。
-      <br><br>
-      【メリット】方向性の強いトレンドに乗れば大きな利益が狙える。
-      <br>
-      【デメリット】価格変動が小さい場合に損失が出やすい。
-      <br>
-      【適した相場】急騰・急落を見込む相場展開。
-      <div class="chatgpt-hint">💡 ChatGPTに「Backspreadとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Collar</strong><br>
-      Collarは、株を保有しながらプットを購入し、同時にコールを売ることで損益の範囲を固定する防御的戦略です。
-      <br><br>
-      【メリット】下落から保護され、上昇益もある程度確保できる。
-      <br>
-      【デメリット】上値利益が限定される。
-      <br>
-      【適した相場】価格が急落する可能性があるが、手放したくない株を保有しているとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Collarとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-  <div class="card">
-      <strong>Covered Put</strong><br>
-      Covered Putは、空売りした株に対してプットオプションを売る戦略です。株価の下落を予測する際に用いられます。
-      <br><br>
-      【メリット】株価が下がらなかった場合でもプレミアムが収益になる。
-      <br>
-      【デメリット】株価が上昇した場合には空売りによる損失が膨らむ。
-      <br>
-      【適した相場】弱気相場で、緩やかな下落またはレンジ相場が予想されるとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Covered Putとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Box Spread</strong><br>
-      Box Spreadは、理論上は無リスクで確実な利益が得られるアービトラージ戦略で、ブルとベアスプレッドを同時に構成します。
-      <br><br>
-      【メリット】理論的にはリスクなしで利ザヤを狙える。
-      <br>
-      【デメリット】実際には手数料やスプレッドが大きく、理論通りにいかないことが多い。
-      <br>
-      【適した相場】価格変動を予想しない時で、制度的裁定を狙うとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Box Spreadとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Ratio Spread</strong><br>
-      Ratio Spreadは、オプションを異なる比率で売買する戦略で、方向性とボラティリティをうまく利用して利益を得ることを目的とします。
-      <br><br>
-      【メリット】変動の大きさに応じて柔軟に損益を調整できる。
-      <br>
-      【デメリット】価格が想定と大きく外れると損失リスクがある。
-      <br>
-      【適した相場】中程度の変動を予想し、調整可能な戦略を好むとき。
-      <div class="chatgpt-hint">💡 ChatGPTに「Ratio Spreadとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Cash Secured Put</strong><br>
-      Cash Secured Putは、十分な現金を用意した状態でプットを売る戦略で、指定価格で株を買っても良いという姿勢を示す投資法です。
-      <br><br>
-      【メリット】株を割安に取得するチャンスを持ちながらプレミアム収入を得られる。
-      <br>
-      【デメリット】株価が急落した場合には、安く買えるが損失リスクもある。
-      <br>
-      【適した相場】株価が割安水準にあると感じたときにエントリーしたい場面。
-      <div class="chatgpt-hint">💡 ChatGPTに「Cash Secured Putとは？リスクや利益も教えて」と聞いてみよう。</div>
-    </div>
-
-  </div>
-<h2 style="text-align:center; margin-top:3em; color:#2c3e50;">📊 アービトラージ戦略まとめ</h2>
-  <div class="card-container">
-    <div class="card">
-      <strong>Box Spread（ボックス・スプレッド）</strong><br>
-      Box Spreadは、ブルスプレッドとベアスプレッドを組み合わせたアービトラージ戦略で、理論上は満期時に確定利益が見込める無リスクの戦略です。
-      <br><br>
-      【仕組み】同じ原資産・満期のオプションを用いて、ロング・ショート両方のスプレッドを構築します。価格の歪みを利用し、理論価格との差から利益を得ます。
-      <br>
-      【メリット】裁定機会が存在すれば、実質的にリスクゼロで確定利益が見込めます。
-      <br>
-      【デメリット】実際の市場では手数料・スプレッド・流動性の影響により利益が打ち消されることも多く、実行可能な場面は限られます。
-      <br>
-      【適用場面】機関投資家や高頻度取引（HFT）などが活用しやすい。個人投資家にとっては学習として有益です。
-      <div class="chatgpt-hint">💡 ChatGPTに「Box Spreadとは？裁定取引とは何かも教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Conversion & Reversal</strong><br>
-      ConversionとReversalは、現物株とオプションを組み合わせて市場の裁定機会を狙う戦略です。
-      <br><br>
-      【Conversion】株＋ショートコール＋ロングプット → 利益がロックされる。
-      <br>
-      【Reversal】空売り株＋ロングコール＋ショートプット → 負債的ポジションでの裁定。
-      <br>
-      【メリット】理論価格と実価格に歪みがある場合、無リスクで利ざやを得られる。
-      <br>
-      【デメリット】実際には空売り規制、貸株料、手数料などが利益を打ち消す可能性あり。
-      <br>
-      【適用場面】高頻度取引やインデックス先物との価格乖離に注目する場面など。
-      <div class="chatgpt-hint">💡 ChatGPTに「Conversionとは？Reversalとは？違いも含めて教えて」と聞いてみよう。</div>
-    </div>
-
-    <div class="card">
-      <strong>Dividend Arbitrage（配当アービトラージ）</strong><br>
-      配当アービトラージは、権利付き最終日を狙ってオプションポジションを使い、配当の受け取りによる裁定機会を得る戦略です。
-      <br><br>
-      【仕組み】コールオプション保有者は権利付き最終日に株式を取得して配当を受け取るか、オプション価格との乖離を利用して利益を狙います。
-      <br>
-      【メリット】配当とオプション価格の歪みを利用できる場面で利益が得られる。
-      <br>
-      【デメリット】取引タイミングが限定的であり、ボラティリティや価格調整に注意が必要。
-      <br>
-      【適用場面】配当利回りの高い銘柄や、大型株の権利付き最終日前後。
-      <div class="chatgpt-hint">💡 ChatGPTに「Dividend Arbitrageとは？配当とオプションの関係も教えて」と聞いてみよう。</div>
+    <div class=\"card\">
+      <strong>Butterfly Spread（バタフライ・スプレッド）</strong>
+      <p>価格変動が限定的な場面で利益を狙う戦略。3種類の価格帯でコールやプットを組み合わせる。</p>
     </div>
   </div>
   <div class="card-container">
@@ -318,5 +105,19 @@
       <a href="quiz.html" target="_blank">📘 クイズを開く</a>
     </div>
   </div>
+  <script>
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const title = card.querySelector('strong');
+      const alreadyLinked = card.querySelector('.chatgpt-hint a');
+      if (title && !alreadyLinked) {
+        const strategy = title.textContent.trim();
+        const hint = document.createElement('div');
+        hint.className = 'chatgpt-hint';
+        hint.innerHTML = `💡 <a href="https://chat.openai.com/?q=${encodeURIComponent(strategy + 'とは？リスクや利益も教えて')}" target="_blank">ChatGPTに「${strategy}とは？リスクや利益も教えて」と聞いてみよう。</a>`;
+        card.appendChild(hint);
+      }
+    });
+  </script>
 </body>
 </html>
