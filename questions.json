@@ -1,0 +1,21 @@
+[
+    {
+      "question": "A社の株価は現在100ドル。決算を1週間後に控え、IVが急上昇しています。あなたは株を持っていません。最も適切な戦略は？",
+      "choices": ["Covered Call", "Put Sell", "Long Straddle", "Naked Call"],
+      "correct": 2,
+      "explanation": "IVが高く、決算前で価格変動が大きくなると予想される場合、Long Straddle（コールとプットの同時購入）は適しています。"
+    },
+    {
+      "question": "B社の株価は120ドルで、あなたは100株保有しています。IVはやや高めですが、今後の値動きは限定的だと考えています。最も適切な戦略は？",
+      "choices": ["Put Buy", "Covered Call", "Long Call", "Iron Condor"],
+      "correct": 1,
+      "explanation": "値動きが小さいと考えていて株を保有している場合、Covered Callによりプレミアムを得る戦略が有効です。"
+    },
+    {
+      "question": "C社の株価が急落し、IVも高くなっている状態です。今後のリバウンドを見越した戦略として最も適切なのは？",
+      "choices": ["Put Buy", "Put Sell", "Long Strangle", "Naked Call"],
+      "correct": 1,
+      "explanation": "IVが高い中で反発を見込む場合、Put Sellで保険料を得ながら株を安く買う可能性があります。"
+    }
+  ]
+  
