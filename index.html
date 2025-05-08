@@ -3,328 +3,337 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>オプション戦略一覧</title>
+  <title>オプション戦略一覧 & クイズ</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 1em;
-      color: #2c3e50;
-    }
-    h1, h2 {
-      margin-left: 0.5em;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-      color: #2c3e50;
-    }
-    h2 {
-      font-size: 1.5em;
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-      color: #34495e;
-    }
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 1.5em;
-      padding: 0 0.5em;
-    }
-    .card {
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 1.2em;
-      width: calc(33% - 1em);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      box-sizing: border-box;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-    .card strong.title {
-      display: block;
-      font-size: 1.2em;
-      color: #2c3e50;
-      margin-bottom: 0.5em;
-    }
-    .card-content p {
-      margin: 0.6em 0;
-      line-height: 1.4;
-    }
-    .card-content ul {
-      margin: 0.6em 1em;
-      padding-left: 1em;
-      list-style-type: disc;
-    }
-    .chatgpt-hint {
-      margin-top: 0.8em;
-      font-size: 0.9em;
-      background: #eef6ff;
-      padding: 0.6em;
-      border-left: 4px solid #2980b9;
-    }
-    .chatgpt-hint a {
-      color: #2980b9;
-      text-decoration: none;
-    }
-    @media (max-width: 900px) {
-      .card { width: calc(50% - 1em); }
-    }
-    @media (max-width: 600px) {
-      .card { width: 100%; }
-    }
+    body { font-family: sans-serif; background: #f9f9f9; margin: 0; padding: 1em; color: #2c3e50; }
+    h1, h2 { margin-left: 0.5em; }
+    h1 { font-size: 2em; margin-bottom: 0.5em; color: #2c3e50; }
+    h2 { font-size: 1.5em; margin-top: 1.5em; margin-bottom: 0.5em; color: #34495e; }
+    .card-container { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1.5em; padding: 0 0.5em; }
+    .card { background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 1.2em; width: calc(33% - 1em); box-shadow: 0 4px 8px rgba(0,0,0,0.05); box-sizing: border-box; transition: transform .2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+    .card strong.title { display: block; font-size: 1.2em; color: #2c3e50; margin-bottom: .5em; }
+    .card-content p { margin: .6em 0; line-height: 1.4; }
+    .card-content ul { margin: .6em 1em; padding-left:1em; list-style-type: disc; }
+    .chatgpt-hint { margin-top:.8em; font-size:.9em; background:#eef6ff; padding:.6em; border-left:4px solid #2980b9; }
+    .chatgpt-hint a { color:#2980b9; text-decoration:none; }
+    @media (max-width:900px){ .card{ width:calc(50% - 1em);} }
+    @media (max-width:600px){ .card{ width:100%; } }
+    /* クイズ用スタイル */
+    #quiz-section { background:#fff; border:1px solid #ccc; border-radius:8px; padding:1em; margin-bottom:1.5em; }
+    #quiz-container { max-width:600px; margin:0 auto; }
+    .quiz-question { font-size:1.1em; margin-bottom:1em; }
+    .quiz-options button { display:block; width:100%; margin:0.5em 0; padding:0.8em; border:none; border-radius:6px; background:#2980b9; color:#fff; cursor:pointer; }
+    .quiz-options button:hover { background:#1c567b; }
+    .quiz-feedback { margin-top:1em; font-size:1em; }
+    #quiz-score { margin-top:1em; font-weight:bold; }
   </style>
 </head>
 <body>
+  <!-- クイズセクション -->
+  <section id="quiz-section">
+    <div id="quiz-container">
+      <h1>オプション戦略クイズ</h1>
+      <div id="quiz-content">
+        <button id="start-btn">クイズを始める</button>
+      </div>
+      <div id="quiz-score"></div>
+    </div>
+  </section>
+
+  <!-- 戦略一覧 -->
   <h1>📘 オプション戦略一覧（カテゴリ別）</h1>
 
   <!-- 単純な戦略 -->
   <h2>🔹 単純な戦略</h2>
   <div class="card-container">
+    <!-- Covered Call -->
     <div class="card">
       <strong class="title">Covered Call（カバード・コール）</strong>
       <div class="card-content">
         <p>株式を保有したままコールオプションを売却し、プレミアムを獲得する戦略。株価が横ばい～小幅上昇局面で収益を狙います。</p>
-        <p><strong>仕組み：</strong>投資家は100株の対象株を保有し、ストライク価格Xのコールを売却。満期時点で株価がX以下ならプレミアムが利益、X超過なら株は売却され、キャピタルゲイン＋プレミアムを獲得。</p>
-        <p><strong>例：</strong>株価95ドル、ストライク100ドル、プレミアム2ドルのコールを1ヶ月満期で売却。株価が100ドル未満なら2ドル×100株＝200ドルの利益。</p>
+        <p><strong>仕組み：</strong>100株保有＋ストライクXのコール売却。満期で株価≤Xならプレミアム獲得、株価>Xなら株売却＋キャピタルゲイン。</p>
+        <p><strong>例：</strong>株価95ドル、ストライク100ドル、プレミアム2ドルで1ヶ月満期。100ドル未満なら200ドルの利益。</p>
         <ul>
-          <li><strong>メリット：</strong>プレミアムで下落リスクを一部ヘッジ</li>
-          <li><strong>デメリット：</strong>大幅上昇局面で利益が限定</li>
+          <li><strong>メリット：</strong>下落リスクをプレミアムで一部ヘッジ</li>
+          <li><strong>デメリット：</strong>大幅上昇時の利益が限定</li>
         </ul>
-        <p><strong>活用場面：</strong>安定株への追加収入、配当株との併用、定期ロール戦略。</p>
+        <p><strong>活用場面：</strong>配当株＋追加収入、定期ロール。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Covered%20Callとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Covered%20Callとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Put Sell -->
     <div class="card">
       <strong class="title">Put Sell（プット・セル）</strong>
       <div class="card-content">
-        <p>希望価格で株を取得する前提でプットを売却し、プレミアムを得る戦略。下落時にも利益を確保し、希望価格で株を買い付けます。</p>
-        <p><strong>仕組み：</strong>投資家はストライク価格Yのプットを売却し、プレミアムを受領。満期時点で株価がY以下なら株をYで買い取り、Y以上ならプレミアム全額が利益に。</p>
-        <p><strong>例：</strong>希望購入価格90ドルでプットを売却し、プレミアム1.5ドルを獲得。株価75ドルで行使なら90ドルで購入し、差額とプレミアムで実質コストを下げられる。</p>
+        <p>希望価格で株を取得する前提でプットを売却し、プレミアムを得る戦略。下落時にも利益を確保。</p>
+        <p><strong>仕組み：</strong>ストライクYのプット売却。満期で株価≤YならYで株取得＋プレミアム、株価>Yならプレミアム全額。</p>
+        <p><strong>例：</strong>90ドルでプット売却＋プレミアム1.5ドル。株価75ドルで行使→実質コスト88.5ドル。</p>
         <ul>
-          <li><strong>メリット：</strong>希望価格で株を取得しつつプレミアム獲得可能</li>
-          <li><strong>デメリット：</strong>大幅下落時の必要資金確保が必須</li>
+          <li><strong>メリット：</strong>希望価格で株取得＋プレミアム</li>
+          <li><strong>デメリット：</strong>必要資金確保</li>
         </ul>
-        <p><strong>活用場面：</strong>キャッシュセキュアードプット、資金管理重視の長期投資。</p>
+        <p><strong>活用場面：</strong>キャッシュセキュアードプット。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Put%20Sellとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Put%20Sellとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Protective Put -->
     <div class="card">
       <strong class="title">Protective Put（プロテクティブ・プット）</strong>
       <div class="card-content">
-        <p>株式保有の下落リスクをプット購入で限定し、損失を明確にコントロールする防御戦略。</p>
-        <p><strong>仕組み：</strong>100株保有と同時に同数のプットを購入。満期時点で株価が行使価格Z以下ならZで売却可能となり、損失を限定。</p>
-        <p><strong>例：</strong>株価100ドル保有、行使価格95ドルのプットをプレミアム3ドルで購入。下落時の最大損失は（100-95+3＝8ドル）に限定。</p>
+        <p>株式保有の下落リスクをプット購入で限定。急落時の損失をコントロール。</p>
+        <p><strong>仕組み：</strong>100株＋行使Zのプット買い。満期で株価≤ZならZで売却し損失限定。</p>
+        <p><strong>例：</strong>株価100ドルでZ=95、プレミアム3ドル。最大損失は（100-95+3）=8ドル。</p>
         <ul>
-          <li><strong>メリット：</strong>急落リスクを一定範囲に限定可能</li>
-          <li><strong>デメリット：</strong>プットプレミアムがコストとなる</li>
+          <li><strong>メリット：</strong>損失を明確に限定</li>
+          <li><strong>デメリット：</strong>プレミアムコスト</li>
         </ul>
-        <p><strong>活用場面：</strong>決算前や経済指標発表前などボラティリティ高騰時のヘッジ。</p>
+        <p><strong>活用場面：</strong>決算前のヘッジ。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Protective%20Putとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Protective%20Putとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
   </div>
 
   <!-- スプレッド戦略 -->
   <h2>🔹 スプレッド戦略</h2>
   <div class="card-container">
+    <!-- Call Spread -->
     <div class="card">
       <strong class="title">Call Spread（コール・スプレッド）</strong>
       <div class="card-content">
-        <p>同一満期で安い行使価格のコールを買い、高い行使価格のコールを売る組み合わせ。リスクとリターンを制限します。</p>
-        <p><strong>仕組み：</strong>行使価格Aのコール買いと行使価格B（B>A）のコール売りを同数行う。株価上げ幅がAからBの間で最大利益。</p>
-        <p><strong>例：</strong>行使価格100ドルのコールを買い、110ドルのコールを売却。株価が110ドル以上なら（110-100）-ネットプレミアムが利益上限。</p>
+        <p>行使価格Aのコール買い＋Bのコール売りでリスク・リターンを制限。</p>
+        <p><strong>例：</strong>100買い+110売り。110ドル以上で利益上限=(110-100)-コスト。</p>
         <ul>
-          <li><strong>メリット：</strong>最大損失が支払ったプレミアムに限定</li>
-          <li><strong>デメリット：</strong>大幅上昇時の利益が制限</li>
+          <li><strong>メリット：</strong>損失がコストに限定</li>
+          <li><strong>デメリット：</strong>利益が限定</li>
         </ul>
-        <p><strong>活用場面：</strong>緩やかな上昇予想、コスト抑制。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Call%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Call%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Put Spread -->
     <div class="card">
       <strong class="title">Put Spread（プット・スプレッド）</strong>
       <div class="card-content">
-        <p>同一満期で高い行使価格のプットを買い、低い行使価格のプットを売る組み合わせ。下落局面での損失を限定。</p>
-        <p><strong>仕組み：</strong>行使価格Cのプット買いと行使価格D（D<C）のプット売りを同数行う。株価下落幅がCからDの間で最大利益。</p>
-        <p><strong>例：</strong>行使価格100ドルのプットを買い、90ドルのプットを売却。株価が90ドル以下なら（100-90）-ネットプレミアムが利益上限。</p>
+        <p>行使価格Cのプット買い＋Dのプット売りで損失を限定。</p>
+        <p><strong>例：</strong>100買い+90売り。90ドル以下で利益上限=(100-90)-コスト。</p>
         <ul>
-          <li><strong>メリット：</strong>損失がストライク幅とプレミアムで限定</li>
-          <li><strong>デメリット：</strong>大幅下落時のリターンが制限</li>
+          <li><strong>メリット：</strong>損失限定</li>
+          <li><strong>デメリット：</strong>リターン限定</li>
         </ul>
-        <p><strong>活用場面：</strong>緩やかな下落予想、コスト抑制。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Put%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Put%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Iron Condor -->
     <div class="card">
       <strong class="title">Iron Condor（アイアン・コンドル）</strong>
       <div class="card-content">
-        <p>OTMのプットスプレッドとOTMのコールスプレッドを同時に組成し、価格が一定レンジ内で推移する局面を狙います。</p>
-        <p><strong>仕組み：</strong>プット80/85の買い・売りとコール115/120の売り・買いを同時に設定。価格が85～115レンジ内で最大利益。</p>
+        <p>OTMプットスプレッド＋OTMコールスプレッドでレンジ相場を狙う。</p>
+        <p><strong>例：</strong>80/85プット＋115/120コール。85〜115レンジで最大利益。</p>
         <ul>
-          <li><strong>メリット：</strong>中立相場でプレミアム収入最大化</li>
-          <li><strong>デメリット：</strong>レンジ外の大きな値動きで損失発生</li>
+          <li><strong>メリット：</strong>中立相場で収益</li>
+          <li><strong>デメリット：</strong>レンジ外で損失</li>
         </ul>
-        <p><strong>活用場面：</strong>レンジ相場、ボラ高いが方向感不明。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Iron%20Condorとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Iron%20Condorとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
   </div>
 
-  <!-- ボラティリティを活かす戦略 -->
+  <!-- ボラティリティ戦略 -->
   <h2>🔹 ボラティリティを活かす戦略</h2>
   <div class="card-container">
+    <!-- Long Straddle -->
     <div class="card">
       <strong class="title">Long Straddle（ロング・ストラドル）</strong>
       <div class="card-content">
-        <p>同一行使価格・同一満期のコールとプットを同数購入し、大幅な価格変動時の利益を狙う戦略。</p>
-        <p><strong>仕組み：</strong>行使価格Eのコール買いとプット買いを同数行う。価格がE±(合計プレミアム)以上に動くと利益。</p>
-        <p><strong>例：</strong>行使価格100ドルのコールとプットを各1枚購入（プレミアム合計5ドル）。株価が105ドル以上または95ドル以下で利益。</p>
+        <p>同一ストライクのコール＋プット購入で大変動を狙う。</p>
+        <p><strong>例：</strong>100ドル両建。105以上or95以下で利益。</p>
         <ul>
-          <li><strong>メリット：</strong>どちらの方向にも大きく動けば利益無限大</li>
-          <li><strong>デメリット：</strong>価格が停滞するとプレミアム全額損失</li>
+          <li><strong>メリット：</strong>方向不問で利益</li>
+          <li><strong>デメリット：</strong>停滞は全損</li>
         </ul>
-        <p><strong>活用場面：</strong>決算発表やイベント前の大きな値動き期待。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Long%20Straddleとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Long%20Straddleとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Long Strangle -->
     <div class="card">
       <strong class="title">Long Strangle（ロング・ストラングル）</strong>
       <div class="card-content">
-        <p>OTMのコールとプットを購入し、Straddleよりコストを抑えつつ大幅変動を狙う戦略。</p>
-        <p><strong>仕組み：</strong>行使価格Fのプット買い（F<E）と行使価格Gのコール買い（G>E）を同数購入。大きな値動きで利益。</p>
-        <p><strong>例：</strong>行使価格95ドルプット、105ドルコールを購入。株価95ドル以下または105ドル以上で利益。</p>
+        <p>OTMのコール＋プット購入でコスト抑制し大変動狙い。</p>
+        <p><strong>例：</strong>95プット＋105コール。価格95以下or105以上で利益。</p>
         <ul>
-          <li><strong>メリット：</strong>Straddle比でプレミアム軽減</li>
-          <li><strong>デメリット：</strong>より大きな価格変動が必要</li>
+          <li><strong>メリット：</strong>Straddleより安価</li>
+          <li><strong>デメリット：</strong>大変動必須</li>
         </ul>
-        <p><strong>活用場面：</strong>コスト重視だがボラ高い局面。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Strangleとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Strangleとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Calendar Spread -->
     <div class="card">
       <strong class="title">Calendar Spread（カレンダー・スプレッド）</strong>
       <div class="card-content">
-        <p>近い満期のオプションを売り、遠い満期の同一行使価格オプションを買い、時間価値差を狙う戦略。</p>
-        <p><strong>仕組み：</strong>同一行使価格Hで短期コール売りと長期コール買いを同数行う。時間経過で価値が早く減衰する短期売りで利益。</p>
-        <p><strong>例：</strong>6月満期100ドルコール売り、9月満期100ドルコール買い。短期のシータを売りつつ長期の価値保持。</p>
+        <p>短期売り＋長期買いで時間価値差を活用。</p>
+        <p><strong>例：</strong>6月売り＋9月買い。シータ差で利益。</p>
         <ul>
-          <li><strong>メリット：</strong>時間 decay を活かした収益源</li>
-          <li><strong>デメリット：</strong>急騰時の利益が限定的</li>
+          <li><strong>メリット：</strong>時間価値差収益</li>
+          <li><strong>デメリット：</strong>急騰で限定的</li>
         </ul>
-        <p><strong>活用場面：</strong>ボラ低下局面で時間価値差を収益化。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Calendar%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Calendar%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
   </div>
 
-  <!-- 上昇/下落を狙う戦略 -->
+  <!-- 上昇/下落戦略 -->
   <h2>🔹 上昇/下落を狙う戦略</h2>
   <div class="card-container">
+    <!-- Bull Call Spread -->
     <div class="card">
       <strong class="title">Bull Call Spread（ブル・コール・スプレッド）</strong>
       <div class="card-content">
-        <p>強気相場でコール買いリスクを抑えるため、安い行使価格買いと高い行使価格売りを組む戦略。</p>
-        <p><strong>仕組み：</strong>行使価格Iのコール買いと行使価格J（J>I）のコール売りを同数実行。上昇幅I～Jの間で最大利益。</p>
-        <p><strong>例：</strong>行使価格95ドルのコールを買い、105ドルのコールを売却。株価105ドル以上で（105-95）-ネットプレミアムが利益上限。</p>
+        <p>安いコール買い＋高いコール売りでリスク管理付き強気。</p>
+        <p><strong>例：</strong>95買い＋105売り。105以上で(105-95)-コスト利益。</p>
         <ul>
-          <li><strong>メリット：</strong>最大損失が支払プレミアムに限定</li>
-          <li><strong>デメリット：</strong>大幅上昇時の利益が限定</li>
+          <li><strong>メリット：</strong>損失限定</li>
+          <li><strong>デメリット：</strong>利益限定</li>
         </ul>
-        <p><strong>活用場面：</strong>弱気リスク管理付きの強気投機。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Bull%20Call%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Bull%20Call%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Bear Put Spread -->
     <div class="card">
       <strong class="title">Bear Put Spread（ベア・プット・スプレッド）</strong>
       <div class="card-content">
-        <p>弱気相場でプット買いリスクを抑えるため、高い行使価格買いと低い行使価格売りを組む戦略。</p>
-        <p><strong>仕組み：</strong>行使価格Kのプット買いと行使価格L（L<K）のプット売りを同数実行。下落幅L～Kの間で最大利益。</p>
-        <p><strong>例：</strong>行使価格110ドルのプットを買い、100ドルのプットを売却。株価100ドル以下で（110-100）-ネットプレミアムが利益上限。</p>
+        <p>高いプット買い＋低いプット売りで下落リスク限定。</p>
+        <p><strong>例：</strong>110買い＋100売り。100以下で(110-100)-コスト利益。</p>
         <ul>
-          <li><strong>メリット：</strong>最大損失が支払プレミアムに限定</li>
-          <li><strong>デメリット：</strong>大幅下落時の利益が限定</li>
+          <li><strong>メリット：</strong>損失限定</li>
+          <li><strong>デメリット：</strong>利益限定</li>
         </ul>
-        <p><strong>活用場面：</strong>弱気予想時のコスト抑制。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Bear%20Put%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Bear%20Put%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Synthetic Long -->
     <div class="card">
       <strong class="title">Synthetic Long（シンセティック・ロング）</strong>
       <div class="card-content">
-        <p>現物株と同等のポジションをオプションで再現。コール買い＋プット売りで株価上昇益を狙います。</p>
-        <p><strong>仕組み：</strong>同一行使価格Mでコール買いとプット売りを同数実行。デルタが1になるため株式と同等の動き。</p>
-        <p><strong>例：</strong>行使価格50ドルのコール買いとプット売りを組むと、株価が上昇すれば1対1で利益。</p>
+        <p>コール買い＋プット売りで株と同等のポジション。</p>
+        <p><strong>例：</strong>50ドルのコール買い＋プット売りでデルタ1。</p>
         <ul>
-          <li><strong>メリット：</strong>レバレッジによる資金効率向上</li>
-          <li><strong>デメリット：</strong>プット行使時の資金拘束リスク</li>
+          <li><strong>メリット：</strong>レバ効率
+          <li><strong>デメリット：</strong>資金拘束リスク</li>
         </ul>
-        <p><strong>活用場面：</strong>資金効率を重視する中長期強気姿勢。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Synthetic%20Longとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Synthetic%20Longとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
   </div>
 
   <!-- アービトラージ戦略 -->
   <h2>🔹 アービトラージ戦略</h2>
   <div class="card-container">
+    <!-- Box Spread -->
     <div class="card">
       <strong class="title">Box Spread（ボックス・スプレッド）</strong>
       <div class="card-content">
-        <p>金利裁定のためにBull Call SpreadとBear Put Spreadを同時に組み合わせ、理論価格差を狙う戦略。</p>
-        <p><strong>仕組み：</strong>行使価格Pのコール買い/売りと行使価格Qのプット買い/売りを組成し、パッシブで利ざやを確保。</p>
-        <p><strong>例：</strong>行使価格40/45コールと45/40プットスプレッドを組み合わせ、金利差相当の利益。</p>
+        <p>Bull Call + Bear Putで金利差裁定。</p>
+        <p><strong>例：</strong>40/45コール+45/40プットスプレッド。</p>
         <ul>
-          <li><strong>メリット：</strong>リスクフリーに近い価格差裁定</li>
-          <li><strong>デメリット：</strong>取引コストや規制リスク</li>
+          <li><strong>メリット：</strong>リスクフリーに近い</li>
+          <li><strong>デメリット：</strong>手数料・規制</li>
         </ul>
-        <p><strong>活用場面：</strong>大口機関投資家の金利裁定。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Box%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Box%20Spreadとは？リスクや利益も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Conversion/Reversal -->
     <div class="card">
       <strong class="title">Conversion/Reversal（コンバージョン/リバーサル）</strong>
       <div class="card-content">
-        <p>株式とオプションを組み合わせて裁定。Conversionは株買い+コール売り+プット買い、Reversalは株空売り+コール買い+プット売り。</p>
+        <p>株＋オプション組合せで裁定。Conversionは買い+コール売+プット買い、Reversalは空売+コール買+プット売。</p>
         <ul>
-          <li><strong>メリット：</strong>理論価格乖離を狙う裁定機会</li>
-          <li><strong>デメリット：</strong>手数料・資金コスト</li>
+          <li><strong>メリット：</strong>価格乖離裁定
+          <li><strong>デメリット：</strong>資金・手数料</li>
         </ul>
-        <p><strong>活用場面：</strong>市場価格乖離が発生した際の裁定取引。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Conversion%20Reversalとは？違いも教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">😎 <a href="https://chat.openai.com/?q=Conversion%20Reversalとは？違いも教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
 
+    <!-- Dividend Arbitrage -->
     <div class="card">
       <strong class="title">Dividend Arbitrage（配当裁定）</strong>
       <div class="card-content">
-        <p>配当権利落ち前後の価格変動とオプション価格差を利用して配当相当分の利益を狙う戦略。</p>
-        <p><strong>仕組み：</strong>権利落ち前に株を買い、コールを売却。配当落ち後に株を売却し、オプションの時間価値で利益回収。</p>
-        <p><strong>例：</strong>配当権利落ち前に株取得＋コール売りで配当相当分の利益確定。</p>
+        <p>権利落ち前株取得＋コール売りで配当差益狙い。</p>
         <ul>
-          <li><strong>メリット：</strong>配当相当分の無リスク利益</li>
-          <li><strong>デメリット：</strong>権利落ち後のボラティリティリスク</li>
+          <li><strong>メリット：</strong>無リスク配当分利益
+          <li><strong>デメリット：</strong>ボラティリティリスク</li>
         </ul>
-        <p><strong>活用場面：</strong>高配当株の権利落ち前後。</p>
       </div>
-      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Dividend%20Arbitrageとは？配当とオプションの関係も教えて" target="_blank">ChatGPTで詳しく解説を読む</a></div>
+      <div class="chatgpt-hint">💡 <a href="https://chat.openai.com/?q=Dividend%20Arbitrageとは？配当とオプションの関係も教えて" target="_blank">ChatGPTで解説を見る</a></div>
     </div>
   </div>
 
+  <!-- クイズ用スクリプト -->
+  <script>
+    let questions = [];
+    let current = 0;
+    let score = 0;
+    const container = document.getElementById('quiz-content');
+    const scoreEl = document.getElementById('quiz-score');
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+      fetch('questions.json')
+        .then(res => res.json())
+        .then(data => {
+          questions = data.sort(() => Math.random() - 0.5);
+          current = 0;
+          score = 0;
+          scoreEl.textContent = '';
+          showQuestion();
+        });
+    });
+
+    function showQuestion() {
+      const q = questions[current];
+      container.innerHTML = `
+        <div class="quiz-question">Q${current+1}: ${q.question}</div>
+        <div class="quiz-options">
+          ${q.options.map((opt,i) => `<button data-index="${i}">${opt}</button>`).join('')}
+        </div>
+        <div class="quiz-feedback"></div>
+      `;
+      container.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => selectAnswer(btn));
+      });
+    }
+
+    function selectAnswer(btn) {
+      const idx = +btn.getAttribute('data-index');
+      const q = questions[current];
+      const feedback = container.querySelector('.quiz-feedback');
+      if (idx === q.answer) {
+        score++;
+        feedback.textContent = '正解！ ' + q.explanation;
+      } else {
+        feedback.textContent = '不正解。 ' + q.explanation;
+      }
+      current++;
+      if (current < questions.length) {
+        setTimeout(showQuestion, 2000);
+      } else {
+        setTimeout(showResult, 2000);
+      }
+    }
+
+    function showResult() {
+      container.innerHTML = `<div class="quiz-question">クイズ終了！あなたのスコアは ${score}/${questions.length} です。</div>`;
+      scoreEl.textContent = '';
+    }
+  </script>
 </body>
 </html>
