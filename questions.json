@@ -1,21 +1,86 @@
 [
-    {
-      "question": "A社の株価は現在100ドル。決算を1週間後に控え、IVが急上昇しています。あなたは株を持っていません。最も適切な戦略は？",
-      "choices": ["Covered Call", "Put Sell", "Long Straddle", "Naked Call"],
-      "correct": 2,
-      "explanation": "IVが高く、決算前で価格変動が大きくなると予想される場合、Long Straddle（コールとプットの同時購入）は適しています。"
-    },
-    {
-      "question": "B社の株価は120ドルで、あなたは100株保有しています。IVはやや高めですが、今後の値動きは限定的だと考えています。最も適切な戦略は？",
-      "choices": ["Put Buy", "Covered Call", "Long Call", "Iron Condor"],
-      "correct": 1,
-      "explanation": "値動きが小さいと考えていて株を保有している場合、Covered Callによりプレミアムを得る戦略が有効です。"
-    },
-    {
-      "question": "C社の株価が急落し、IVも高くなっている状態です。今後のリバウンドを見越した戦略として最も適切なのは？",
-      "choices": ["Put Buy", "Put Sell", "Long Strangle", "Naked Call"],
-      "correct": 1,
-      "explanation": "IVが高い中で反発を見込む場合、Put Sellで保険料を得ながら株を安く買う可能性があります。"
-    }
-  ]
-  
+  {
+    "question": "株式を保有したままコールオプションを売却し、プレミアムを獲得する戦略は？",
+    "options": ["Covered Call", "Protective Put", "Long Straddle", "Iron Condor"],
+    "answer": 0,
+    "explanation": "Covered Call は株価が横ばい～小幅上昇局面でプレミアム収入を狙う戦略です。"
+  },
+  {
+    "question": "希望価格で株を取得する前提でプットを売る戦略は？",
+    "options": ["Put Sell", "Call Spread", "Bear Put Spread", "Box Spread"],
+    "answer": 0,
+    "explanation": "Put Sell（キャッシュセキュアードプット）は、希望価格で株を買う前提でプット売りを行います。"
+  },
+  {
+    "question": "株の下落リスクを限定的にコントロールするためにプットを購入する戦略は？",
+    "options": ["Protective Put", "Long Strangle", "Bull Call Spread", "Conversion/Reversal"],
+    "answer": 0,
+    "explanation": "Protective Put は株価下落時の損失をプットでヘッジする戦略です。"
+  },
+  {
+    "question": "同一満期で行使価格100ドルのコールを買い、110ドルのコールを売る戦略は？",
+    "options": ["Call Spread", "Put Spread", "Calendar Spread", "Dividend Arbitrage"],
+    "answer": 0,
+    "explanation": "Call Spread は上下に限度を設けてリスク・リターンを制限する戦略です。"
+  },
+  {
+    "question": "OTMのプットスプレッドとOTMのコールスプレッドを同時に組む戦略は？",
+    "options": ["Iron Condor", "Long Straddle", "Bear Put Spread", "Synthetic Long"],
+    "answer": 0,
+    "explanation": "Iron Condor はレンジ相場でプレミアム収入を狙います。"
+  },
+  {
+    "question": "同一行使価格のコールとプットを同数購入し、大きな価格変動を狙う戦略は？",
+    "options": ["Long Straddle", "Long Strangle", "Calendar Spread", "Box Spread"],
+    "answer": 0,
+    "explanation": "Long Straddle は大きな変動方向が不明な時に使います。"
+  },
+  {
+    "question": "OTMのコールとプットを購入し、Straddleよりコストを抑えて大幅変動を狙う戦略は？",
+    "options": ["Long Strangle", "Covered Call", "Bull Call Spread", "Bear Put Spread"],
+    "answer": 0,
+    "explanation": "Long Strangle はStraddleの低コスト版です。"
+  },
+  {
+    "question": "短期オプション売り＋長期同一行使価格オプション買いで時間価値差を狙う戦略は？",
+    "options": ["Calendar Spread", "Iron Condor", "Put Spread", "Conversion/Reversal"],
+    "answer": 0,
+    "explanation": "Calendar Spread はシータ（時間価値）差を活用します。"
+  },
+  {
+    "question": "強気相場で安いストライク買い＋高いストライク売りを組む戦略は？",
+    "options": ["Bull Call Spread", "Bear Put Spread", "Synthetic Long", "Dividend Arbitrage"],
+    "answer": 0,
+    "explanation": "Bull Call Spread はリスクを抑えた強気戦略です。"
+  },
+  {
+    "question": "弱気相場で高いストライク買い＋低いストライク売りを組む戦略は？",
+    "options": ["Bear Put Spread", "Long Straddle", "Covered Call", "Box Spread"],
+    "answer": 0,
+    "explanation": "Bear Put Spread は強い下落を見込まずコストを抑えたい時に有効です。"
+  },
+  {
+    "question": "コール買い＋プット売りで株式と同等のポジションを作る戦略は？",
+    "options": ["Synthetic Long", "Protective Put", "Iron Condor", "Long Strangle"],
+    "answer": 0,
+    "explanation": "Synthetic Long はデルタ1となり株式と同じ動きを再現します。"
+  },
+  {
+    "question": "Bull Call SpreadとBear Put Spreadを組み合わせ、理論価格差を狙う戦略は？",
+    "options": ["Box Spread", "Put Sell", "Covered Call", "Conversion/Reversal"],
+    "answer": 0,
+    "explanation": "Box Spread は金利裁定機会を利用します。"
+  },
+  {
+    "question": "株を買い＋コール売り＋プット買い、または株空売り＋コール買い＋プット売りする裁定戦略は？",
+    "options": ["Conversion/Reversal", "Bull Call Spread", "Long Straddle", "Dividend Arbitrage"],
+    "answer": 0,
+    "explanation": "Conversion/Reversal は理論価格乖離を狙った裁定です。"
+  },
+  {
+    "question": "配当権利落ち前後の価格変動とオプション価格差で配当相当分の利益を狙う戦略は？",
+    "options": ["Dividend Arbitrage", "Calendar Spread", "Put Spread", "Synthetic Long"],
+    "answer": 0,
+    "explanation": "Dividend Arbitrage は高配当株の権利落ちを利用します。"
+  }
+]
