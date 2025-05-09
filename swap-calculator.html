@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>TRY/JPY スワップ運用シミュレーター</title>
-  <style>
-    body{font-family:sans-serif;background:#f9f9f9;margin:0;padding:1em;color:#2c3e50;max-width:760px;margin:auto}
-    h1{font-size:1.8em;text-align:center;margin:.2em 0 .8em}
-    a{color:#2980b9;text-decoration:none}
-    .back{display:inline-block;margin-bottom:.8em;background:#ccc;padding:.4em .9em;border-radius:6px;color:#2c3e50}
-    label{display:block;font-weight:bold;margin-top:1em}
-    input,button{font-size:1em;padding:.55em;border:1px solid #ccc;border-radius:6px;width:100%;box-sizing:border-box}
-    button{background:#2980b9;color:#fff;border:none;cursor:pointer;transition:background .2s}
-    button:hover{background:#1c567b}
-    .flex{display:flex;gap:.8em}
-    .flex>div{flex:1}
-    .result{margin-top:1.6em;background:#eef6ff;padding:1em;border-left:4px solid #2980b9}
-    table{width:100%;border-collapse:collapse;margin-top:1em;font-size:.95em}
-    th,td{border:1px solid #ccc;padding:.55em;text-align:right}
-    th{text-align:center;background:#fafafa}
-    .warn{color:#c0392b;font-weight:bold}
-    @media(max-width:600px){.flex{flex-direction:column}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRY/JPY スワップ運用シミュレーター</title>
+<style>
+  body{font-family:sans-serif;background:#f9f9f9;margin:0;padding:1em;color:#2c3e50;max-width:780px;margin:auto}
+  h1{font-size:1.8em;text-align:center;margin:.2em 0 .8em}
+  a{color:#2980b9;text-decoration:none}
+  .back{display:inline-block;margin-bottom:.8em;background:#ccc;padding:.4em .9em;border-radius:6px;color:#2c3e50}
+  label{display:block;font-weight:bold;margin-top:1em}
+  input,button{font-size:1em;padding:.55em;border:1px solid #ccc;border-radius:6px;width:100%;box-sizing:border-box}
+  button{background:#2980b9;color:#fff;border:none;cursor:pointer;transition:background .2s}
+  button:hover{background:#1c567b}
+  .flex{display:flex;gap:.8em}
+  .flex>div{flex:1}
+  .result{margin-top:1.6em;background:#eef6ff;padding:1em;border-left:4px solid #2980b9}
+  table{width:100%;border-collapse:collapse;margin-top:1em;font-size:.92em}
+  th,td{border:1px solid #ccc;padding:.55em;text-align:right}
+  th{text-align:center;background:#fafafa}
+  .warn{color:#c0392b;font-weight:bold}
+  .note{font-size:.85em}
+  @media(max-width:600px){.flex{flex-direction:column}}
+</style>
 </head>
 <body>
 
@@ -29,35 +30,49 @@
 
 <h1>TRY/JPY スワップ運用シミュレーター</h1>
 
-<!-- 現在レート取得 -->
+<!-- 現在レート -->
 <label>現在レートを取得</label>
 <div class="flex">
   <div><input id="rate" type="number" step="0.0001" placeholder="例: 3.8000"></div>
   <div><button onclick="fetchRate()">現在レート</button></div>
 </div>
 
-<!-- スワップ入力行（リンク付き） -->
+<!-- スワップ -->
 <div class="flex" style="margin-top:1em">
   <div>
     <label>
       FXネオ（買い）スワップ <small>(円/1万通貨/日)</small><br>
-      <a href="https://www.click-sec.com/corp/guide/fxneo/swplog/" target="_blank">スワップ履歴（FXネオ）</a>
+      <a href="https://www.click-sec.com/corp/guide/fxneo/swplog/" target="_blank">スワップ履歴</a>
     </label>
-    <input id="swapBuy" type="number" placeholder="例: 30">
+    <input id="swapBuy" type="number" placeholder="例: 41">
   </div>
   <div>
     <label>
       365FX（売り）スワップ <small>(円/1万通貨/日)</small><br>
-      <a href="https://www.click-sec.com/corp/guide/c365/swplog/" target="_blank">スワップ履歴（365FX）</a>
+      <a href="https://www.click-sec.com/corp/guide/c365/swplog/" target="_blank">スワップ履歴</a>
     </label>
-    <input id="swapSell" type="number" placeholder="例: 25">
+    <input id="swapSellPos" type="number" placeholder="例: 28">
   </div>
 </div>
 
-<label>元手資金（円） <small>※必要証拠金×10以上推奨</small></label>
-<input id="capital" type="number" placeholder="例: 2,000,000">
+<!-- 資金 -->
+<label>総元手資金（円） <small>※入力すると 2 等分値を自動設定</small></label>
+<input id="capitalTotal" type="number" placeholder="例: 400000" oninput="autoSplit()">
 
-<label>スプレッド（往復・円/TRY） <small>初期値は FXネオ買い + 365FX売り の往復合計</small></label>
+<div class="flex">
+  <div>
+    <label>FXネオに入れる資金（円）<small>※空欄＝自動半額</small></label>
+    <input id="capitalA" type="number" placeholder="自動計算">
+  </div>
+  <div>
+    <label>365FXに入れる資金（円）<small>※空欄＝自動半額</small></label>
+    <input id="capitalB" type="number" placeholder="自動計算">
+  </div>
+</div>
+<p class="note">▲ **Lot 数は買い口座の資金（FXネオ）を基準に計算** し、売り口座は同じ Lot 数を建てます。</p>
+
+<!-- スプレッド -->
+<label>スプレッド（往復合計・円/TRY）</label>
 <input id="spread" type="number" step="0.0001" value="0.108">
 
 <button style="margin-top:1.5em" onclick="calc()">計 算</button>
@@ -65,91 +80,151 @@
 <div id="output" class="result">ここに結果が表示されます。</div>
 
 <script>
-/* ---- 定数 ---- */
-const LOT_UNIT   = 10000;   // 1Lot = 10,000 TRY
-const LEVERAGE   = 25;      // 25倍
-const TARGET_MR  = 1000;    // 運用開始時の維持率 1000%
-const LC_MR      = 100;     // ロスカット維持率 100%
+/* ------------- 定数 ------------- */
+const LOT_UNIT = 10000;          // 1Lot = 10,000 TRY
+const LEVERAGE = 25;
+const TARGET_MRS = [500,1000,1500];   // 買い口座で試算
+const YEARS = [1,2,3,4,5];
 
-/* ---- 現在レート取得 (exchangerate.host) ---- */
-function fetchRate(){
-  fetch("https://api.exchangerate.host/latest?base=TRY&symbols=JPY")
-    .then(r=>r.json())
-    .then(j=>{
-      document.getElementById("rate").value = j.rates.JPY.toFixed(4);
-    })
-    .catch(()=>alert("レート取得に失敗しました"));
+/* ------------- 半自動資金分割 ------------- */
+function autoSplit(){
+  const tot=+document.getElementById("capitalTotal").value;
+  if(tot>0){
+    const h=(tot/2).toFixed(0);
+    document.getElementById("capitalA").placeholder=h;
+    document.getElementById("capitalB").placeholder=h;
+  }
 }
 
-/* ---- メイン計算 ---- */
+/* ------------- レート取得 ------------- */
+async function fetchRate(){
+  const urls=[
+    "https://api.exchangerate.host/latest?base=TRY&symbols=JPY",
+    "https://open.er-api.com/v6/latest/TRY"
+  ];
+  for(const u of urls){
+    try{
+      const j=await (await fetch(u)).json();
+      const v=j?.rates?.JPY;
+      if(v){document.getElementById("rate").value=v.toFixed(4);return;}
+    }catch{}
+  }
+  alert("レート取得に失敗しました。手動入力してください。");
+}
+
+/* ------------- メイン計算 ------------- */
 function calc(){
-  const rate      = parseFloat(document.getElementById("rate").value);
-  const swapBuy   = parseFloat(document.getElementById("swapBuy").value);      // +値
-  const swapSellU = parseFloat(document.getElementById("swapSell").value);     // ユーザ入力（正数）
-  const swapSell  = -Math.abs(swapSellU);                                      // 内部でマイナス化
-  const capital   = parseFloat(document.getElementById("capital").value);
-  const spreadJPY = parseFloat(document.getElementById("spread").value);
+  /* 入力取得 */
+  const rate       = +document.getElementById("rate").value;
+  const swapBuy    = +document.getElementById("swapBuy").value;
+  const swapSellP  = +document.getElementById("swapSellPos").value; // 正数
+  const spreadJPY  = +document.getElementById("spread").value;
+  const totalCap   = +document.getElementById("capitalTotal").value;
 
-  if([rate,swapBuy,swapSellU,capital,spreadJPY].some(isNaN)){
-    document.getElementById("output").innerHTML = "<span class='warn'>すべての値を入力してください。</span>";
+  const capBuy = document.getElementById("capitalA").value
+                 ? +document.getElementById("capitalA").value
+                 : totalCap/2;
+  const capSell = document.getElementById("capitalB").value
+                 ? +document.getElementById("capitalB").value
+                 : totalCap/2;
+
+  /* バリデーション */
+  if([rate,swapBuy,swapSellP,spreadJPY,totalCap].some(v=>isNaN(v)||v<=0)){
+    document.getElementById("output").innerHTML=
+      "<span class='warn'>必要項目が未入力、または不正です。</span>";
     return;
   }
 
-  /* 建てられる Lot 数（維持率 1000%） */
-  const maxLots = Math.floor( capital * LEVERAGE / (rate * LOT_UNIT * 10) );
-  if(maxLots<=0){
-    document.getElementById("output").innerHTML = "<span class='warn'>資金が不足しています。</span>";
-    return;
-  }
+  const diff10k = swapBuy - swapSellP;   // 1万通貨ペアあたり日次差益
+  const swapSell = -swapSellP;           // 内部負値
 
-  const units       = maxLots * LOT_UNIT;                 // TRY
-  const reqMargin   = rate * units / LEVERAGE;            // 必要証拠金
-  const initMR      = capital / reqMargin * 100;          // 初期維持率
+  let html="";
 
-  /* ロスカットライン (Long / Short) */
-  const lossAllowed = capital - reqMargin;                // LCまで許容損失
-  const priceDelta  = lossAllowed / units;
-  const lcLong      = rate - priceDelta;
-  const lcShort     = rate + priceDelta;
+  TARGET_MRS.forEach(mr=>{
+    /* --- 買い口座で建てられる Lot --- */
+    const reqMarginBuy = capBuy / (mr/100);             // 求めたい必要証拠金
+    const unitsBuy = Math.floor(reqMarginBuy * LEVERAGE / rate / LOT_UNIT)*LOT_UNIT;
 
-  /* スプレッドコスト */
-  const spreadCost  = spreadJPY * units;
+    if(unitsBuy===0){
+      html+=`<p class='warn'>維持率 ${mr}% では Lot を建てられません。</p>`; return;
+    }
 
-  /* スワップ差益 */
-  const diffPer10k  = swapBuy + swapSell;                 // ← Sell は負値
-  const dailySwap   = diffPer10k * (units/10000);
-  const monthlySwap = dailySwap * 30;
-  const yearlySwap  = dailySwap * 365;
-  const daysBE      = dailySwap>0 ? Math.ceil(spreadCost/dailySwap) : "—";
+    const lots   = unitsBuy / LOT_UNIT;                 // 片口座 Lot 数
+    const units  = unitsBuy;                            // 片側 TRY
+    const reqBuy = rate*units/LEVERAGE;                 // 実際必要証拠金 (買)
+    const reqSell= reqBuy;                              // 同量売り
 
-  /* 出力 */
-  document.getElementById("output").innerHTML = `
-    <table>
-      <tr><th colspan="2">ポジション情報（維持率1000%）</th></tr>
-      <tr><td style="text-align:left">建てられるLot数</td><td>${maxLots.toLocaleString()} Lot（${units.toLocaleString()} TRY）</td></tr>
-      <tr><td style="text-align:left">必要証拠金</td><td>${reqMargin.toLocaleString()} 円</td></tr>
-      <tr><td style="text-align:left">初期証拠金維持率</td><td>${initMR.toFixed(1)} %</td></tr>
-      <tr><td style="text-align:left">ロスカットライン（買い）</td><td>${lcLong.toFixed(4)} 円/TRY</td></tr>
-      <tr><td style="text-align:left">ロスカットライン（売り）</td><td>${lcShort.toFixed(4)} 円/TRY</td></tr>
-    </table>
+    /* --- 初期維持率 --- */
+    const initMRBuy  = capBuy  / reqBuy  *100;
+    const initMRSell = capSell / reqSell *100;
 
-    <table>
-      <tr><th colspan="2">スワップ収益</th></tr>
-      <tr><td style="text-align:left">日次</td><td>${dailySwap.toLocaleString()} 円</td></tr>
-      <tr><td style="text-align:left">月次（30日）</td><td>${monthlySwap.toLocaleString()} 円</td></tr>
-      <tr><td style="text-align:left">年次（365日）</td><td>${yearlySwap.toLocaleString()} 円</td></tr>
-      <tr><td style="text-align:left">スプレッドコスト</td><td>${spreadCost.toLocaleString()} 円</td></tr>
-      <tr><td style="text-align:left">黒字化までの日数</td><td>${daysBE} 日</td></tr>
-    </table>
+    /* --- 売り維持率チェック --- */
+    const warnSell = initMRSell<200
+       ? `<span class='warn'>⚠ 売り口座の維持率が 200% 未満です。資金配分を見直してください。</span>`
+       : "";
 
-    <p style="font-size:.85em;margin-top:1em">
-      ※ ロスカットは証拠金維持率100%到達時と仮定。<br>
-      ※ 収益は税金・手数料を考慮していません。<br>
-      ※ 実取引では各社のルールに従ってください。
-    </p>
-  `;
+    /* --- ロスカットライン（ペア全体）--- */
+    const totalCap = capBuy + capSell;
+    const totalReq = reqBuy + reqSell;
+    const lossAllowed = totalCap - totalReq;
+    const delta = lossAllowed / (units*2);              // ペア全体 TRY
+    const lcLong  = rate - delta;
+    const lcShort = rate + delta;
+
+    /* --- 収益とコスト --- */
+    const dailySwap = diff10k * lots;                   // day profit
+    const yearlySwap= dailySwap*365;
+    const spreadCost= spreadJPY * units;               // 往復合計 × 片側 TRY
+    const daysBE    = dailySwap>0 ? Math.ceil(spreadCost/dailySwap) : "—";
+
+    /* 年次表 */
+    let rows="";
+    YEARS.forEach(y=>{
+      const profit = yearlySwap*y - spreadCost;
+      const apr    = ((yearlySwap - (y===1?spreadCost:0)) / totalCap *100).toFixed(2);
+      rows+=`<tr><td>${y} 年目</td><td>${profit.toLocaleString()} 円</td><td>${apr} %</td></tr>`;
+    });
+
+    html+=`
+      <h2 style="margin-top:1.4em;font-size:1.2em">◆ 維持率 ${mr}%（買い口座基準）</h2>
+
+      <table>
+        <tr><th colspan="2">ポジション情報</th></tr>
+        <tr><td style="text-align:left">建てられるLot数</td><td>${lots.toLocaleString()} Lot</td></tr>
+        <tr><td style="text-align:left">必要証拠金（買い）</td><td>${reqBuy.toLocaleString()} 円</td></tr>
+        <tr><td style="text-align:left">必要証拠金（売り）</td><td>${reqSell.toLocaleString()} 円</td></tr>
+        <tr><td style="text-align:left">初期維持率（買い）</td><td>${initMRBuy.toFixed(1)} %</td></tr>
+        <tr><td style="text-align:left">初期維持率（売り）</td><td>${initMRSell.toFixed(1)} %</td></tr>
+        <tr><td style="text-align:left">ロスカットライン（買い）</td><td>${lcLong.toFixed(4)} 円/TRY</td></tr>
+        <tr><td style="text-align:left">ロスカットライン（売り）</td><td>${lcShort.toFixed(4)} 円/TRY</td></tr>
+      </table>
+
+      ${warnSell}
+
+      <table>
+        <tr><th colspan="2">スワップ収益</th></tr>
+        <tr><td style="text-align:left">日次</td><td>${dailySwap.toLocaleString()} 円</td></tr>
+        <tr><td style="text-align:left">年次（365日）</td><td>${yearlySwap.toLocaleString()} 円</td></tr>
+        <tr><td style="text-align:left">スプレッドコスト</td><td>${spreadCost.toLocaleString()} 円</td></tr>
+        <tr><td style="text-align:left">黒字化までの日数</td><td>${daysBE} 日</td></tr>
+      </table>
+
+      <table>
+        <tr><th colspan="3">年利シミュレーション（単利）</th></tr>
+        <tr><th>経過年数</th><th>累計利益</th><th>当年利回り</th></tr>
+        ${rows}
+      </table>
+    `;
+  });
+
+  html+=`<p class="note">
+    ※ Lot 数は<strong>買い口座の資金</strong>で計算し、売り口座は同数建てを想定しています。<br>
+    ※ 売り口座の維持率が低すぎる場合は警告を表示します。<br>
+    ※ 年利は単利。税金・手数料・スワップ変動は考慮していません。
+  </p>`;
+
+  document.getElementById("output").innerHTML=html;
 }
 </script>
-
 </body>
 </html>
