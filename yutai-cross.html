@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>株主優待クロス取引の方法</title>
+<style>
+  body{font-family:sans-serif;background:#f9f9f9;margin:0;padding:1em;color:#2c3e50;max-width:800px;margin:auto}
+  h1{font-size:1.9em;margin-bottom:.4em}
+  h2{font-size:1.3em;margin-top:1.4em;margin-bottom:.4em;color:#34495e}
+  section{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1.3em;box-shadow:0 4px 8px rgba(0,0,0,.05);line-height:1.55}
+  ul{margin:.6em 0 .6em 1.2em}
+  li{margin:.35em 0}
+  code{background:#eef2f7;padding:.1em .3em;border-radius:4px}
+  a{color:#2980b9;text-decoration:none}
+  .btn{display:inline-block;margin-top:1.1em;background:#2980b9;color:#fff;padding:.6em 1.2em;border-radius:10px}
+  .btn:hover{background:#1c567b}
+</style>
+</head>
+<body>
+
+<h1>株主優待クロス取引の方法</h1>
+
+<section>
+  <h2>❶ 株主優待クロス取引とは？</h2>
+  <p>
+    <strong>同一銘柄を「現物買い」と「信用売り（一般信用の空売り）」で同時に建てる</strong>
+    ことで株価変動リスクをゼロに近づけつつ、権利付き最終日まで保有して
+    <strong>株主優待</strong>だけを取得する手法です。  
+    通称 <em>つなぎ売り</em> や <em>クロス取引</em> とも呼ばれます。
+  </p>
+
+  <h2>❷ 基本フロー（権利確定日 = 3月末の場合）</h2>
+  <ul>
+    <li><strong>T-3営業日</strong> … 一般信用売り在庫をチェック＆<code>在庫確保（売り立て）</code>※人気銘柄は早く</li>
+    <li><strong>T-1営業日（権利付き最終日）</strong> … <code>現物買い</code> を同株数実行</li>
+    <li><strong>権利落ち日</strong> … 株価下落するが両建てなので損益±0</li>
+    <li><strong>T+2以降</strong> … <code>現渡し</code>（現物をそのまま信用返済）でポジションクローズ</li>
+    <li><strong>優待到着</strong> … 数か月後に株主優待が郵送・電子クーポン等で届く</li>
+  </ul>
+
+  <h2>❸ 必要コスト</h2>
+  <ul>
+    <li><strong>貸株料（一般信用金利）</strong> … 1年 2.0〜3.9% 程度 × 日数分</li>
+    <li><strong>売買手数料</strong> … 証券会社プラン次第（信用・現物 それぞれ）</li>
+    <li><strong>配当調整金</strong> … 権利落ち日に配当相当額の調整。<br>
+        一般信用売りは現渡しなら支払い不要（制度信用は要注意）</li>
+    <li><strong>逆日歩</strong> … 一般信用なら発生しない</li>
+  </ul>
+
+  <h2>❹ メリット・デメリット</h2>
+  <ul>
+    <li>✅ 株価リスクを抑えつつ優待だけ取得できる</li>
+    <li>❌ 人気銘柄は在庫競争が激しく、貸株料も高い</li>
+    <li>❌ 証券会社ごとに在庫・金利が異なり、管理が煩雑</li>
+    <li>❌ 権利付き最終日を勘違いすると失敗（要カレンダー管理）</li>
+  </ul>
+
+  <h2>❺ よく使われる証券会社と在庫特徴</h2>
+  <ul>
+    <li>✅ <strong>楽天証券</strong> … 在庫多め、貸株料 2.0%〜</li>
+    <li>✅ <strong>SBI証券</strong> … 在庫多いが争奪戦激化、ゴールドプラン有</li>
+    <li>✅ <strong>auカブコム</strong> … 1日信用→一般への品受けでコスト低減テク有</li>
+  </ul>
+
+  <h2>❻ 便利ツール</h2>
+<ul>
+  <li>🔗 <a href="https://kabutan.jp/stock/kabuyutai/" target="_blank">権利付き最終日カレンダー（株探）</a></li>
+  <li>🔗 <a href="yutai-fetch.html">優待クロス候補銘柄リスト（自動取得）</a></li>
+</ul>
+
+<a href="yutai-fetch.html" class="btn">▶ 優待候補銘柄リストを見る</a>
+
+<h2>❼ 30万円銘柄での実例シミュレーション</h2>
+<ul>
+  <li><strong>銘柄例：</strong> 株価 3,000円 × 100株 ＝ <strong>30万円</strong></li>
+  <li><strong>信用売り金利：</strong> 年 3.9%（≒ <code>0.0107%/日</code>）</li>
+  <li><strong>建玉期間：</strong> 20日（早めに在庫確保した場合）</li>
+  <li><strong>貸株料：</strong> 300,000 × 0.0107% × 20日 ＝ <span style="color:#c0392b">約642円</span></li>
+  <li><strong>優待価値：</strong> 商品券 1,000〜2,000円相当（送料・経費除く）</li>
+  <li><strong>実質利益：</strong> 優待 1,500円 − 貸株料 642円 − 手数料 ≒ <strong>約800円</strong></li>
+</ul>
+
+<p class="note">
+  ✅ <strong>必要な現金の目安</strong>  
+  ・現物買い：<strong>30万円</strong>（買付代金を全額入金）<br>
+  ・信用売り証拠金：株価のおよそ <strong>30% ≒ 9万円</strong><br>
+  ⇒ <span style="color:#2c3e50"><strong>合計 39 万円</strong></span> 程度の預け入れが必要になります。<br><br>
+
+  ✅ 楽天証券「ゼロコース」や SBI 証券「アクティブプラン」などを使えば、  
+  取引手数料を <strong>実質無料</strong> にすることも可能です。<br>
+  ※ 貸株料・配当調整金は必ず発生するため、<strong>費用対効果</strong> を意識して銘柄を選びましょう。
+</p>
+
+<a href="index.html" class="btn">← トップページに戻る</a>
+</section>
+
+</body>
+</html>
