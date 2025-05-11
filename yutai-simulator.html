@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>優待利回りシミュレーター</title>
+<style>
+  body { font-family: sans-serif; background: #f9f9f9; padding: 1em; color: #2c3e50; max-width: 700px; margin: auto; }
+  h1 { font-size: 1.6em; margin-bottom: 1em; }
+  label { display: block; margin: 0.8em 0 0.2em; }
+  input { width: 100%; padding: 0.5em; font-size: 1em; margin-bottom: 0.6em; }
+  button { padding: 0.7em 1.2em; font-size: 1em; background: #2980b9; color: white; border: none; border-radius: 6px; cursor: pointer; }
+  button:hover { background: #1c567b; }
+  p.note { font-size: 0.9em; margin-top: 1em; }
+  #result { background: #eef6ff; padding: 1em; margin-top: 1.5em; border-left: 4px solid #2980b9; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>優待利回りシミュレーター（手動入力）</h1>
+
+<p class="note" style="font-size: 1em;">
+    銘柄情報の参考として、<a href="https://96ut.com/yuutai/list.php" target="_blank">96ut.comの株主優待リスト出力機</a>をご利用ください。  </p>
+
+<form id="manual-input-form">
+  <label>株価（円）: <input type="number" id="price" required></label>
+  <label>必要株数: <input type="number" id="unit" required></label>
+  <label>優待価値（円）: <input type="number" id="yutai_value" required></label>
+  <label>貸株料（年率 %）: <input type="number" id="borrow_rate" value="3.9" required> ※デフォルトは3.9%、必要に応じて変更してください。</label>
+  <label>貸株料日数（日）: <input type="number" id="borrow_days" value="5" required> ※デフォルトは5日、変更可能です。</label>
+  <label>信用売り証拠金率（％）: <input type="number" id="margin_rate" value="30" required> ※デフォルトは30%、必要に応じて変更可能です。</label>
+  <button type="submit">計算する</button>
+</form>
+
+<p class="note" style="font-size: 1em;">
+  銘柄情報の参考として、<a href="https://96ut.com/yuutai/list.php" target="_blank">96ut.comの株主優待リスト出力機</a>をご利用ください。
+</p>
+<a href="yutai-cross.html" style="display:inline-block;margin-top:1em;padding:0.6em 1.2em;background:#aaa;color:white;text-decoration:none;border-radius:8px;">← クロス取引の方法ページへ戻る</a>
+
+<div id="result"></div>
+
+<script>
+document.getElementById('manual-input-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const price = parseFloat(document.getElementById('price').value);
+  const unit = parseInt(document.getElementById('unit').value);
+  const yutai_value = parseFloat(document.getElementById('yutai_value').value);
+  const borrow_rate = parseFloat(document.getElementById('borrow_rate').value);
+  const borrow_days = parseInt(document.getElementById('borrow_days').value);
+  const margin_rate = parseFloat(document.getElementById('margin_rate').value);
+
+  const investment_cash = price * unit; // 現物投資
+  const margin_required = investment_cash * (margin_rate / 100); // 信用売りの証拠金
+  const total_investment = investment_cash + margin_required;
+
+  const borrow_cost = investment_cash * (borrow_rate / 100) * (borrow_days / 365);
+  const profit = yutai_value - borrow_cost;
+  const yield = (profit / total_investment) * 100;
+
+  const resultText = `現物投資額: ${investment_cash.toLocaleString()}円\n信用売り証拠金: ${margin_required.toLocaleString()}円\n合計投資額: ${total_investment.toLocaleString()}円\n貸株料（" + borrow_days + "日分）: ${borrow_cost.toFixed(2)}円\n優待価値: ${yutai_value.toLocaleString()}円\n実質利益: ${profit.toFixed(2)}円\n利回り: ${yield.toFixed(2)}%`;
+
+  document.getElementById('result').textContent = resultText;
+});
+</script>
+
+</body>
+</html>
