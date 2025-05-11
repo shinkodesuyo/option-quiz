@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ロスカットライン計算ツール</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 1em; max-width: 800px; margin: auto; color: #2c3e50; }
+    h1 { font-size: 1.8em; text-align: center; margin-bottom: 1em; }
+    label { display: block; margin-top: 1em; font-weight: bold; }
+    input, button, select {
+      width: 100%;
+      padding: 0.6em;
+      font-size: 1em;
+      margin-top: 0.4em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #2980b9;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #1c567b; }
+    .result { margin-top: 1em; padding: 1em; background: #eef6ff; border-left: 4px solid #2980b9; }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 1em;
+      background: #ccc;
+      color: #2c3e50;
+      padding: 0.4em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<a href="swap-arbitrage.html" class="back-button">← swap-arbitrage.html に戻る</a>
+
+<h1>ロスカットライン計算ツール</h1>
+
+<form id="calc-form">
+  <label>レート（現在の為替レート）
+    <input type="number" id="rate" step="0.0001" placeholder="例: 3.8000">
+    <button type="button" onclick="fetchRate()">現在レート</button>
+  </label>
+
+  <label>レバレッジ
+    <select id="leverage">
+      <option value="25">個人口座 25倍</option>
+      <option value="10">法人 10倍</option>
+      <option value="1">証拠金100%</option>
+    </select>
+  </label>
+
+  <label>ロット数（Lot）<input type="number" id="lot" placeholder="例: 100"></label>
+  <label>売買
+    <select id="side">
+      <option value="buy">買</option>
+      <option value="sell">売</option>
+    </select>
+  </label>
+  <label>純資産額（円）<input type="number" id="capital" placeholder="例: 1000000"></label>
+  <button type="submit">計算</button>
+</form>
+
+<div id="result" class="result"></div>
+
+<script>
+function fetchRate() {
+  const endpoints = [
+    "https://api.exchangerate.host/latest?base=TRY&symbols=JPY",
+    "https://open.er-api.com/v6/latest/TRY"
+  ];
+
+  (async () => {
+    for (const url of endpoints) {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const rate = data?.rates?.JPY;
+        if (rate) {
+          document.getElementById('rate').value = rate.toFixed(4);
+          return;
+        }
+      } catch (err) {
+        console.log(`レート取得失敗: ${url}`, err);
+      }
+    }
+    alert("レート取得に失敗しました");
+  })();
+}
+
+document.getElementById('calc-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const rate = parseFloat(document.getElementById('rate').value);
+  const leverage = parseFloat(document.getElementById('leverage').value);
+  const lot = parseInt(document.getElementById('lot').value);
+  const side = document.getElementById('side').value;
+  const capital = parseFloat(document.getElementById('capital').value);
+
+  if (isNaN(rate) || isNaN(leverage) || isNaN(lot) || isNaN(capital)) {
+    alert("すべての項目を正しく入力してください。");
+    return;
+  }
+
+  const units = lot * 10000; // 1Lot = 10,000通貨
+  const marginRequired = (units * rate) / leverage;
+  const loss = capital - marginRequired;
+  const diff = loss / units;
+  let losscut;
+
+  if (side === 'buy') {
+    losscut = rate - diff;
+  } else {
+    losscut = rate + diff;
+  }
+
+  const resultText = `
+    ポジション必要証拠金: ${Math.floor(marginRequired).toLocaleString()}円<br>
+    ロスカットライン: ${losscut.toFixed(4)} (${(rate - losscut).toFixed(3)})
+  `;
+
+  document.getElementById('result').innerHTML = resultText;
+});
+</script>
+
+</body>
+</html>
