@@ -7,9 +7,9 @@
   },
   {
     "question": "希望価格で株を取得する前提でプットを売る戦略は？",
-    "options": ["Put Sell", "Call Spread", "Bear Put Spread", "Box Spread"],
+    "options": ["Cash-Secured Put", "Call Spread", "Bear Put Spread", "Box Spread"],
     "answer": 0,
-    "explanation": "Put Sell（キャッシュセキュアードプット）は、希望価格で株を買う前提でプット売りを行います。"
+    "explanation": "Cash-Secured Put（キャッシュセキュアードプット）は、希望価格で株を買う前提でプット売りを行います。"
   },
   {
     "question": "株の下落リスクを限定的にコントロールするためにプットを購入する戦略は？",
@@ -67,7 +67,7 @@
   },
   {
     "question": "Bull Call SpreadとBear Put Spreadを組み合わせ、理論価格差を狙う戦略は？",
-    "options": ["Box Spread", "Put Sell", "Covered Call", "Conversion/Reversal"],
+    "options": ["Box Spread", "Cash-Secured Put", "Covered Call", "Conversion/Reversal"],
     "answer": 0,
     "explanation": "Box Spread は金利裁定機会を利用します。"
   },
