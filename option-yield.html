@@ -112,9 +112,9 @@
   document.getElementById("yield-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const premium = parseFloat(document.getElementById("premium").value);
+    const premium = parseFloat(document.getElementById("premium").value) * 100;
     const fee = parseFloat(document.getElementById("fee").value);
-    const stockPrice = parseFloat(document.getElementById("stockPrice").value);
+    const stockPrice = parseFloat(document.getElementById("stockPrice").value) * 100;
     const startMonth = parseInt(document.getElementById("startMonth").value);
     const startDay = parseInt(document.getElementById("startDay").value);
     const endMonth = parseInt(document.getElementById("endMonth").value);
