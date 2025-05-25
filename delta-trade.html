@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>デルタトレード戦略ガイド</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5em;
+    }
+    p, li {
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back {
+      margin-top: 2em;
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #2c80b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚙️ デルタトレード戦略ガイド（Δの見方と使い方）</h1>
+  <p>デルタ（Δ）は、オプションの価格が原資産の価格変動に対してどれだけ動くかを示す指標です。デルタトレードはこの性質を活用して、相場予測や収益最大化を狙います。</p>
+
+  <h2>✅ デルタの基本</h2>
+  <ul>
+    <li><strong>コールのデルタ：</strong>0〜+1（株価が上がると価値上昇）</li>
+    <li><strong>プットのデルタ：</strong>0〜-1（株価が下がると価値上昇）</li>
+    <li><strong>目安：</strong>±0.5は「At the Money」、±0.3や±0.7で確率的判断</li>
+  </ul>
+
+  <h2>📈 利用方法</h2>
+  <ul>
+    <li>デルタを保有株に対するヘッジ比率として使う（例：-0.3デルタのPut購入で下落リスクカバー）</li>
+    <li>Covered Callで収益性を判断（例：+0.2デルタのコール＝約20%の確率で行使される）</li>
+    <li>Put Sellのリスク管理（例：-0.15デルタ＝85%の確率で満期まで行使されない）</li>
+  </ul>
+
+  <h2>💡 活用場面</h2>
+  <p>リスク許容度に応じて、デルタ数値を調整することで戦略の安全性と収益性のバランスを取ることができます。</p>
+
+  <h2>📝 具体例</h2>
+  <p>
+    現在株価：100ドル<br>
+    コールオプションA（105ドル・+0.3デルタ）を売る → 約30%の確率で行使され、70%はプレミアム獲得のみ<br>
+    プットオプションB（95ドル・-0.2デルタ）を売る → 約80%の確率で株を引き受けずにプレミアム獲得
+  </p>
+
+  <a class="back" href="index.html">← ガイド集に戻る</a>
+</body>
+</html>
