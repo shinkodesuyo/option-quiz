@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>資産運用の裏メニュー & オプション戦略クイズ</title>
-
   <style>
-    /* ------ 全体共通 ------ */
     body {
       font-family: sans-serif;
       background: #f9f9f9;
@@ -14,8 +12,7 @@
       padding: 1em;
       color: #2c3e50;
     }
-    h1,
-    h2 {
+    h1, h2 {
       margin-left: 0.5em;
     }
     h1 {
@@ -29,8 +26,6 @@
       margin-bottom: 0.5em;
       color: #34495e;
     }
-
-    /* ------ ──[NEW] 裏メニュー（テクニック一覧） ------ */
     #secret-menu {
       margin-bottom: 2em;
       padding: 0 0.5em;
@@ -55,8 +50,6 @@
       background: #1c567b;
       transform: translateY(-2px);
     }
-
-    /* ------ カード ------ */
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -93,121 +86,177 @@
       padding-left: 1em;
       list-style-type: disc;
     }
-
-    /* ------ メディアクエリでカード幅調整 ------ */
     @media (max-width: 900px) {
-      .card {
-        width: calc(50% - 1em);
-      }
+      .card { width: calc(50% - 1em); }
     }
     @media (max-width: 600px) {
-      .card {
-        width: 100%;
-      }
+      .card { width: 100%; }
     }
-
-    /* ------ クイズ ------ */
     #quiz-section {
       background: #fff;
       border: 1px solid #ccc;
       border-radius: 8px;
-      padding: 1em;
+      padding: 1.5em;
       margin-bottom: 1.5em;
     }
     #quiz-container {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       text-align: center;
     }
-
-    /* ▶▶ start ボタンを大きく（ご要望） ◀◀ */
-    #start-btn {
+    #start-btn, #next-btn, #restart-btn {
       display: inline-block;
-      background: #e67e22;
-      color: #fff;
-      font-size: 1.2em;          /* ← 文字サイズ up */
-      padding: 1em 2em;          /* ← 高さ・幅 up   */
+      padding: 1em 2em;
       border: none;
       border-radius: 10px;
       cursor: pointer;
+      font-size: 1.1em;
       transition: background 0.2s, transform 0.2s;
+    }
+    #start-btn {
+      background: #e67e22;
+      color: #fff;
     }
     #start-btn:hover {
       background: #c56a1e;
       transform: translateY(-2px);
     }
-
-    /* クイズ中の選択肢 */
+    #next-btn, #restart-btn {
+      background: #27ae60;
+      color: #fff;
+      margin-top: 1.2em;
+    }
+    #next-btn:hover, #restart-btn:hover {
+      background: #1e8449;
+    }
     .quiz-question {
-      font-size: 1.1em;
-      margin-bottom: 1em;
+      font-size: 1.25em;
+      margin: 1em 0;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+      margin-top: 1em;
     }
     .quiz-options button {
-      display: block;
-      width: 100%;
-      margin: 0.5em 0;
-      padding: 0.8em;
-      border: none;
-      border-radius: 6px;
       background: #2980b9;
       color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 1em;
+      font-size: 1.1em;
+      width: 100%;
       cursor: pointer;
       transition: background 0.2s;
     }
-    .quiz-options button:hover {
+    .quiz-options button:hover:not(:disabled) {
       background: #1c567b;
+    }
+    .quiz-options button:disabled {
+      opacity: 0.6;
+      cursor: default;
     }
     .quiz-feedback {
       margin-top: 1em;
-      font-size: 1em;
+      font-size: 1.1em;
     }
-    #next-btn,
-    #restart-btn {
-      margin-top: 1em;
-      padding: 0.6em 1.2em;
-      border: none;
-      border-radius: 8px;
-      background: #27ae60;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.2s;
+    .strategy-section {
+      background: #fff;
+      padding: 1em;
+      border-radius: 10px;
+      margin-bottom: 2em;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
-    #next-btn:hover,
-    #restart-btn:hover {
-      background: #1e8449;
+    .strategy-section h2 {
+      font-size: 1.3em;
+      margin-bottom: 0.5em;
     }
-    #quiz-score {
-      margin-top: 1em;
-      font-weight: bold;
+    .strategy-section ul {
+      list-style: none;
+      padding-left: 1em;
     }
+    .strategy-section li {
+      font-size: 1.1em;
+      margin: 0.4em 0;
+    }
+    .strategy-section li::before {
+      content: "📌 ";
+    }
+    .strategy-section a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    .strategy-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* ------ 実践ガイド ------ */
+    .strategy-section {
+      background: #fff;
+      padding: 1em;
+      border-radius: 10px;
+      margin-bottom: 2em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .strategy-section h2 { font-size: 1.3em; margin-bottom: 0.5em; }
+    .strategy-section ul { list-style: none; padding-left: 1em; }
+    .strategy-section li { font-size: 1.1em; margin: 0.4em 0; }
+    .strategy-section li::before { content: "📌 "; }
+    .strategy-section a { color: #2980b9; text-decoration: none; }
+    .strategy-section a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <!-- ─────────────────── 資産運用の裏メニュー ─────────────────── -->
+  <!-- 資産運用の裏メニュー -->
   <section id="secret-menu">
     <h1>資産運用の裏メニュー</h1>
     <div class="tech-menu">
-      <!-- 1列にいくつでも追加できます。リンク先はそれぞれ独立ページ -->
       <a href="swap-arbitrage.html" class="tech-link">スワップアービトラージ</a>
-      <a href="yutai-cross.html"    class="tech-link">株主優待クロス取引</a>
+      <a href="yutai-cross.html" class="tech-link">株主優待クロス取引</a>
       <a href="option-yield.html" class="tech-link">オプション利回り計算</a>
-
-      
-      <!-- 追加したいテクニックがあれば <a> を増やすだけでOK -->
     </div>
   </section>
 
-  <!-- ─────────────────── クイズ ─────────────────── -->
+  <!-- クイズセクション -->
   <section id="quiz-section">
     <div id="quiz-container">
       <h2>オプション戦略クイズ</h2>
-      <div id="quiz-content">
-        <button id="start-btn">クイズを始める</button>
-      </div>
+      <div id="quiz-content"><button id="start-btn">クイズを始める</button></div>
       <div id="quiz-score"></div>
     </div>
   </section>
+
+  <!-- オプション戦略 実践ガイド集 -->
+  <section class="strategy-section">
+    <h1>📘 オプション戦略 実践ガイド集</h1>
+
+    <h2>💰 定期収益を狙う戦略</h2>
+    <ul>
+      <li><a href="covered-call.html">カバードコール</a></li>
+      <li><a href="cash-secured-put.html">キャッシュセキュアードプット</a></li>
+    </ul>
+
+    <h2>🔁 回転型（連続型）戦略</h2>
+    <ul>
+      <li><a href="wheel-strategy.html">Wheel戦略（Put → Call）</a></li>
+    </ul>
+
+    <h2>🔄 ポジション調整戦略</h2>
+    <ul>
+      <li><a href="roll-strategy.html">ロール戦略（攻め・守り）</a></li>
+    </ul>
+    
+    <h2>📊 Greeks活用戦略</h2>
+    <ul>
+      <li><a href="delta-trade.html">デルタトレード（Δ デルタの見方と使い方）</a></li>
+      <li><a href="theta-income.html">セータ収益戦略（θ 時間価値を味方に）</a></li>
+      <li><a href="vega-volatility.html">ベガ戦略（ν ボラティリティの予測と活用）</a></li>
+      <li><a href="gamma-scalping.html">ガンマ・スカルピング（Γ 高頻度調整による収益）</a></li>
+    </ul>
+  </section>
+  
 
   <!-- ─────────────────── オプション戦略一覧 ─────────────────── -->
   <h1>📘 オプション戦略一覧（カテゴリ別）</h1>
