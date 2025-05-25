@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セータ収益戦略ガイド</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5em;
+    }
+    p, li {
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back {
+      margin-top: 2em;
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #2c80b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>θ セータ収益戦略ガイド (時間価値を味方に)</h1>
+  <p>セータ (θ) は、時間経過によるオプション価格の減少度を表す指標です。セータ収益戦略は、時間の経過を味方にして、安定的な收益を狙うインカム系戦略です。</p>
+
+  <h2>✅ セータの基礎</h2>
+  <ul>
+    <li>時間が経過すると、OTM(重なりのない)オプションの価値は減少</li>
+    <li>シータ(時間收益)を目的とした売り戦略と相性が良い</li>
+    <li>時間価値は満期が近いほど大きく減りやすい</li>
+  </ul>
+
+  <h2>📈 使用戦略</h2>
+  <ul>
+    <li>Covered Call や Put Sell で短期のオプションを経算</li>
+    <li>カレンダースプレッド で短期売り、長期買い</li>
+    <li>アイアンコンドル のようなボラティリティ低中のレンジ戦略</li>
+  </ul>
+
+  <h2>💡 活用場面</h2>
+  <p>相場の方向性が辛しい時、もしくは現物なしでも収益を狙いたい場面で、時間を味方に収益を送りたい場合に有効です。</p>
+
+  <h2>📝 具体例</h2>
+  <p>
+    現在株価: 100ドル<br>
+    Covered Call: 行使105ドルのコールを 2.5ドル で売る<br>
+    満期まで特殊事項なければ、時間価値が減り、入金確定
+  </p>
+
+  <a class="back" href="index.html">← ガイド集に戻る</a>
+</body>
+</html>
