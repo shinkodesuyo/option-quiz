@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wheel戦略ガイド</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5em;
+    }
+    p, li {
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back {
+      margin-top: 2em;
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #2c80b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔁 Wheel戦略ガイド（Put → 株保有 → Call）</h1>
+  <p>Wheel戦略は「Put Sellで株を安く買い、株を保有後にCovered Callで収益を得る」戦略です。インカム＋資産形成のハイブリッドです。</p>
+
+  <h2>✅ 戦略の概要</h2>
+  <ul>
+    <li><strong>ステップ1：</strong>キャッシュセキュアードプットを売る（Put Sell）</li>
+    <li><strong>ステップ2：</strong>株を割安で取得したら保有する</li>
+    <li><strong>ステップ3：</strong>Covered Callを売ってプレミアム収入を得る</li>
+  </ul>
+
+  <h2>📈 利益の出るパターン</h2>
+  <ul>
+    <li>Put売りの満期で株価が行使価格を上回ればプレミアムだけ得てノーポジション</li>
+    <li>Put売りで株を取得し、Covered Callで継続収益</li>
+    <li>株がCallの行使価格以上になれば利益確定＋再度Putへ戻る</li>
+  </ul>
+
+  <h2>💡 活用場面</h2>
+  <p>資金効率を重視しつつ、長期で優良株を安く仕込みたい場合に有効。定期的にインカムを得ながらポートフォリオを回転。</p>
+
+  <h2>📝 具体例</h2>
+  <p>
+    現在株価：98ドル<br>
+    Step1: 95ドルのPutを1.5ドルで売る → 株が行使されれば実質取得価格93.5ドル<br>
+    Step2: 株を保有し、100ドルのCallを2ドルで売却 → 株が100ドルで売却＋2ドルのプレミアム<br>
+    Step3: 再びPutへ戻り、戦略を回す
+  </p>
+
+  <a class="back" href="index.html">← ガイド集に戻る</a>
+</body>
+</html>
