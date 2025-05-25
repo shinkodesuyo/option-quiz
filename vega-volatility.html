@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ベガ戦略ガイド</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5em;
+    }
+    p, li {
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back {
+      margin-top: 2em;
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #2c80b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 ベガ戦略ガイド（ν ボラティリティの予測と活用）</h1>
+  <p>ベガ（ν）は、原資産のボラティリティ（変動率）が変化したときにオプション価格がどれだけ変動するかを示す指標です。ボラティリティの予測を活かした戦略により、市場の動揺を収益に変えることができます。</p>
+
+  <h2>✅ ベガの基本</h2>
+  <ul>
+    <li><strong>ベガの値：</strong> ボラティリティが1%変化したときのオプション価格の変動額</li>
+    <li><strong>特徴：</strong> 長期のオプションほどベガが大きく、短期ほど小さい</li>
+    <li><strong>変動：</strong> ボラティリティが高くなるとオプション価格も上昇（買いポジションが有利）</li>
+  </ul>
+
+  <h2>📈 利用方法</h2>
+  <ul>
+    <li>市場の不確実性が高まると予測したら、ベガの高いオプションを買う（ロングストラドルなど）</li>
+    <li>ボラティリティが下がると予測したら、ベガの高いオプションを売る（ショートストラドルなど）</li>
+    <li>イベント前後でIV（インプライド・ボラティリティ）の変化を利用</li>
+  </ul>
+
+  <h2>💡 活用場面</h2>
+  <p>決算発表やFOMCなど、相場の急変が予想される場面で、IV上昇を先取りしたポジションを構築できます。</p>
+
+  <h2>📝 具体例</h2>
+  <p>
+    株価100ドル、ATMのストラドル（コール+プット）価格がプレミアム10ドル、IVは20% → イベント後にIVが30%に上昇すると、同じストラドルは約13ドルに上昇（ベガ効果）
+  </p>
+
+  <a class="back" href="index.html">← ガイド集に戻る</a>
+</body>
+</html>
