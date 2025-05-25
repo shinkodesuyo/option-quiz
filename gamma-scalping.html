@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガンマ・スカルピング戦略ガイド</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5em;
+    }
+    p, li {
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back {
+      margin-top: 2em;
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #2c80b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>📉 ガンマ・スカルピング戦略ガイド（Γ 高頻度調整による収益）</h1>
+  <p>ガンマ（Γ）は、デルタの変化率を示す指標であり、株価が動いたときにデルタがどれだけ変わるかを示します。ガンマ・スカルピングは、この特性を利用して、ポジションの調整で小さな利益を積み上げる戦略です。</p>
+
+  <h2>✅ ガンマの基本</h2>
+  <ul>
+    <li><strong>デルタの加速度：</strong> ガンマが高いほど株価変動時にデルタが大きく変動</li>
+    <li><strong>ATMオプション：</strong> At the Moneyのオプションが最もガンマが大きい</li>
+    <li><strong>短期高ガンマ：</strong> 満期が近いほどガンマが大きくなる傾向</li>
+  </ul>
+
+  <h2>📈 戦略の概要</h2>
+  <ul>
+    <li>デルタニュートラルなポジション（例：ATMオプションの買いと株の売り）を構築</li>
+    <li>株価が変動するたびに株ポジションを調整し、デルタを再びゼロに戻す</li>
+    <li>この調整差益を繰り返して積み上げる</li>
+  </ul>
+
+  <h2>💡 活用場面</h2>
+  <p>ボラティリティが高く、短期間に株価が上下する環境で有効。機械的・高頻度な取引に向き、プロ向きの手法。</p>
+
+  <h2>📝 具体例</h2>
+  <p>
+    ATMコールオプションを購入（デルタ+0.5）し、株を50株売却（デルタ-0.5）で中立状態に。<br>
+    株価が1ドル上昇すると、デルタは+0.6になる → 株を10株追加で売却して再び中立。<br>
+    この調整により利益を確定。
+  </p>
+
+  <a class="back" href="index.html">← ガイド集に戻る</a>
+</body>
+</html>
