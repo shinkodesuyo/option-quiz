@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ロール戦略ガイド</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5em;
+    }
+    p, li {
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back {
+      margin-top: 2em;
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #2c80b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔄 ロール戦略ガイド（攻め・守り）</h1>
+  <p>ロール戦略とは、ポジションを期限前に乗り換えることで収益を最大化したり、リスクを調整するテクニックです。攻めと守りの視点で使い分けます。</p>
+
+  <h2>✅ 戦略の目的</h2>
+  <ul>
+    <li><strong>攻め：</strong> 含み益ポジションを早期利確し、より有利な条件で再建て</li>
+    <li><strong>守り：</strong> 相場悪化や方向転換に備え、損失を抑えつつ期限を延長</li>
+  </ul>
+
+  <h2>📈 代表的なロールの例</h2>
+  <ul>
+    <li>Covered Callの利益確定 → 高い行使価格のCallにロールアップ</li>
+    <li>Put Sellで価格が近づいた場合 → 満期を延ばして再びPutを売る</li>
+    <li>ロールアウト： 同じ方向で期限だけを先送り</li>
+    <li>ロールアップ／ダウン： ストライクを動かして戦略を調整</li>
+  </ul>
+
+  <h2>💡 活用場面</h2>
+  <p>相場に合わせてプレミアムを増やしたり、含み損リスクを減らしたいときにロールは有効です。満期前に利益・損失を調整する柔軟性を得られます。</p>
+
+  <h2>📝 具体例</h2>
+  <p>
+    現在保有：100ドルのCovered Call（プレミアム1.5ドル）<br>
+    株価が98→99.5ドルに上昇した場合：
+  </p>
+  <ul>
+    <li>利確ロール： 100ドルCallを買い戻し、105ドルCall（プレミアム1.2ドル）に乗り換える</li>
+    <li>守りのロール： 株価が急落 → 満期を延長してプレミアムを再取得</li>
+  </ul>
+
+  <a class="back" href="index.html">← ガイド集に戻る</a>
+</body>
+</html>
