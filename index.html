@@ -205,9 +205,40 @@
     .strategy-section li::before { content: "📌 "; }
     .strategy-section a { color: #2980b9; text-decoration: none; }
     .strategy-section a:hover { text-decoration: underline; }
+    .highlight-strategy {
+    background-color: #fff8e1;
+    border: 2px solid #f1c40f;
+    padding: 1.2em;
+    border-radius: 12px;
+    margin-bottom: 2em;
+    box-shadow: 0 2px 8px rgba(241, 196, 15, 0.4);
+  }
+
+  .highlight-strategy h2 {
+    margin: 0 0 0.5em 0;
+    color: #d35400;
+  }
+
+  .highlight-link {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2980b9;
+    text-decoration: none;
+  }
+
+  .highlight-link:hover {
+    text-decoration: underline;
+    color: #1c567b;
+  }
+
   </style>
 </head>
 <body>
+  <!-- デルタ活用ガイドを目立たせるセクション -->
+  <section class="highlight-strategy">
+    <h2>📈 戦略判断に使える指標ガイド</h2>
+    <p><a href="delta-guide.html" class="highlight-link">🔍 デルタ活用ガイド（目的別・戦略別）</a></p>
+  </section>
 
   <!-- 資産運用の裏メニュー -->
   <section id="secret-menu">
@@ -248,6 +279,11 @@
       <li><a href="roll-strategy.html">ロール戦略（攻め・守り）</a></li>
     </ul>
     
+    <h2>📈 戦略判断に使える指標ガイド</h2>
+    <ul>
+      <li><a href="delta-guide.html">デルタ活用ガイド（目的別・戦略別）</a></li>
+    </ul>
+
     <h2>📊 Greeks活用戦略</h2>
     <ul>
       <li><a href="greeks-guide.html">Greeks活用戦略ガイド（全体像）</a></li>
