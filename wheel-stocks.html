@@ -1,104 +1,714 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wheel戦略に適した米国株・ETF</title>
+  <title>Wheel戦略銘柄一覧</title>
   <style>
-    body {font-family: sans-serif;background: #f9f9f9;color: #2c3e50;margin: 0;padding: 2em;max-width: 1200px;margin: auto;line-height: 1.6;}
-    h1, h2 {color: #c0392b;border-bottom: 2px solid #e0e0e0;padding-bottom: 0.3em;}
-    table {width: 100%;border-collapse: collapse;margin-bottom: 2em;}
-    th, td {border: 1px solid #ddd;padding: 0.6em;text-align: left;}
-    th {background-color: #f0f0f0;}
-    .ticker {font-weight: bold;}
-    .back {display: inline-block;margin-top: 2em;padding: 0.7em 1.2em;background-color: #3498db;color: white;text-decoration: none;border-radius: 6px;transition: background-color 0.2s;}
-    .back:hover {background-color: #2c80b4;}
+    body { font-family: sans-serif; background: #f9f9f9; color: #2c3e50; padding: 2em; max-width: 1200px; margin: auto; line-height: 1.6; }
+    h1, h2 { color: #c0392b; border-bottom: 2px solid #e0e0e0; padding-bottom: 0.3em; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+    th, td { border: 1px solid #ccc; padding: 0.6em; text-align: left; }
+    th { background-color: #f0f0f0; }
+    .ticker { font-weight: bold; }
   </style>
 </head>
 <body>
-  <h1>💼 Wheel戦略に適した米国株・ETF</h1>
-  <p>資金帯別に、流動性・ボラティリティ・プレミアム収益性・保有の安心感を基準として選定しています。</p>
-
-  <!-- 小資金 -->
-  <h2>小資金（2,000ドル未満）</h2>
+  <h1>💼 Wheel戦略銘柄一覧（CSV反映）</h1>
+  <p>コード・銘柄名・業種・現在値・100株必要額の順に並べたリストです。</p>
   <table>
     <thead>
-      <tr><th>ティッカー</th><th>株価（目安）</th><th>100株必要額(目安)</th><th>選定理由</th></tr>
+      <tr>
+        <th>コード</th>
+        <th>銘柄名</th>
+        <th>業種</th>
+        <th>現在値</th>
+        <th>100株必要額(目安)</th>
+      </tr>
     </thead>
     <tbody>
-      <tr><td class="ticker">F (Ford)</td><td>約$10</td><td>約1,000ドル</td><td>自動車大手で業績安定。オプション取引量が多く、ボラティリティも過度に高くないためプレミアム狙いに◎。EV転換も進めており長期保有の安心感あり。</td></tr>
-      <tr><td class="ticker">SIRI (Sirius XM)</td><td>約$4</td><td>約400ドル</td><td>衛星ラジオ事業で安定収益。株価変動が小さくディフェンシブ。オプション出来高も高く、低リスクでコンスタントなプレミアムを狙える。</td></tr>
-      <tr><td class="ticker">SOFI (SoFi Technologies)</td><td>約$8</td><td>約800ドル</td><td>フィンテック新興で利用者拡大中。黒字化により財務が改善。出来高が多くプレミアムも厚めで、成長期待を取り込みやすい。</td></tr>
-      <tr><td class="ticker">M (Macy's)</td><td>約$11</td><td>約1,100ドル</td><td>老舗百貨店。配当利回り約6%と高く、ブランド資産が厚い。オプション流動性も十分で、債務格付BBB-で財務健全性が確保。</td></tr>
-      <tr><td class="ticker">SNAP (Snap Inc.)</td><td>約$8.30</td><td>約830ドル</td><td>ソーシャルメディア銘柄でプレミアム厚め。オプション出来高11万枚/日。</td></tr>
-      <tr><td class="ticker">NIO (NIO)</td><td>約$4</td><td>約400ドル</td><td>中国EVメーカーで取引量が非常に多い。ボラティリティ高によりプレミアム厚い。市場拡大余地が大きく、流動性抜群でロールが容易。</td></tr>
+
+      <tr>
+        <td>LCID</td>
+        <td>ルシード・グループ</td>
+        <td>自動車メーカー</td>
+        <td>$2.23</td>
+        <td>$223.00</td>
+      </tr>
+    
+      <tr>
+        <td>NIO</td>
+        <td>ニオ</td>
+        <td>自動車メーカー</td>
+        <td>$3.54</td>
+        <td>$354.00</td>
+      </tr>
+    
+      <tr>
+        <td>SNAP</td>
+        <td>スナップ</td>
+        <td>情報サービス</td>
+        <td>$8.25</td>
+        <td>$825.00</td>
+      </tr>
+    
+      <tr>
+        <td>ACHR</td>
+        <td>アーチャー・アビエーション・インク</td>
+        <td>宇宙・防衛</td>
+        <td>$10.09</td>
+        <td>$1009.00</td>
+      </tr>
+    
+      <tr>
+        <td>SOUN</td>
+        <td>サウンドハウンドAI</td>
+        <td>ソフトウェア-アプリケーション</td>
+        <td>$10.11</td>
+        <td>$1011.00</td>
+      </tr>
+    
+      <tr>
+        <td>F</td>
+        <td>フォード・モーター</td>
+        <td>自動車メーカー</td>
+        <td>$10.38</td>
+        <td>$1038.00</td>
+      </tr>
+    
+      <tr>
+        <td>AAL</td>
+        <td>アメリカン航空グループ</td>
+        <td>航空会社</td>
+        <td>$11.41</td>
+        <td>$1141.00</td>
+      </tr>
+    
+      <tr>
+        <td>RGTI</td>
+        <td>リゲッティ・コンピューティング</td>
+        <td>パソコンハードウェア</td>
+        <td>$12.11</td>
+        <td>$1211.00</td>
+      </tr>
+    
+      <tr>
+        <td>SOFI</td>
+        <td>ソーファイ</td>
+        <td>クレジットサービス</td>
+        <td>$13.30</td>
+        <td>$1330.00</td>
+      </tr>
+    
+      <tr>
+        <td>PATH</td>
+        <td>ユーアイパス</td>
+        <td>ソフトウェア-インフラ</td>
+        <td>$13.31</td>
+        <td>$1331.00</td>
+      </tr>
+    
+      <tr>
+        <td>MARA</td>
+        <td>マーラ・ホールディングス</td>
+        <td>資本市場</td>
+        <td>$14.12</td>
+        <td>$1412.00</td>
+      </tr>
+    
+      <tr>
+        <td>RIVN</td>
+        <td>リヴィアン・オートモーティブ</td>
+        <td>自動車メーカー</td>
+        <td>$14.53</td>
+        <td>$1453.00</td>
+      </tr>
+    
+      <tr>
+        <td>LYFT</td>
+        <td>リフト</td>
+        <td>ソフトウェア-アプリケーション</td>
+        <td>$15.24</td>
+        <td>$1524.00</td>
+      </tr>
+    
+      <tr>
+        <td>QBTS</td>
+        <td>D ウェーブ クオンタム</td>
+        <td>パソコンハードウェア</td>
+        <td>$16.33</td>
+        <td>$1633.00</td>
+      </tr>
+    
+      <tr>
+        <td>PONY</td>
+        <td>ポニーAI</td>
+        <td>情報技術サービス</td>
+        <td>$19.26</td>
+        <td>$1926.00</td>
+      </tr>
+    
+      <tr>
+        <td>INTC</td>
+        <td>インテル</td>
+        <td>半導体</td>
+        <td>$19.55</td>
+        <td>$1955.00</td>
+      </tr>
+    
+      <tr>
+        <td>DJT</td>
+        <td>トランプ・メディア・アンド・テクノロジー・グループ</td>
+        <td>情報サービス</td>
+        <td>$21.33</td>
+        <td>$2133.00</td>
+      </tr>
+    
+      <tr>
+        <td>MP</td>
+        <td>MPマテリアルズ</td>
+        <td>鉱業-金属</td>
+        <td>$21.79</td>
+        <td>$2179.00</td>
+      </tr>
+    
+      <tr>
+        <td>GAP</td>
+        <td>GAP INC</td>
+        <td>アパレル販売</td>
+        <td>$22.31</td>
+        <td>$2231.00</td>
+      </tr>
+    
+      <tr>
+        <td>ASTS</td>
+        <td>AST・スペースモバイル</td>
+        <td>通信設備</td>
+        <td>$23.07</td>
+        <td>$2307.00</td>
+      </tr>
+    
+      <tr>
+        <td>PFE</td>
+        <td>ファイザー</td>
+        <td>製薬-総合</td>
+        <td>$23.49</td>
+        <td>$2349.00</td>
+      </tr>
+    
+      <tr>
+        <td>U</td>
+        <td>ユニティ・ソフトウェア</td>
+        <td>ソフトウェア-アプリケーション</td>
+        <td>$26.08</td>
+        <td>$2608.00</td>
+      </tr>
+    
+      <tr>
+        <td>MRNA</td>
+        <td>モデルナ</td>
+        <td>バイオテクノロジー</td>
+        <td>$26.56</td>
+        <td>$2656.00</td>
+      </tr>
+    
+      <tr>
+        <td>AI</td>
+        <td>シースリー・エーアイ</td>
+        <td>ソフトウェア-インフラ</td>
+        <td>$26.59</td>
+        <td>$2659.00</td>
+      </tr>
+    
+      <tr>
+        <td>RKLB</td>
+        <td>ロケット・ラボ</td>
+        <td>宇宙・防衛</td>
+        <td>$26.79</td>
+        <td>$2679.00</td>
+      </tr>
+    
+      <tr>
+        <td>GME</td>
+        <td>ゲームストップ クラスA</td>
+        <td>小売</td>
+        <td>$29.80</td>
+        <td>$2980.00</td>
+      </tr>
+    
+      <tr>
+        <td>CSX</td>
+        <td>シーエスエックス</td>
+        <td>鉄道</td>
+        <td>$31.59</td>
+        <td>$3159.00</td>
+      </tr>
+    
+      <tr>
+        <td>DKNG</td>
+        <td>ドラフトキングス</td>
+        <td>ギャンブル</td>
+        <td>$35.88</td>
+        <td>$3588.00</td>
+      </tr>
+    
+      <tr>
+        <td>CELH</td>
+        <td>セルシウス・ホールディングス</td>
+        <td>ノンアルコール飲料</td>
+        <td>$37.88</td>
+        <td>$3788.00</td>
+      </tr>
+    
+      <tr>
+        <td>FCX</td>
+        <td>フリーポートマクモラン</td>
+        <td>銅</td>
+        <td>$38.48</td>
+        <td>$3848.00</td>
+      </tr>
+    
+      <tr>
+        <td>SMCI</td>
+        <td>スーパー・マイクロ・コンピューター</td>
+        <td>パソコンハードウェア</td>
+        <td>$40.02</td>
+        <td>$4002.00</td>
+      </tr>
+    
+      <tr>
+        <td>IONQ</td>
+        <td>イオンキュー</td>
+        <td>パソコンハードウェア</td>
+        <td>$40.34</td>
+        <td>$4034.00</td>
+      </tr>
+    
+      <tr>
+        <td>ENPH</td>
+        <td>エンフェーズ・エナジー</td>
+        <td>太陽光エネルギー</td>
+        <td>$41.39</td>
+        <td>$4139.00</td>
+      </tr>
+    
+      <tr>
+        <td>VZ</td>
+        <td>ベライゾン・コミュニケーションズ</td>
+        <td>通信サービス</td>
+        <td>$43.96</td>
+        <td>$4396.00</td>
+      </tr>
+    
+      <tr>
+        <td>BAC</td>
+        <td>バンク・オブ・アメリカ</td>
+        <td>銀行-多角化経営</td>
+        <td>$44.13</td>
+        <td>$4413.00</td>
+      </tr>
+    
+      <tr>
+        <td>CMG</td>
+        <td>チポトレ・メキシカン・グリル</td>
+        <td>外食</td>
+        <td>$50.08</td>
+        <td>$5008.00</td>
+      </tr>
+    
+      <tr>
+        <td>OKLO</td>
+        <td>オクロ</td>
+        <td>電力</td>
+        <td>$52.72</td>
+        <td>$5272.00</td>
+      </tr>
+    
+      <tr>
+        <td>X</td>
+        <td>ユナイテッド・ステイツ・スチール</td>
+        <td>スチール</td>
+        <td>$53.82</td>
+        <td>$5382.00</td>
+      </tr>
+    
+      <tr>
+        <td>TEM</td>
+        <td>テンパスAI</td>
+        <td>健康情報サービス</td>
+        <td>$55.18</td>
+        <td>$5518.00</td>
+      </tr>
+    
+      <tr>
+        <td>ETSY</td>
+        <td>エッツィ</td>
+        <td>Eコマース</td>
+        <td>$55.35</td>
+        <td>$5535.00</td>
+      </tr>
+    
+      <tr>
+        <td>HIMS</td>
+        <td>ヒムズ&ハーズ・ヘルス</td>
+        <td>生活必需品</td>
+        <td>$56.56</td>
+        <td>$5656.00</td>
+      </tr>
+    
+      <tr>
+        <td>MRVL</td>
+        <td>マーベル・テクノロジー</td>
+        <td>半導体</td>
+        <td>$60.19</td>
+        <td>$6019.00</td>
+      </tr>
+    
+      <tr>
+        <td>NKE</td>
+        <td>ナイキ クラスB</td>
+        <td>靴</td>
+        <td>$60.59</td>
+        <td>$6059.00</td>
+      </tr>
+    
+      <tr>
+        <td>CVS</td>
+        <td>シーブイエス・ヘルス</td>
+        <td>ヘルスケア・プラン</td>
+        <td>$64.04</td>
+        <td>$6404.00</td>
+      </tr>
+    
+      <tr>
+        <td>HOOD</td>
+        <td>ロビンフッド・マーケッツ</td>
+        <td>資本市場</td>
+        <td>$66.15</td>
+        <td>$6615.00</td>
+      </tr>
+    
+      <tr>
+        <td>PYPL</td>
+        <td>ペイパル・ホールディングス</td>
+        <td>クレジットサービス</td>
+        <td>$70.28</td>
+        <td>$7028.00</td>
+      </tr>
+    
+      <tr>
+        <td>KO</td>
+        <td>コカコーラ</td>
+        <td>ノンアルコール飲料</td>
+        <td>$72.10</td>
+        <td>$7210.00</td>
+      </tr>
+    
+      <tr>
+        <td>UBER</td>
+        <td>ウーバー・テクノロジーズ</td>
+        <td>ソフトウェア-アプリケーション</td>
+        <td>$84.16</td>
+        <td>$8416.00</td>
+      </tr>
+    
+      <tr>
+        <td>RBLX</td>
+        <td>ロブロックス</td>
+        <td>ゲーム・マルチメディア</td>
+        <td>$86.98</td>
+        <td>$8698.00</td>
+      </tr>
+    
+      <tr>
+        <td>DLTR</td>
+        <td>ダラー・ツリー</td>
+        <td>ディスカウントストア</td>
+        <td>$90.26</td>
+        <td>$9026.00</td>
+      </tr>
+    
+      <tr>
+        <td>TGT</td>
+        <td>ターゲット</td>
+        <td>ディスカウントストア</td>
+        <td>$94.01</td>
+        <td>$9401.00</td>
+      </tr>
+    
+      <tr>
+        <td>MU</td>
+        <td>マイクロン・テクノロジー</td>
+        <td>半導体</td>
+        <td>$94.46</td>
+        <td>$9446.00</td>
+      </tr>
+    
+      <tr>
+        <td>PDD</td>
+        <td>PDD ホールディングス</td>
+        <td>Eコマース</td>
+        <td>$96.51</td>
+        <td>$9651.00</td>
+      </tr>
+    
+      <tr>
+        <td>WMT</td>
+        <td>ウォルマート</td>
+        <td>ディスカウントストア</td>
+        <td>$98.72</td>
+        <td>$9872.00</td>
+      </tr>
+    
+      <tr>
+        <td>XOM</td>
+        <td>エクソン・モービル</td>
+        <td>石油・ガス-総合</td>
+        <td>$102.30</td>
+        <td>$10230.00</td>
+      </tr>
+    
+      <tr>
+        <td>OKTA</td>
+        <td>オクタ</td>
+        <td>ソフトウェア-インフラ</td>
+        <td>$103.17</td>
+        <td>$10317.00</td>
+      </tr>
+    
+      <tr>
+        <td>AMD</td>
+        <td>アドバンスト・マイクロ・デバイシズ</td>
+        <td>半導体</td>
+        <td>$110.73</td>
+        <td>$11073.00</td>
+      </tr>
+    
+      <tr>
+        <td>DELL</td>
+        <td>デル・テクノロジーズ</td>
+        <td>パソコンハードウェア</td>
+        <td>$111.27</td>
+        <td>$11127.00</td>
+      </tr>
+    
+      <tr>
+        <td>CRWV</td>
+        <td>コアウィーブ</td>
+        <td>ソフトウェア-インフラ</td>
+        <td>$111.31</td>
+        <td>$11131.00</td>
+      </tr>
+    
+      <tr>
+        <td>RDDT</td>
+        <td>レディット</td>
+        <td>情報サービス</td>
+        <td>$112.35</td>
+        <td>$11235.00</td>
+      </tr>
+    
+      <tr>
+        <td>DIS</td>
+        <td>ウォルト・ディズニー</td>
+        <td>エンタメ</td>
+        <td>$113.04</td>
+        <td>$11304.00</td>
+      </tr>
+    
+      <tr>
+        <td>BABA</td>
+        <td>アリババ・グループ</td>
+        <td>Eコマース</td>
+        <td>$113.84</td>
+        <td>$11384.00</td>
+      </tr>
+    
+      <tr>
+        <td>ARM</td>
+        <td>アーム・ホールディングス</td>
+        <td>半導体</td>
+        <td>$124.54</td>
+        <td>$12454.00</td>
+      </tr>
+    
+      <tr>
+        <td>PLTR</td>
+        <td>パランティア・テクノロジーズ</td>
+        <td>ソフトウェア-インフラ</td>
+        <td>$131.78</td>
+        <td>$13178.00</td>
+      </tr>
+    
+      <tr>
+        <td>NVDA</td>
+        <td>エヌビディア</td>
+        <td>半導体</td>
+        <td>$135.13</td>
+        <td>$13513.00</td>
+      </tr>
+    
+      <tr>
+        <td>GOOGL</td>
+        <td>アルファベット クラスA</td>
+        <td>情報サービス</td>
+        <td>$171.74</td>
+        <td>$17174.00</td>
+      </tr>
+    
+      <tr>
+        <td>GOOG</td>
+        <td>アルファベット クラスC</td>
+        <td>情報サービス</td>
+        <td>$172.85</td>
+        <td>$17285.00</td>
+      </tr>
+    
+      <tr>
+        <td>PANW</td>
+        <td>パロアルト・ネットワークス</td>
+        <td>ソフトウェア-インフラ</td>
+        <td>$192.42</td>
+        <td>$19242.00</td>
+      </tr>
+    
+      <tr>
+        <td>TSM</td>
+        <td>台湾セミコンダクター・マニュファクチャリング</td>
+        <td>半導体</td>
+        <td>$193.32</td>
+        <td>$19332.00</td>
+      </tr>
+    
+      <tr>
+        <td>AAPL</td>
+        <td>アップル</td>
+        <td>消費電子製品</td>
+        <td>$200.85</td>
+        <td>$20085.00</td>
+      </tr>
+    
+      <tr>
+        <td>AMZN</td>
+        <td>アマゾン･ドットコム</td>
+        <td>Eコマース</td>
+        <td>$205.01</td>
+        <td>$20501.00</td>
+      </tr>
+    
+      <tr>
+        <td>SNOW</td>
+        <td>スノーフレイク</td>
+        <td>ソフトウェア-アプリケーション</td>
+        <td>$205.67</td>
+        <td>$20567.00</td>
+      </tr>
+    
+      <tr>
+        <td>BA</td>
+        <td>ボーイング</td>
+        <td>宇宙・防衛</td>
+        <td>$207.32</td>
+        <td>$20732.00</td>
+      </tr>
+    
+      <tr>
+        <td>AVGO</td>
+        <td>ブロードコム</td>
+        <td>半導体</td>
+        <td>$242.07</td>
+        <td>$24207.00</td>
+      </tr>
+    
+      <tr>
+        <td>CRM</td>
+        <td>セールスフォース</td>
+        <td>ソフトウェア-アプリケーション</td>
+        <td>$265.37</td>
+        <td>$26537.00</td>
+      </tr>
+    
+      <tr>
+        <td>UNH</td>
+        <td>ユナイテッドヘルス・グループ</td>
+        <td>ヘルスケア・プラン</td>
+        <td>$301.91</td>
+        <td>$30191.00</td>
+      </tr>
+    
+      <tr>
+        <td>MCD</td>
+        <td>マクドナルド</td>
+        <td>外食</td>
+        <td>$313.85</td>
+        <td>$31385.00</td>
+      </tr>
+    
+      <tr>
+        <td>CVNA</td>
+        <td>カーヴァナ</td>
+        <td>自動車ディーラー</td>
+        <td>$327.16</td>
+        <td>$32716.00</td>
+      </tr>
+    
+      <tr>
+        <td>TSLA</td>
+        <td>テスラ</td>
+        <td>自動車メーカー</td>
+        <td>$346.46</td>
+        <td>$34646.00</td>
+      </tr>
+    
+      <tr>
+        <td>MSFT</td>
+        <td>マイクロソフト</td>
+        <td>ソフトウェア-インフラ</td>
+        <td>$460.36</td>
+        <td>$46036.00</td>
+      </tr>
+    
+      <tr>
+        <td>ULTA</td>
+        <td>アルタ</td>
+        <td>小売</td>
+        <td>$471.46</td>
+        <td>$47146.00</td>
+      </tr>
+    
+      <tr>
+        <td>META</td>
+        <td>メタ・プラットフォームズ</td>
+        <td>情報サービス</td>
+        <td>$647.49</td>
+        <td>$64749.00</td>
+      </tr>
+    
+      <tr>
+        <td>LLY</td>
+        <td>イーライリリー・アンド・カンパニー</td>
+        <td>製薬-総合</td>
+        <td>$737.67</td>
+        <td>$73767.00</td>
+      </tr>
+    
+      <tr>
+        <td>COST</td>
+        <td>コストコ・ホールセール</td>
+        <td>ディスカウントストア</td>
+        <td>$nan</td>
+        <td>$nan</td>
+      </tr>
+    
+      <tr>
+        <td>NFLX</td>
+        <td>ネットフリックス</td>
+        <td>エンタメ</td>
+        <td>$nan</td>
+        <td>$nan</td>
+      </tr>
+    
     </tbody>
   </table>
-
-  <!-- 中小資金 -->
-  <h2>中小資金（2,000～5,000ドル）</h2>
-  <table>
-    <thead>
-      <tr><th>ティッカー</th><th>株価（目安）</th><th>100株必要額(目安)</th><th>選定理由</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="ticker">T (AT&T)</td><td>約$27</td><td>約2,700ドル</td><td>通信大手でディフェンシブ性あり。オプション取引が活発で板も厚く、配当利回りも魅力。</td></tr>
-      <tr><td class="ticker">VZ (Verizon)</td><td>約$39</td><td>約3,900ドル</td><td>配当利回りが高く、株価変動も穏やかで初心者向き。オプション流動性も良好。</td></tr>
-      <tr><td class="ticker">BAC (Bank of America)</td><td>約$28</td><td>約2,800ドル</td><td>米大手銀行。オプション出来高が非常に多くスプレッドも狭い。</td></tr>
-      <tr><td class="ticker">PFE (Pfizer)</td><td>約$23</td><td>約2,300ドル</td><td>製薬大手。高配当で防御力高い。ボラ低めで安定。</td></tr>
-      <tr><td class="ticker">INTC (Intel)</td><td>約$33</td><td>約3,300ドル</td><td>半導体大手で財務も健全。出来高も多くオプションも豊富。</td></tr>
-      <tr><td class="ticker">WFC (Wells Fargo)</td><td>約$42</td><td>約4,200ドル</td><td>大手銀行再建完了。収益と配当利回りのバランス良好。</td></tr>
-      <tr><td class="ticker">C (Citigroup)</td><td>約$45</td><td>約4,500ドル</td><td>メガバンクで国際展開。配当と割安さが魅力。</td></tr>
-      <tr><td class="ticker">CMCSA (Comcast)</td><td>約$45</td><td>約4,500ドル</td><td>メディア通信大手。安定したキャッシュフローと成長性。</td></tr>
-      <tr><td class="ticker">UBER (Uber)</td><td>約$45</td><td>約4,500ドル</td><td>配車サービスで黒字化。出来高も多く高IVでプレミアム大。</td></tr>
-      <tr><td class="ticker">XLF (Financial ETF)</td><td>約$35</td><td>約3,500ドル</td><td>金融セクターに分散投資。オプションも豊富。</td></tr>
-    </tbody>
-  </table>
-
-  <h2>中資金（5,000～10,000ドル）</h2>
-  <table>
-    <thead>
-      <tr><th>ティッカー</th><th>株価（目安）</th><th>100株必要額(目安)</th><th>選定理由</th></tr>
-    </thead>
-    <tbody><!-- 中資金（続き） -->
-      <tr><td class="ticker">AMD (Advanced Micro Devices)</td><td>約$90</td><td>約9,000ドル</td><td>GPU/CPUで高成長。オプション出来高常に上位で流動性◎。IV高めでプレミアム厚く、長期成長も期待。</td></tr>
-      <tr><td class="ticker">KO (Coca-Cola)</td><td>約$60</td><td>約6,000ドル</td><td>配当王で60年以上増配。低ボラで値動き安定。オプションプレミアムは小さめだが安定インカム向き。</td></tr>
-      <tr><td class="ticker">DIS (Walt Disney)</td><td>約$85</td><td>約8,500ドル</td><td>コンテンツ資産が強力。オプション取引が活発でIV中程度。ストリーミング黒字化期待で長期成長余地。</td></tr>
-      <tr><td class="ticker">PYPL (PayPal)</td><td>約$65</td><td>約6,500ドル</td><td>オンライン決済大手。株価調整で割安感。IV適度でプレミアム取りやすく、キャッシュリッチで財務健全。</td></tr>
-      <tr><td class="ticker">RTX (RTX Corporation)</td><td>約$85</td><td>約8,500ドル</td><td>航空宇宙・防衛の安定収益。政府契約で景気に強い。IV適度でプレミアム確保しやすい。</td></tr>
-      <tr><td class="ticker">NEE (NextEra Energy)</td><td>約$80</td><td>約8,000ドル</td><td>公益×再エネのハイブリッド。安定収益＋成長性。オプション流動性も高めでプレミアム安定。</td></tr>
-      <tr><td class="ticker">DUK (Duke Energy)</td><td>約$90</td><td>約9,000ドル</td><td>南東部電力大手。配当利回り4%前後で安定。低ベータでWheelの守りに向く。</td></tr>
-      <tr><td class="ticker">MS (Morgan Stanley)</td><td>約$85</td><td>約8,500ドル</td><td>富裕層資産管理で収益安定。配当利回り3%台。オプション板厚くロールしやすい。</td></tr>
-      <tr><td class="ticker">O (Realty Income)</td><td>約$60</td><td>約6,000ドル</td><td>月次配当リート。長期契約賃料でキャッシュフロー安定。IV低めでリスクコントロールしやすい。</td></tr>
-      <tr><td class="ticker">SCHD (Schwab US Dividend Equity ETF)</td><td>約$75</td><td>約7,500ドル</td><td>高配当ETFで優良株に分散。出来高・オプション流動性が高く、ボラティリティ低めで安定プレミアム。</td></tr>
-      
-      
-    </tbody>
-  </table>
-
-  <!-- 大資金（10,000ドル以上） -->
-  <h2>大資金（10,000ドル以上）</h2>
-  <table>
-    <thead>
-      <tr><th>ティッカー</th><th>株価（目安）</th><th>100株必要額(目安)</th><th>選定理由</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="ticker">AAPL (Apple)</td><td>約$180</td><td>約18,000ドル</td><td>世界最大級の時価総額。流動性抜群でスプレッド最小。IV低めで安定収入、長期成長も堅固。</td></tr>
-      <tr><td class="ticker">MSFT (Microsoft)</td><td>約$300</td><td>約30,000ドル</td><td>クラウド主導で成長継続。出来高豊富。配当・自社株買いで株主還元厚く、Wheelに最適。</td></tr>
-      <tr><td class="ticker">GOOGL (Alphabet)</td><td>約$130</td><td>約13,000ドル</td><td>広告・クラウドで収益多角化。IV中程度でプレミアム良好。財務盤石で長期保有に安心。</td></tr>
-      <tr><td class="ticker">AMZN (Amazon)</td><td>約$120</td><td>約12,000ドル</td><td>EC+クラウドの二本柱。出来高高く板厚い。IV適度でプレミアム取りやすい。ディフェンシブ性も併せ持つ。</td></tr>
-      <tr><td class="ticker">TSLA (Tesla)</td><td>約$200</td><td>約20,000ドル</td><td>EVリーダーでボラ高。プレミアム非常に厚い。流動性トップクラスでロール機会豊富。</td></tr>
-      <tr><td class="ticker">NVDA (NVIDIA)</td><td>約$300</td><td>約30,000ドル</td><td>AIブームの中心。IV高めでプレミアム厚い。市場注目度高く板厚い。</td></tr>
-      <tr><td class="ticker">META (Meta Platforms)</td><td>約$250</td><td>約25,000ドル</td><td>SNS基盤が強固。コスト最適化で収益改善。IV適度で安定プレミアム。</td></tr>
-      <tr><td class="ticker">SPY (SPDR S&P 500 ETF)</td><td>約$420</td><td>約42,000ドル</td><td>S&P500連動の分散投資。市場最大の出来高と流動性でスプレッド極小。低IVだが安全。</td></tr>
-      <tr><td class="ticker">QQQ (Invesco QQQ Trust)</td><td>約$350</td><td>約35,000ドル</td><td>NASDAQ100連動。ハイテク集中でIVやや高め、プレミアム厚い。出来高も多く取引容易。</td></tr>
-      <tr><td class="ticker">JPM (JPMorgan Chase)</td><td>約$260</td><td>約26,000ドル</td><td>金融最大手。財務健全・配当あり。オプション市場でも人気で流動性抜群。</td></tr>
-      <tr><td class="ticker">PLTR (Palantir Technologies)</td><td>約$123.31</td><td>約12,331ドル</td><td>政府向けAI契約をテコに高成長・高IV。保有前提でも上昇余地あり。</td></tr>
-      <tr><td class="ticker">IWM (iShares Russell 2000 ETF)</td><td>約$202.56</td><td>約20,256ドル</td><td>小型株指数でIV高め。流動性◎、指数ゆえ個別企業リスクを低減。</td></tr>
-    </tbody>
-  </table>
-
-  <a class="back" href="index.html">← トップページに戻る</a>
 </body>
 </html>
-
