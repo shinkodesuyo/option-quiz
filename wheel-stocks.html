@@ -14,17 +14,35 @@
     }
     h1 {
       font-size: 2em;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.2em;
+    }
+    .date-info {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 1em;
+    }
+    .conditions {
+      font-size: 0.95em;
+      background: #eef5fb;
+      padding: 12px;
+      border-left: 4px solid #3498db;
+      margin-bottom: 20px;
     }
     .top-link {
       display: inline-block;
-      margin-bottom: 20px;
-      font-size: 0.95em;
-      color: #2c3e50;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #2980b9;
+      color: white;
+      border-radius: 12px;
       text-decoration: none;
-      background: #ecf0f1;
-      padding: 6px 12px;
-      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+    .top-link:hover {
+      background-color: #1f6391;
     }
     table {
       width: 100%;
@@ -47,505 +65,572 @@
   </style>
 </head>
 <body>
-  <a href="/option-quiz/index.html" class="top-link">← トップに戻る</a>
   <h1>Wheel戦略銘柄一覧</h1>
+  <div class="date-info">更新日：2025年06月21日</div>
+  <div class="conditions">
+    <strong>スクリーニング条件：</strong>
+    
+<ul>
+  <li>IV（インプライド・ボラティリティ）：40%以上</li>
+  <li>時価総額：20億ドル以上</li>
+  <li>オプション出来高：3万以上</li>
+  <li>価格帯：$10 ～ $400</li>
+</ul>
+
+  </div>
   <table>
     <thead>
       <tr>
-        <th>コード</th><th>銘柄名</th><th>業種</th><th>価格</th><th>100株必要額(目安)</th>
+        <th>コード</th><th>銘柄名</th><th>業種</th><th>価格</th><th>100株必要額(目安)</th><th>IV</th>
       </tr>
     </thead>
     <tbody>
       
     <tr>
-      <td>NVDA</td>
-      <td>エヌビディア</td>
-      <td>半導体</td>
-      <td>$141.97</td>
-      <td>$14197.00</td>
-    </tr>
-    
-    <tr>
       <td>NVO</td>
       <td>ノボ・ノルディスク</td>
       <td>製薬-総合</td>
-      <td>$79.83</td>
-      <td>$7983.00</td>
+      <td>$73.77</td>
+      <td>$7377.00</td>
+      <td>48.20%</td>
     </tr>
     
     <tr>
       <td>PLTR</td>
       <td>パランティア・テクノロジーズ</td>
       <td>ソフトウェア-インフラ</td>
-      <td>$137.40</td>
-      <td>$13740.00</td>
+      <td>$137.30</td>
+      <td>$13730.00</td>
+      <td>56.17%</td>
     </tr>
     
     <tr>
       <td>AMD</td>
       <td>アドバンスト・マイクロ・デバイシズ</td>
       <td>半導体</td>
-      <td>$116.16</td>
-      <td>$11616.00</td>
+      <td>$128.24</td>
+      <td>$12824.00</td>
+      <td>44.12%</td>
     </tr>
     
     <tr>
       <td>ARM</td>
       <td>アーム・ホールディングス</td>
       <td>半導体</td>
-      <td>$135.55</td>
-      <td>$13555.00</td>
-    </tr>
-    
-    <tr>
-      <td>SHOP</td>
-      <td>ショッピファイ</td>
-      <td>ソフトウェア-アプリケーション</td>
-      <td>$105.34</td>
-      <td>$10534.00</td>
+      <td>$145.04</td>
+      <td>$14504.00</td>
+      <td>51.30%</td>
     </tr>
     
     <tr>
       <td>MU</td>
       <td>マイクロン・テクノロジー</td>
       <td>半導体</td>
-      <td>$115.60</td>
-      <td>$11560.00</td>
+      <td>$123.60</td>
+      <td>$12360.00</td>
+      <td>57.85%</td>
     </tr>
     
     <tr>
-      <td>NKE</td>
-      <td>ナイキ クラスB</td>
-      <td>靴</td>
-      <td>$60.53</td>
-      <td>$6053.00</td>
+      <td>SHOP</td>
+      <td>ショッピファイ</td>
+      <td>ソフトウェア-アプリケーション</td>
+      <td>$106.40</td>
+      <td>$10640.00</td>
+      <td>47.88%</td>
+    </tr>
+    
+    <tr>
+      <td>ANET</td>
+      <td>アリスタネットワークス</td>
+      <td>パソコンハードウェア</td>
+      <td>$86.25</td>
+      <td>$8625.00</td>
+      <td>43.40%</td>
     </tr>
     
     <tr>
       <td>INTC</td>
       <td>インテル</td>
       <td>半導体</td>
-      <td>$20.14</td>
-      <td>$2014.00</td>
+      <td>$21.08</td>
+      <td>$2108.00</td>
+      <td>51.09%</td>
+    </tr>
+    
+    <tr>
+      <td>NKE</td>
+      <td>ナイキ クラスB</td>
+      <td>靴</td>
+      <td>$59.79</td>
+      <td>$5979.00</td>
+      <td>51.63%</td>
     </tr>
     
     <tr>
       <td>CRWV</td>
       <td>コアウィーブ</td>
       <td>ソフトウェア-インフラ</td>
-      <td>$147.19</td>
-      <td>$14719.00</td>
-    </tr>
-    
-    <tr>
-      <td>RBLX</td>
-      <td>ロブロックス</td>
-      <td>ゲーム・マルチメディア</td>
-      <td>$97.17</td>
-      <td>$9717.00</td>
+      <td>$183.58</td>
+      <td>$18358.00</td>
+      <td>120.79%</td>
     </tr>
     
     <tr>
       <td>HOOD</td>
       <td>ロビンフッド・マーケッツ</td>
       <td>資本市場</td>
-      <td>$72.60</td>
-      <td>$7260.00</td>
+      <td>$78.50</td>
+      <td>$7850.00</td>
+      <td>68.29%</td>
     </tr>
     
     <tr>
-      <td>FCX</td>
-      <td>フリーポートマクモラン</td>
-      <td>銅</td>
-      <td>$40.94</td>
-      <td>$4094.00</td>
+      <td>RBLX</td>
+      <td>ロブロックス</td>
+      <td>ゲーム・マルチメディア</td>
+      <td>$102.09</td>
+      <td>$10209.00</td>
+      <td>45.36%</td>
     </tr>
     
     <tr>
       <td>MRVL</td>
       <td>マーベル・テクノロジー</td>
       <td>半導体</td>
-      <td>$67.19</td>
-      <td>$6719.00</td>
+      <td>$73.51</td>
+      <td>$7351.00</td>
+      <td>52.23%</td>
+    </tr>
+    
+    <tr>
+      <td>FCX</td>
+      <td>フリーポートマクモラン</td>
+      <td>銅</td>
+      <td>$40.22</td>
+      <td>$4022.00</td>
+      <td>42.85%</td>
+    </tr>
+    
+    <tr>
+      <td>JD</td>
+      <td>JDドットコム</td>
+      <td>Eコマース</td>
+      <td>$31.44</td>
+      <td>$3144.00</td>
+      <td>41.14%</td>
     </tr>
     
     <tr>
       <td>VRT</td>
       <td>バーティブ・ホールディングス</td>
       <td>電気設備・部品</td>
-      <td>$110.97</td>
-      <td>$11097.00</td>
+      <td>$118.54</td>
+      <td>$11854.00</td>
+      <td>53.78%</td>
     </tr>
     
     <tr>
       <td>XYZ</td>
       <td>ブロック</td>
       <td>ソフトウェア-インフラ</td>
-      <td>$61.57</td>
-      <td>$6157.00</td>
+      <td>$63.59</td>
+      <td>$6359.00</td>
+      <td>46.14%</td>
     </tr>
     
     <tr>
-      <td>TTD</td>
-      <td>トレード・デスク クラスA</td>
-      <td>広告代理店</td>
-      <td>$67.96</td>
-      <td>$6796.00</td>
-    </tr>
-    
-    <tr>
-      <td>DAL</td>
-      <td>デルタ航空</td>
-      <td>航空会社</td>
-      <td>$47.04</td>
-      <td>$4704.00</td>
+      <td>EQT</td>
+      <td>イーキューティー</td>
+      <td>石油・ガス-探査・生産</td>
+      <td>$60.44</td>
+      <td>$6044.00</td>
+      <td>42.37%</td>
     </tr>
     
     <tr>
       <td>CCL</td>
       <td>カーニバル</td>
       <td>旅行</td>
-      <td>$22.41</td>
-      <td>$2241.00</td>
+      <td>$23.77</td>
+      <td>$2377.00</td>
+      <td>47.67%</td>
     </tr>
     
     <tr>
-      <td>PCG</td>
-      <td>パシフィック・ガス・アンド・エレクトリック</td>
-      <td>電力</td>
-      <td>$13.64</td>
-      <td>$1364.00</td>
+      <td>DAL</td>
+      <td>デルタ航空</td>
+      <td>航空会社</td>
+      <td>$47.20</td>
+      <td>$4720.00</td>
+      <td>53.27%</td>
     </tr>
     
     <tr>
       <td>CCJ</td>
       <td>カメコ</td>
       <td>ウラン</td>
-      <td>$66.66</td>
-      <td>$6666.00</td>
+      <td>$68.27</td>
+      <td>$6827.00</td>
+      <td>42.16%</td>
     </tr>
     
     <tr>
       <td>SMCI</td>
       <td>スーパー・マイクロ・コンピューター</td>
       <td>パソコンハードウェア</td>
-      <td>$41.56</td>
-      <td>$4156.00</td>
+      <td>$45.32</td>
+      <td>$4532.00</td>
+      <td>72.48%</td>
     </tr>
     
     <tr>
-      <td>UAL</td>
-      <td>ユナイテッド・エアラインズ・ホールディングス</td>
-      <td>航空会社</td>
-      <td>$74.00</td>
-      <td>$7400.00</td>
-    </tr>
-    
-    <tr>
-      <td>DVN</td>
-      <td>デボン・エナジー・コーポレーション</td>
-      <td>石油・ガス-探査・生産</td>
-      <td>$35.11</td>
-      <td>$3511.00</td>
+      <td>WBD</td>
+      <td>ワーナーブラザース・ディスカバリー・インク</td>
+      <td>エンタメ</td>
+      <td>$10.52</td>
+      <td>$1052.00</td>
+      <td>47.68%</td>
     </tr>
     
     <tr>
       <td>RDDT</td>
       <td>レディット</td>
       <td>情報サービス</td>
-      <td>$118.18</td>
-      <td>$11818.00</td>
+      <td>$139.15</td>
+      <td>$13915.00</td>
+      <td>71.78%</td>
     </tr>
     
     <tr>
-      <td>HAL</td>
-      <td>ハリバートン</td>
-      <td>石油・ガス-設備・サービス</td>
-      <td>$23.19</td>
-      <td>$2319.00</td>
-    </tr>
-    
-    <tr>
-      <td>AFRM</td>
-      <td>アファーム・ホールディングス</td>
-      <td>ソフトウェア-インフラ</td>
-      <td>$59.11</td>
-      <td>$5911.00</td>
-    </tr>
-    
-    <tr>
-      <td>FSLR</td>
-      <td>ファースト・ソーラー</td>
-      <td>太陽光エネルギー</td>
-      <td>$175.20</td>
-      <td>$17520.00</td>
+      <td>UAL</td>
+      <td>ユナイテッド・エアラインズ・ホールディングス</td>
+      <td>航空会社</td>
+      <td>$74.27</td>
+      <td>$7427.00</td>
+      <td>64.91%</td>
     </tr>
     
     <tr>
       <td>DKNG</td>
       <td>ドラフトキングス</td>
       <td>ギャンブル</td>
-      <td>$36.50</td>
-      <td>$3650.00</td>
+      <td>$40.51</td>
+      <td>$4051.00</td>
+      <td>44.24%</td>
     </tr>
     
     <tr>
-      <td>XPEV</td>
-      <td>シャオペン</td>
-      <td>自動車メーカー</td>
-      <td>$18.18</td>
-      <td>$1818.00</td>
+      <td>AFRM</td>
+      <td>アファーム・ホールディングス</td>
+      <td>ソフトウェア-インフラ</td>
+      <td>$62.06</td>
+      <td>$6206.00</td>
+      <td>62.19%</td>
     </tr>
     
     <tr>
       <td>SOFI</td>
-      <td>ソーファイ</td>
+      <td>ソーファイ テクノロジーズA</td>
       <td>クレジットサービス</td>
-      <td>$14.09</td>
-      <td>$1409.00</td>
+      <td>$15.20</td>
+      <td>$1520.00</td>
+      <td>64.54%</td>
+    </tr>
+    
+    <tr>
+      <td>FSLR</td>
+      <td>ファースト・ソーラー</td>
+      <td>太陽光エネルギー</td>
+      <td>$145.00</td>
+      <td>$14500.00</td>
+      <td>67.46%</td>
+    </tr>
+    
+    <tr>
+      <td>ALAB</td>
+      <td>アステラ・ラブズ</td>
+      <td>半導体</td>
+      <td>$93.08</td>
+      <td>$9307.50</td>
+      <td>68.04%</td>
     </tr>
     
     <tr>
       <td>HIMS</td>
       <td>ヒムズ&ハーズ・ヘルス</td>
       <td>生活必需品</td>
-      <td>$55.48</td>
-      <td>$5548.00</td>
-    </tr>
-    
-    <tr>
-      <td>TEM</td>
-      <td>テンパスAI</td>
-      <td>健康情報サービス</td>
-      <td>$71.28</td>
-      <td>$7128.00</td>
+      <td>$64.22</td>
+      <td>$6422.00</td>
+      <td>89.55%</td>
     </tr>
     
     <tr>
       <td>RKLB</td>
       <td>ロケット・ラボ</td>
       <td>宇宙・防衛</td>
-      <td>$25.41</td>
-      <td>$2541.00</td>
+      <td>$30.04</td>
+      <td>$3004.00</td>
+      <td>74.88%</td>
+    </tr>
+    
+    <tr>
+      <td>QXO</td>
+      <td>QXO</td>
+      <td>ソフトウェア-アプリケーション</td>
+      <td>$23.79</td>
+      <td>$2379.00</td>
+      <td>69.26%</td>
+    </tr>
+    
+    <tr>
+      <td>TEM</td>
+      <td>テンパスAI</td>
+      <td>健康情報サービス</td>
+      <td>$68.31</td>
+      <td>$6831.00</td>
+      <td>83.84%</td>
     </tr>
     
     <tr>
       <td>NBIS</td>
       <td>ネビウス・グループ</td>
       <td>情報サービス</td>
-      <td>$47.13</td>
-      <td>$4713.00</td>
-    </tr>
-    
-    <tr>
-      <td>CELH</td>
-      <td>セルシウス・ホールディングス</td>
-      <td>ノンアルコール飲料</td>
-      <td>$41.16</td>
-      <td>$4116.00</td>
-    </tr>
-    
-    <tr>
-      <td>MRNA</td>
-      <td>モデルナ</td>
-      <td>バイオテクノロジー</td>
-      <td>$26.67</td>
-      <td>$2667.00</td>
-    </tr>
-    
-    <tr>
-      <td>GME</td>
-      <td>ゲームストップ クラスA</td>
-      <td>小売</td>
-      <td>$22.14</td>
-      <td>$2214.00</td>
-    </tr>
-    
-    <tr>
-      <td>IONQ</td>
-      <td>イオンキュー</td>
-      <td>パソコンハードウェア</td>
-      <td>$37.84</td>
-      <td>$3784.00</td>
-    </tr>
-    
-    <tr>
-      <td>U</td>
-      <td>ユニティ・ソフトウェア</td>
-      <td>ソフトウェア-アプリケーション</td>
-      <td>$23.66</td>
-      <td>$2366.00</td>
+      <td>$47.97</td>
+      <td>$4797.00</td>
+      <td>87.64%</td>
     </tr>
     
     <tr>
       <td>ASTS</td>
       <td>AST・スペースモバイル</td>
       <td>通信設備</td>
-      <td>$38.37</td>
-      <td>$3837.00</td>
+      <td>$45.94</td>
+      <td>$4594.00</td>
+      <td>94.35%</td>
+    </tr>
+    
+    <tr>
+      <td>IONQ</td>
+      <td>イオンキュー</td>
+      <td>パソコンハードウェア</td>
+      <td>$40.36</td>
+      <td>$4036.00</td>
+      <td>90.97%</td>
+    </tr>
+    
+    <tr>
+      <td>GME</td>
+      <td>ゲームストップ クラスA</td>
+      <td>小売</td>
+      <td>$23.46</td>
+      <td>$2346.00</td>
+      <td>71.97%</td>
+    </tr>
+    
+    <tr>
+      <td>MRNA</td>
+      <td>モデルナ</td>
+      <td>バイオテクノロジー</td>
+      <td>$25.90</td>
+      <td>$2590.00</td>
+      <td>66.96%</td>
+    </tr>
+    
+    <tr>
+      <td>U</td>
+      <td>ユニティ・ソフトウェア</td>
+      <td>ソフトウェア-アプリケーション</td>
+      <td>$23.07</td>
+      <td>$2307.00</td>
+      <td>60.87%</td>
     </tr>
     
     <tr>
       <td>OKLO</td>
       <td>オクロ</td>
       <td>電力</td>
-      <td>$63.66</td>
-      <td>$6366.00</td>
+      <td>$57.95</td>
+      <td>$5795.00</td>
+      <td>101.97%</td>
     </tr>
     
     <tr>
-      <td>CAVA</td>
-      <td>CAVAグループ</td>
-      <td>外食</td>
-      <td>$74.57</td>
-      <td>$7457.00</td>
-    </tr>
-    
-    <tr>
-      <td>NCLH</td>
-      <td>ノルウェージャン・クルーズライン・ホールディングス</td>
-      <td>旅行</td>
-      <td>$17.78</td>
-      <td>$1778.00</td>
-    </tr>
-    
-    <tr>
-      <td>APA</td>
-      <td>アパッチ</td>
-      <td>石油・ガス-探査・生産</td>
-      <td>$21.01</td>
-      <td>$2101.00</td>
+      <td>BILI</td>
+      <td>ビリビリ</td>
+      <td>情報サービス</td>
+      <td>$19.74</td>
+      <td>$1974.00</td>
+      <td>56.24%</td>
     </tr>
     
     <tr>
       <td>AAL</td>
       <td>アメリカン航空グループ</td>
       <td>航空会社</td>
-      <td>$10.37</td>
-      <td>$1037.00</td>
+      <td>$10.62</td>
+      <td>$1062.00</td>
+      <td>64.01%</td>
     </tr>
     
     <tr>
-      <td>ENPH</td>
-      <td>エンフェーズ・エナジー</td>
-      <td>太陽光エネルギー</td>
-      <td>$45.60</td>
-      <td>$4560.00</td>
-    </tr>
-    
-    <tr>
-      <td>BBWI</td>
-      <td>バス・アンド・ボディ・ワークス</td>
-      <td>小売</td>
-      <td>$25.21</td>
-      <td>$2521.00</td>
-    </tr>
-    
-    <tr>
-      <td>MARA</td>
-      <td>マーラ・ホールディングス</td>
-      <td>資本市場</td>
-      <td>$15.04</td>
-      <td>$1504.00</td>
-    </tr>
-    
-    <tr>
-      <td>SMR</td>
-      <td>ニュースケール・パワー</td>
-      <td>特殊産業用機械</td>
-      <td>$38.82</td>
-      <td>$3882.00</td>
+      <td>ACHR</td>
+      <td>アーチャー・アビエーション・インク</td>
+      <td>宇宙・防衛</td>
+      <td>$10.04</td>
+      <td>$1004.00</td>
+      <td>80.19%</td>
     </tr>
     
     <tr>
       <td>MP</td>
       <td>MPマテリアルズ</td>
       <td>鉱業-金属</td>
-      <td>$30.55</td>
-      <td>$3055.00</td>
+      <td>$37.74</td>
+      <td>$3774.00</td>
+      <td>88.31%</td>
     </tr>
     
     <tr>
       <td>UPST</td>
       <td>アップスタート・ホールディングス</td>
       <td>クレジットサービス</td>
-      <td>$52.02</td>
-      <td>$5202.00</td>
+      <td>$58.01</td>
+      <td>$5801.00</td>
+      <td>72.23%</td>
+    </tr>
+    
+    <tr>
+      <td>OSCR</td>
+      <td>オスカー・ヘルス・インク</td>
+      <td>ヘルスケア・プラン</td>
+      <td>$21.22</td>
+      <td>$2122.00</td>
+      <td>92.94%</td>
+    </tr>
+    
+    <tr>
+      <td>MARA</td>
+      <td>マーラ・ホールディングス</td>
+      <td>資本市場</td>
+      <td>$14.32</td>
+      <td>$1432.00</td>
+      <td>72.92%</td>
+    </tr>
+    
+    <tr>
+      <td>SMR</td>
+      <td>ニュースケール・パワー</td>
+      <td>特殊産業用機械</td>
+      <td>$37.20</td>
+      <td>$3720.00</td>
+      <td>103.04%</td>
     </tr>
     
     <tr>
       <td>BULL</td>
       <td>ウィブル コーポレーション</td>
       <td>ソフトウェア-アプリケーション</td>
-      <td>$10.39</td>
-      <td>$1039.00</td>
+      <td>$10.60</td>
+      <td>$1060.00</td>
+      <td>81.39%</td>
     </tr>
     
     <tr>
       <td>QBTS</td>
       <td>D ウェーブ クオンタム</td>
       <td>パソコンハードウェア</td>
-      <td>$15.17</td>
-      <td>$1517.00</td>
+      <td>$15.65</td>
+      <td>$1565.00</td>
+      <td>105.04%</td>
     </tr>
     
     <tr>
-      <td>FRO</td>
-      <td>フロントライン</td>
-      <td>石油・ガス-輸送</td>
-      <td>$19.74</td>
-      <td>$1974.00</td>
-    </tr>
-    
-    <tr>
-      <td>RH</td>
-      <td>RH</td>
-      <td>小売</td>
-      <td>$189.12</td>
-      <td>$18912.00</td>
+      <td>ENPH</td>
+      <td>エンフェーズ・エナジー</td>
+      <td>太陽光エネルギー</td>
+      <td>$35.85</td>
+      <td>$3585.00</td>
+      <td>78.28%</td>
     </tr>
     
     <tr>
       <td>CORZ</td>
       <td>コア・サイエンティフィック</td>
       <td>ソフトウェア-インフラ</td>
-      <td>$11.89</td>
-      <td>$1189.00</td>
+      <td>$11.86</td>
+      <td>$1186.00</td>
+      <td>67.73%</td>
     </tr>
     
     <tr>
-      <td>APLD</td>
-      <td>アプライド・デジタル</td>
-      <td>情報技術サービス</td>
-      <td>$11.18</td>
-      <td>$1118.00</td>
+      <td>ZETA</td>
+      <td>ゼータ・グローバル・ホールディングス</td>
+      <td>ソフトウェア-インフラ</td>
+      <td>$14.18</td>
+      <td>$1418.00</td>
+      <td>69.34%</td>
+    </tr>
+    
+    <tr>
+      <td>GEO</td>
+      <td>ゲオ・グループ</td>
+      <td>セキュリティ・警備</td>
+      <td>$23.28</td>
+      <td>$2328.00</td>
+      <td>56.40%</td>
+    </tr>
+    
+    <tr>
+      <td>AI</td>
+      <td>シースリー・エーアイ</td>
+      <td>ソフトウェア-インフラ</td>
+      <td>$23.60</td>
+      <td>$2360.00</td>
+      <td>57.57%</td>
     </tr>
     
     <tr>
       <td>QUBT</td>
       <td>クオンタム・コンピューティング・インク</td>
       <td>パソコンハードウェア</td>
-      <td>$16.68</td>
-      <td>$1668.00</td>
+      <td>$18.88</td>
+      <td>$1888.00</td>
+      <td>124.33%</td>
     </tr>
     
     <tr>
-      <td>RUN</td>
-      <td>サンラン</td>
-      <td>太陽光エネルギー</td>
-      <td>$10.00</td>
-      <td>$1000.00</td>
+      <td>IREN</td>
+      <td>IRENリミテッド・オーディナリー・シェアーズ</td>
+      <td>資本市場</td>
+      <td>$10.47</td>
+      <td>$1047.00</td>
+      <td>86.29%</td>
     </tr>
     
     <tr>
-      <td>ZIM</td>
-      <td>ジム・インテグレーテッド・シッピング・サービ</td>
-      <td>海運</td>
-      <td>$17.51</td>
-      <td>$1751.00</td>
+      <td>APLD</td>
+      <td>アプライド・デジタル</td>
+      <td>情報技術サービス</td>
+      <td>$10.33</td>
+      <td>$1033.00</td>
+      <td>102.61%</td>
+    </tr>
+    
+    <tr>
+      <td>RKT</td>
+      <td>ロケット・カンパニー</td>
+      <td>モーゲージ金融</td>
+      <td>$14.40</td>
+      <td>$1440.00</td>
+      <td>57.97%</td>
     </tr>
     
     </tbody>
   </table>
+
+  <a href="index.html" class="top-link">← トップに戻る</a>
+
+  
 </body>
 </html>
