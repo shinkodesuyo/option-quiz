@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greeks活用戦略ガイド</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5em;
+    }
+    p, li {
+      font-size: 1.1em;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back {
+      margin-top: 2em;
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #2c80b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚙️ Greeks活用戦略ガイド</h1>
+  <p>
+    オプション取引における「Greeks」は、価格変動や時間経過、ボラティリティなどのリスク要因に対するオプション価格の感度を示す指標群です。
+    本ガイドでは、主要なGreeksを活用した戦略を紹介します。
+  </p>
+
+  <h2>📊 各Greeksと対応戦略</h2>
+  <ul>
+    <li><a href="delta-trade.html">デルタトレード（Δ デルタの見方と使い方）</a><br>
+      → 株価変動に対する感度を活かしたポジション構築</li>
+    <li><a href="theta-income.html">セータ収益戦略（θ 時間価値を味方に）</a><br>
+      → 時間価値の減少を収益に変える戦略（売り系に多い）</li>
+    <li><a href="vega-trade.html">ベガ戦略（ν ボラティリティの予測と活用）</a><br>
+      → ボラティリティの変化に基づいた戦略（ストラドル/ストラングルなど）</li>
+    <li><a href="gamma-scalping.html">ガンマ・スカルピング（Γ 高頻度調整による収益）</a><br>
+      → ガンマを活かして動的にデルタ調整する短期戦術</li>
+    <li><strong>Charm（チャーム）</strong><br>
+      → 時間経過によるデルタの変化に注目し、デルタヘッジのずれを予測して補正</li>
+    <li><strong>Vanna（ヴァンナ）</strong><br>
+      → ボラティリティと株価の連動性からデルタの急変を予測、ヘッジ精度向上に活用</li>
+  </ul>
+
+  <h2>💡 活用ポイント</h2>
+  <ul>
+    <li>それぞれのGreeksは単体でも使えるが、組み合わせることでより高度なリスクコントロールが可能</li>
+    <li>相場環境（ボラティリティ、決算イベントなど）に応じて、重視すべきGreeksが変わる</li>
+    <li>デルタ中立・ガンマ最大化・セータ収益のバランスを考慮すると高度な戦略構築が可能</li>
+  </ul>
+
+  <h2>🧭 今後の展開</h2>
+  <p>
+    今後はCharmやVannaといった二次Greeksの活用方法、また実際のヘッジ調整例やリスク管理術の解説も随時追加していきます。
+  </p>
+
+  <a class="back" href="index.html">← ガイド集に戻る</a>
+</body>
+</html>
