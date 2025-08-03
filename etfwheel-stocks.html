@@ -3,6 +3,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ETF Wheel戦略銘柄一覧</title>
   <style>
     body {
@@ -44,17 +45,23 @@
     .top-link:hover {
       background-color: #1f6391;
     }
+    .table-wrapper {
+      overflow-x: auto;
+      width: 100%;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
       background-color: white;
+      min-width: 900px;
     }
     th, td {
       padding: 10px;
       text-align: center;
       border: 1px solid #ccc;
       font-size: 0.95em;
+      white-space: nowrap;
     }
     th {
       background-color: #2980b9;
@@ -67,28 +74,29 @@
 </head>
 <body>
   <h1>ETF Wheel戦略銘柄一覧</h1>
-  <div class="date-info">更新日：2025年08月02日</div>
+  <div class="date-info">更新日：2025年08月03日</div>
   <div class="conditions">
     <strong>満期日：</strong>
     
 <ul>
   <li>SPY, QQQ, IWM：毎日</li>
   <li>TLT, GLD, SLV, USO, UNG：水曜日、金曜日</li>
-  
 </ul>
 
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>コード</th><th>銘柄名</th><th>価格</th><th>変化率</th><th>IV</th>
-        <th>IVランク</th><th>IVパーセン</th><th>IV変化率</th>
-        <th>PCR(出来)</th><th>PCR(総建)</th><th>HV</th><th>HV変化率</th>
-        <th>100株必要額</th>
-      </tr>
-    </thead>
-    <tbody>
-      
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>コード</th><th>銘柄名</th><th>価格</th><th>変化率</th><th>IV</th>
+          <th>IVランク</th><th>IVパーセン</th><th>IV変化率</th>
+          <th>PCR(出来)</th><th>PCR(総建)</th><th>HV</th><th>HV変化率</th>
+          <th>100株必要額</th>
+        </tr>
+      </thead>
+      <tbody>
+        
     <tr>
       <td>TLT</td>
       <td>iシェアーズ 米国国債 20年超 ETF</td>
@@ -185,8 +193,9 @@
       <td>$21492.00</td>
     </tr>
     
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 
   <a href="index.html" class="top-link">← トップに戻る</a>
 </body>
