@@ -206,34 +206,216 @@
     .strategy-section a { color: #2980b9; text-decoration: none; }
     .strategy-section a:hover { text-decoration: underline; }
     .highlight-strategy {
-    background-color: #fff8e1;
-    border: 2px solid #f1c40f;
-    padding: 1.2em;
-    border-radius: 12px;
-    margin-bottom: 2em;
-    box-shadow: 0 2px 8px rgba(241, 196, 15, 0.4);
-  }
+      background-color: #fff8e1;
+      border: 2px solid #f1c40f;
+      padding: 1.2em;
+      border-radius: 12px;
+      margin-bottom: 2em;
+      box-shadow: 0 2px 8px rgba(241, 196, 15, 0.4);
+    }
 
-  .highlight-strategy h2 {
-    margin: 0 0 0.5em 0;
-    color: #d35400;
-  }
+    .highlight-strategy h2 {
+      margin: 0 0 0.5em 0;
+      color: #d35400;
+    }
 
-  .highlight-link {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #2980b9;
-    text-decoration: none;
-  }
+    .highlight-link {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #2980b9;
+      text-decoration: none;
+    }
 
-  .highlight-link:hover {
-    text-decoration: underline;
-    color: #1c567b;
-  }
+    .highlight-link:hover {
+      text-decoration: underline;
+      color: #1c567b;
+    }
 
+    /* ===============================
+       追加：固定ヘッダー＋検索のスタイル
+       =============================== */
+    :root{
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #6b7280;    /* gray-500 */
+      --border: #e5e7eb;   /* gray-200 */
+      --surface: #f8fafc;  /* slate-50 */
+      --ring: #93c5fd;     /* blue-300 */
+    }
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: saturate(150%) blur(6px);
+    }
+    .nav-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    nav.primary-nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav.primary-nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+    nav.primary-nav a:hover, nav.primary-nav a:focus {
+      background: var(--surface);
+      outline: none;
+    }
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+    .menu-btn:focus{
+      outline: 3px solid color-mix(in oklab, var(--ring) 40%, transparent);
+      outline-offset: 2px;
+    }
+    .search-wrap {
+      position: relative;
+      min-width: 240px;
+      width: 320px;
+      justify-self: end;
+    }
+    .search-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 40%, transparent);
+    }
+    .search-results {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      padding: 6px;
+      display: none;
+      max-height: 60vh;
+      overflow: auto;
+    }
+    .search-results[aria-hidden="false"]{ display: block; }
+    .result-item {
+      display: block;
+      padding: 10px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      outline: none;
+    }
+    .result-item:hover,
+    .result-item[aria-selected="true"]{
+      background: var(--surface);
+    }
+    .result-title {
+      font-weight: 600;
+      display: block;
+    }
+    .result-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .result-chip {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      margin-top: 4px;
+      color: var(--muted);
+    }
+    .search-empty {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 860px){
+      .nav-wrap{
+        grid-template-columns: auto auto 1fr;
+      }
+      nav.primary-nav {
+        display: none;
+        position: absolute;
+        left: 0; right: 0;
+        top: 58px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+        gap: 4px;
+      }
+      nav.primary-nav[data-open="true"]{ display: flex; }
+      .menu-btn { display: inline-flex; justify-self: start; }
+      .search-wrap { width: 100%; min-width: 0; grid-column: 1 / -1; }
+    }
+    /* アクセシビリティ補助 */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    /* 固定ヘッダー分のアンカーずれ対策（必要箇所で :target を使う） */
+    :target { scroll-margin-top: 80px; }
   </style>
 </head>
 <body>
+
+  <!-- =========================
+       固定ヘッダー（統合追加）
+       ========================= -->
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Option-Quiz</a>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav" aria-label="メニューを開閉">
+        ☰ メニュー
+      </button>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="グローバルナビ">
+        <a href="index.html">ホーム</a>
+        <a href="delta-guide.html">デルタ活用ガイド</a>
+        <a href="etfwheel-stocks.html">おすすめETF</a>
+        <a href="wheel-stocks.html">おすすめ米国株</a>
+        <a href="#quiz-section">クイズ</a>
+        <a href="https://www.nomura.co.jp/solution/financial-assets/guidance/simulation/unyou.html" target="_blank" rel="noopener noreferrer">みらい電卓</a>
+      </nav>
+
+      <div class="search-wrap">
+        <label class="sr-only" for="siteSearch">サイト内検索</label>
+        <input id="siteSearch" class="search-input" type="search" placeholder="サイト内を検索（例：デルタ, カバードコール, IV）" autocomplete="off" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-controls="searchResults" />
+        <div id="searchResults" class="search-results" role="listbox" aria-hidden="true" aria-label="検索候補"></div>
+      </div>
+    </div>
+  </header>
+
   <!-- デルタ活用ガイドを目立たせるセクション -->
   <section class="highlight-strategy">
     <h2>📈 戦略判断に使える指標ガイド</h2>
@@ -252,8 +434,6 @@
     </div>
   </section>
 
-  
-
   <!-- オプション戦略 実践ガイド集 -->
   <section class="strategy-section">
     <h1>📘 オプション戦略 実践ガイド集</h1>
@@ -264,8 +444,6 @@
     </ul><ul>
       <li><a href="wheel-stocks.html">Wheel戦略に適した米国株</a></li>
     </ul>
-
-
 
     <h2>💰 定期収益を狙う戦略</h2>
     <ul>
@@ -288,7 +466,6 @@
       <li><a href="iv-guide.html">IV・IVランク・IVパーセンタイルの解説</a></li>
     </ul>
 
-    
     <h2>📈 戦略判断に使える指標ガイド</h2>
     <ul>
       <li><a href="delta-guide.html">デルタ活用ガイド（目的別・戦略別）</a></li>
@@ -312,7 +489,6 @@
       <div id="quiz-score"></div>
     </div>
   </section>
-  
 
   <!-- ─────────────────── オプション戦略一覧 ─────────────────── -->
   <h1>📘 オプション戦略一覧（カテゴリ別）</h1>
@@ -544,7 +720,223 @@
     </div>
   </div>
 
-  <!-- ─────────────────── クイズ用 JS ─────────────────── -->
+  <!-- =========================
+       固定ヘッダー＋検索 用スクリプト（追加）
+       ========================= -->
+  <script>
+    // モバイル用メニュー開閉
+    (function(){
+      const menuBtn = document.getElementById('menuBtn');
+      const primaryNav = document.getElementById('primaryNav');
+      if(menuBtn && primaryNav){
+        menuBtn.addEventListener('click', () => {
+          const open = primaryNav.getAttribute('data-open') === 'true';
+          primaryNav.setAttribute('data-open', String(!open));
+          menuBtn.setAttribute('aria-expanded', String(!open));
+        });
+      }
+    })();
+
+    // クライアントサイド検索（軽量）
+    (function(){
+      const SEARCH_INDEX = [
+        { title:"デルタ活用ガイド", url:"delta-guide.html", desc:"デルタの基礎、建玉調整、満期別の使い分け、ロール判断。", tags:["デルタ","IV","ロール","戦略"] },
+        { title:"戦略クイズ", url:"#quiz-section", desc:"実戦形式のクイズ。理解度に応じて解説へディープリンク。", tags:["クイズ","学習"] },
+        { title:"おすすめ銘柄（Wheel・ETF）", url:"etfwheel-stocks.html", desc:"主要ETFのスクリーニング。更新日バッジを上部に表示。", tags:["ETF","Wheel","出来高","IV"] },
+        { title:"おすすめ銘柄（Wheel・米国株）", url:"wheel-stocks.html", desc:"IV、時価総額、価格帯、出来高などでスクリーニングした候補。", tags:["Wheel","カバードコール","プット売り"] },
+        { title:"カバードコール", url:"covered-call.html", desc:"株保有＋コール売りでプレミアム収益。", tags:["Covered Call","収益"] },
+        { title:"キャッシュセキュアードプット", url:"cash-secured-put.html", desc:"希望買付価格で株取得＋プレミアム受取。", tags:["Put Sell","CSP"] },
+        { title:"Wheel戦略（Put→Call）", url:"wheel-strategy.html", desc:"プット売りで取得→コール売りで回転。", tags:["Wheel"] },
+        { title:"ロール戦略", url:"roll-strategy.html", desc:"期限やストライクを繋ぎ替えてリスク調整。", tags:["ロール","管理"] },
+        { title:"IV・IVランク・IVパーセンタイル", url:"iv-guide.html", desc:"ボラティリティ指標の見方。", tags:["IV","ボラ"] },
+        { title:"Greeks活用（全体像）", url:"greeks-guide.html", desc:"デルタ/セータ/ベガ/ガンマの使い方。", tags:["Greeks"] },
+        { title:"デルタトレード", url:"delta-trade.html", desc:"Δの見方と使い方。", tags:["デルタ"] },
+        { title:"セータ収益戦略", url:"theta-income.html", desc:"θ 時間価値を味方に。", tags:["セータ"] },
+        { title:"ベガ戦略", url:"vega-volatility.html", desc:"ν ボラティリティの予測と活用。", tags:["ベガ"] },
+        { title:"ガンマ・スカルピング", url:"gamma-scalping.html", desc:"Γ 高頻度調整による収益。", tags:["ガンマ"] },
+        { title:"スワップアービトラージ", url:"swap-arbitrage.html", desc:"スワップ差を活用した裁定。", tags:["アービトラージ"] },
+        { title:"株主優待クロス取引", url:"yutai-cross.html", desc:"優待獲得とリスク/コスト管理。", tags:["優待","クロス"] },
+        { title:"オプション利回り計算", url:"option-yield.html", desc:"オプション収益の見積りに。", tags:["ツール","計算"] },
+        { title:"みらい電卓（野村證券）", url:"https://www.nomura.co.jp/solution/financial-assets/guidance/simulation/unyou.html", desc:"将来価値や積立のシミュレーション。", tags:["外部","複利","電卓"] }
+      ];
+
+      const normalize = (s) => (s || "").toString().toLowerCase();
+
+      function scoreItem(item, q){
+        const t = normalize(item.title);
+        const d = normalize(item.desc);
+        const joinedTags = normalize((item.tags || []).join(" "));
+        const query = normalize(q);
+
+        let score = 0;
+        if (t === query) score += 100;
+        if (t.startsWith(query)) score += 40;
+        if (t.includes(query)) score += 20;
+        if (d.includes(query)) score += 10;
+        if (joinedTags.includes(query)) score += 15;
+
+        const parts = query.split(/\s+/).filter(Boolean);
+        for(const p of parts){
+          if (p && (t.includes(p) || d.includes(p) || joinedTags.includes(p))) {
+            score += 8;
+          } else {
+            score -= 5;
+          }
+        }
+        return score;
+      }
+
+      const searchInput = document.getElementById('siteSearch');
+      const resultsEl = document.getElementById('searchResults');
+      let activeIndex = -1;
+
+      function renderResults(list, query){
+        resultsEl.innerHTML = "";
+        resultsEl.setAttribute("aria-hidden", list.length ? "false" : "true");
+        searchInput.setAttribute("aria-expanded", list.length ? "true" : "false");
+        activeIndex = -1;
+
+        if (!list.length){
+          const empty = document.createElement("div");
+          empty.className = "search-empty";
+          empty.textContent = query ? "一致する候補が見つかりません。" : "キーワードを入力してください。";
+          resultsEl.appendChild(empty);
+          return;
+        }
+
+        list.forEach((it, idx) => {
+          const a = document.createElement("a");
+          a.className = "result-item";
+          a.href = it.url;
+          a.setAttribute("role","option");
+          a.setAttribute("aria-selected","false");
+          a.dataset.index = String(idx);
+
+          try {
+            const u = new URL(it.url, location.origin);
+            a.rel = (u.origin !== location.origin) ? "noopener noreferrer" : "";
+            a.target = (u.origin !== location.origin) ? "_blank" : "";
+          } catch(_) {}
+
+          const title = document.createElement("span");
+          title.className = "result-title";
+          title.innerHTML = highlight(it.title, query);
+
+          const desc = document.createElement("span");
+          desc.className = "result-desc";
+          desc.innerHTML = highlight(it.desc, query);
+
+          const chip = document.createElement("span");
+          chip.className = "result-chip";
+          chip.textContent = (it.tags && it.tags[0]) ? `#${it.tags[0]}` : "#link";
+
+          a.appendChild(title);
+          a.appendChild(desc);
+          a.appendChild(chip);
+
+          a.addEventListener("mousemove", () => setActive(idx));
+          a.addEventListener("mouseenter", () => setActive(idx));
+          a.addEventListener("click", () => closeResults());
+          resultsEl.appendChild(a);
+        });
+      }
+
+      function highlight(text, q){
+        if(!q) return escapeHTML(text);
+        const escQ = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        try {
+          const re = new RegExp(escQ, "ig");
+          return escapeHTML(text).replace(re, (m) => `<mark>${m}</mark>`);
+        } catch {
+          return escapeHTML(text);
+        }
+      }
+
+      function escapeHTML(s){
+        return (s || "").toString().replace(/[&<>"']/g, (c) => ({
+          "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+        }[c]));
+      }
+
+      function search(query){
+        const q = (query || "").trim();
+        if(!q){
+          renderResults([], q);
+          return;
+        }
+        const ranked = SEARCH_INDEX
+          .map(item => ({ item, score: scoreItem(item, q) }))
+          .filter(x => x.score > 0)
+          .sort((a,b) => b.score - a.score)
+          .slice(0, 8)
+          .map(x => x.item);
+        renderResults(ranked, q);
+      }
+
+      function setActive(idx){
+        const items = [...resultsEl.querySelectorAll(".result-item")];
+        items.forEach(el => el.setAttribute("aria-selected","false"));
+        if (idx >= 0 && idx < items.length){
+          items[idx].setAttribute("aria-selected","true");
+          activeIndex = idx;
+        } else {
+          activeIndex = -1;
+        }
+      }
+
+      function openActive(){
+        const items = [...resultsEl.querySelectorAll(".result-item")];
+        if(activeIndex >= 0 && items[activeIndex]){
+          items[activeIndex].click();
+        } else if (items[0]) {
+          items[0].click();
+        }
+      }
+
+      function closeResults(){
+        resultsEl.setAttribute("aria-hidden","true");
+        searchInput.setAttribute("aria-expanded","false");
+      }
+
+      let timer = null;
+      searchInput.addEventListener("input", (e) => {
+        clearTimeout(timer);
+        const val = e.target.value;
+        timer = setTimeout(() => search(val), 120);
+      });
+
+      searchInput.addEventListener("keydown", (e) => {
+        const items = [...resultsEl.querySelectorAll(".result-item")];
+        if (e.key === "ArrowDown"){
+          if (resultsEl.getAttribute("aria-hidden") === "true" && items.length === 0){
+            search(searchInput.value);
+            return;
+          }
+          e.preventDefault();
+          setActive(Math.min(activeIndex + 1, Math.max(0, items.length - 1)));
+        } else if (e.key === "ArrowUp"){
+          e.preventDefault();
+          setActive(Math.max(activeIndex - 1, -1));
+        } else if (e.key === "Enter"){
+          if (items.length){
+            e.preventDefault();
+            openActive();
+          }
+        } else if (e.key === "Escape"){
+          closeResults();
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        const inside = e.target.closest(".search-wrap");
+        if(!inside) closeResults();
+      });
+
+      closeResults();
+    })();
+  </script>
+
+  <!-- ─────────────────── クイズ用 JS（既存） ─────────────────── -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const startBtn = document.getElementById("start-btn");
