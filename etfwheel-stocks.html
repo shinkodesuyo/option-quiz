@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ETF Wheel戦略銘柄一覧</title>
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -66,15 +70,30 @@
     th {
       background-color: #2980b9;
       color: white;
+      position: relative;
+      cursor: pointer;
+      padding-right: 20px;
     }
     tr:nth-child(even) {
       background-color: #f2f6fc;
     }
+    /* 並べ替え矢印（赤） */
+    th.sorting::after,
+    th.sorting_asc::after,
+    th.sorting_desc::after {
+      position: absolute;
+      right: 8px;
+      font-size: 0.9em;
+      color: red;
+    }
+    th.sorting::after { content: '⇅'; }
+    th.sorting_asc::after { content: '▲'; }
+    th.sorting_desc::after { content: '▼'; }
   </style>
 </head>
 <body>
   <h1>ETF Wheel戦略銘柄一覧</h1>
-  <div class="date-info">更新日：2025年08月03日</div>
+  <div class="date-info">更新日：2025年08月09日</div>
   <div class="conditions">
     <strong>満期日：</strong>
     
@@ -85,8 +104,12 @@
 
   </div>
 
+  <p style="font-size:0.9em; color:#555;">
+    🔍 <strong>表の列名（ヘッダー）をクリック</strong>すると、昇順・降順に並べ替えできます（⇅▲▼）。
+  </p>
+
   <div class="table-wrapper">
-    <table>
+    <table id="etf-table">
       <thead>
         <tr>
           <th>コード</th><th>銘柄名</th><th>価格</th><th>変化率</th><th>IV</th>
@@ -98,99 +121,99 @@
       <tbody>
         
     <tr>
-      <td>TLT</td>
-      <td>iシェアーズ 米国国債 20年超 ETF</td>
-      <td>$87.82</td>
-      <td>1.42%</td>
-      <td>15.51%</td>
-      <td>17</td>
-      <td>35%</td>
-      <td>3.46%</td>
-      <td>0.46</td>
-      <td>0.73</td>
-      <td>12.49%</td>
-      <td>7.46%</td>
-      <td>$8782.00</td>
-    </tr>
-    
-    <tr>
-      <td>GLD</td>
-      <td>SPDR ゴールド・シェア</td>
-      <td>$309.11</td>
-      <td>2.03%</td>
-      <td>16.87%</td>
-      <td>26</td>
-      <td>41%</td>
-      <td>6.56%</td>
-      <td>0.14</td>
-      <td>0.57</td>
-      <td>14.82%</td>
-      <td>13.26%</td>
-      <td>$30911.00</td>
-    </tr>
-    
-    <tr>
       <td>SPY</td>
       <td>SPDR S&P 500 ETF</td>
-      <td>$621.72</td>
-      <td>-1.64%</td>
-      <td>20.14%</td>
-      <td>20</td>
-      <td>73%</td>
-      <td>19.41%</td>
-      <td>1.26</td>
-      <td>2.46</td>
-      <td>8.94%</td>
-      <td>33.44%</td>
-      <td>$62172.00</td>
+      <td data-order="637.18">$637.18</td>
+      <td data-order="0.78">0.78%</td>
+      <td data-order="15.13">15.13%</td>
+      <td data-order="6.0">6.0</td>
+      <td data-order="13.0">13.00%</td>
+      <td data-order="-7.9">-7.90%</td>
+      <td data-order="1.35">1.35</td>
+      <td data-order="2.47">2.47</td>
+      <td data-order="10.0">10.00%</td>
+      <td data-order="1.31">1.31%</td>
+      <td data-order="63717.99999999999">$63,718.00</td>
     </tr>
     
     <tr>
       <td>QQQ</td>
       <td>インベスコQQQトラスト</td>
-      <td>$553.88</td>
-      <td>-1.97%</td>
-      <td>22.85%</td>
-      <td>19</td>
-      <td>60%</td>
-      <td>13.15%</td>
-      <td>1.26</td>
-      <td>1.61</td>
-      <td>10.12%</td>
-      <td>39.72%</td>
-      <td>$55388.00</td>
-    </tr>
-    
-    <tr>
-      <td>SLV</td>
-      <td>iシェアーズ・シルバー・トラスト</td>
-      <td>$33.59</td>
-      <td>0.81%</td>
-      <td>26.02%</td>
-      <td>8</td>
-      <td>5%</td>
-      <td>3.72%</td>
-      <td>0.53</td>
-      <td>0.4</td>
-      <td>24.47%</td>
-      <td>-1.68%</td>
-      <td>$3359.00</td>
+      <td data-order="574.55">$574.55</td>
+      <td data-order="0.93">0.93%</td>
+      <td data-order="17.83">17.83%</td>
+      <td data-order="6.0">6.0</td>
+      <td data-order="6.0">6.00%</td>
+      <td data-order="-8.58">-8.58%</td>
+      <td data-order="1.33">1.33</td>
+      <td data-order="1.59">1.59</td>
+      <td data-order="11.99">11.99%</td>
+      <td data-order="1.28">1.28%</td>
+      <td data-order="57454.99999999999">$57,455.00</td>
     </tr>
     
     <tr>
       <td>IWM</td>
       <td>iシェアーズ ラッセル 2000 ETF</td>
-      <td>$214.92</td>
-      <td>-2.04%</td>
-      <td>27.77%</td>
-      <td>24</td>
-      <td>78%</td>
-      <td>9.52%</td>
-      <td>2.94</td>
-      <td>2.17</td>
-      <td>17.84%</td>
-      <td>4.19%</td>
-      <td>$21492.00</td>
+      <td data-order="220.32">$220.32</td>
+      <td data-order="0.22">0.22%</td>
+      <td data-order="23.73">23.73%</td>
+      <td data-order="12.0">12.0</td>
+      <td data-order="34.0">34.00%</td>
+      <td data-order="-4.67">-4.67%</td>
+      <td data-order="1.04">1.04</td>
+      <td data-order="2.27">2.27</td>
+      <td data-order="17.69">17.69%</td>
+      <td data-order="-2.22">-2.22%</td>
+      <td data-order="22032.0">$22,032.00</td>
+    </tr>
+    
+    <tr>
+      <td>TLT</td>
+      <td>iシェアーズ 米国国債 20年超 ETF</td>
+      <td data-order="87.29">$87.29</td>
+      <td data-order="-0.43">-0.43%</td>
+      <td data-order="13.17">13.17%</td>
+      <td data-order="2.0">2.0</td>
+      <td data-order="2.0">2.00%</td>
+      <td data-order="-3.68">-3.68%</td>
+      <td data-order="0.4">0.40</td>
+      <td data-order="0.7">0.70</td>
+      <td data-order="11.27">11.27%</td>
+      <td data-order="-3.1">-3.10%</td>
+      <td data-order="8729.0">$8,729.00</td>
+    </tr>
+    
+    <tr>
+      <td>GLD</td>
+      <td>SPDR ゴールド・シェア</td>
+      <td data-order="313.05">$313.05</td>
+      <td data-order="-0.02">-0.02%</td>
+      <td data-order="16.52">16.52%</td>
+      <td data-order="23.0">23.0</td>
+      <td data-order="31.0">31.00%</td>
+      <td data-order="-0.48">-0.48%</td>
+      <td data-order="0.65">0.65</td>
+      <td data-order="0.53">0.53</td>
+      <td data-order="14.06">14.06%</td>
+      <td data-order="-0.26">-0.26%</td>
+      <td data-order="31305.0">$31,305.00</td>
+    </tr>
+    
+    <tr>
+      <td>SLV</td>
+      <td>iシェアーズ・シルバー・トラスト</td>
+      <td data-order="34.88">$34.88</td>
+      <td data-order="0.35">0.35%</td>
+      <td data-order="25.47">25.47%</td>
+      <td data-order="5.0">5.0</td>
+      <td data-order="3.0">3.00%</td>
+      <td data-order="-3.63">-3.63%</td>
+      <td data-order="0.42">0.42</td>
+      <td data-order="0.41">0.41</td>
+      <td data-order="24.14">24.14%</td>
+      <td data-order="-1.21">-1.21%</td>
+      <td data-order="3488.0000000000005">$3,488.00</td>
     </tr>
     
       </tbody>
@@ -198,5 +221,19 @@
   </div>
 
   <a href="index.html" class="top-link">← トップに戻る</a>
+
+  <!-- jQuery + DataTables -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#etf-table').DataTable({
+        "language": {
+          "url": "https://cdn.datatables.net/plug-ins/1.13.4/i18n/ja.json"
+        },
+        "paging": false
+      });
+    });
+  </script>
 </body>
 </html>
